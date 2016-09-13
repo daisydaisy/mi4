@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="miApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    <title>Mi4</title>
+    <!--<link rel="icon"
+          type="image/png"
+          href="/favicon.png">-->
+    <!--<style>
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,700italic|Open+Sans+Condensed:300,300italic,700);
+    </style>-->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- inject:css -->
+    <!-- endinject -->
+</head>
+<body>
+<div class="whole-content" layout="column">
+    <header class="main-header" layout="row" ui-view="header">
+    </header>
+    <main class="main-content" ui-view flex layout="column">
+    </main>
+    <footer ui-view="footer">
+    </footer>
+</div>
+<!-- bower:js -->
+<!-- endbower -->
+<!-- inject:js -->
+<!-- endinject -->
+</body>
+</html>

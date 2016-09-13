@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="miApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    <title>Mi4</title>
+    <!--<link rel="icon"
+          type="image/png"
+          href="/favicon.png">-->
+    <!--<style>
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,700italic|Open+Sans+Condensed:300,300italic,700);
+    </style>-->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css" />
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
+    <!-- endinject -->
+</head>
+<body>
+<div class="whole-content" layout="column">
+    <header class="main-header" layout="row" ui-view="header">
+    </header>
+    <main class="main-content" ui-view flex layout="column">
+    </main>
+    <footer ui-view="footer">
+    </footer>
+</div>
+<!-- bower:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/lodash/lodash.js"></script>
+<script src="bower_components/restangular/dist/restangular.js"></script>
+<script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+<!-- endbower -->
+<!-- inject:js -->
+<script src="/app/miapp.mod.js"></script>
+<script src="/app/miapp.conf.js"></script>
+<script src="/app/pages/common/controllers/start-page.ctrl.js"></script>
+<!-- endinject -->
+</body>
+</html>
