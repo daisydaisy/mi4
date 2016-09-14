@@ -6,19 +6,10 @@ app.set('port', (process.env.PORT || 2020));
 
 app.use(express.static(__dirname));
 
-// views is directory for all template files
 app.set('views', __dirname + '/app/pages');
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-
-app.get('*', function (req, res, next) {
-    // var isHttps = ((req.headers["x-forwarded-proto"] || '').substring(0,5) === 'https');
-    // if (!isHttps)
-    //     return res.redirect(['https://', req.get('Host'), req.url].join(''));
-    // else
-        next();
-});
 
 app.get('/', function(request, response) {
     response.render('index');

@@ -12,7 +12,9 @@
                 abstract: true,
                 views: {
                     header: {
-                        templateUrl: 'app/pages/common/templates/main-header.tpl.html'
+                        templateUrl: 'app/pages/common/templates/main-header.tpl.html',
+                        controller: 'HeaderCtrl',
+                        controllerAs: 'vm'
                     },
                     '': {
                         template: '<ui-view layout="column"/>'
