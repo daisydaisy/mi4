@@ -29,6 +29,8 @@
                 width: 100%;
                 .nav-list {
                     li {
+                        float: left;
+                        padding: 0 44px 0 0;
                         & > a.nav-tab {
                             font-size: 11px;
                             color: black;
@@ -39,8 +41,25 @@
             }
             .search-wrapper {
                 form.search-form {
+                    border-left-width: 2px;
+                    border-color: #eee;
+                    border-left-style: solid;
+                    padding-left: 40px;
                     .fa.fa-search {
-                        color: black;
+                        color: $icon-color;
+                    }
+                    md-autocomplete {
+                        height: 80px;
+                        md-autocomplete-wrap {
+                            height: 80px;
+                            box-shadow: none;
+                            input:not(.md-input) {
+                                height: 80px;
+                                font-style: italic;
+                            }
+                        }
+                        
+                        
                     }
 
                 }
