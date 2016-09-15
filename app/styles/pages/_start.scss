@@ -1,0 +1,63 @@
+.heading {
+    padding-top: 67px;
+    padding-bottom: 63px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    color: white;
+    background: url('/images/get-started-bgd.png') 100% 100% no-repeat;
+    background-size: cover;
+
+    .md-icon-button {
+        height: 66px;
+        width: 66px;
+        border: white 3px solid;
+        border-radius: 0;
+        color: white;
+        span {
+            font-size: 22px;
+            text-transform: none; 
+        }
+        sub {
+            font-size: 16px;
+            display: inline-block;
+        }
+    }
+    .title {
+        font-size: 20px;
+        font-weight: normal;
+        margin-top: 22px;
+    }
+    .title-small {
+        font-family: Open Sans;
+        font-size: 13px;
+        font-weight: normal;
+        margin: 0 auto;
+        &.first {
+            margin-top: 13px;
+        }
+    }
+    .btn-wrapper {
+        margin-top: 30px;
+        .md-button {
+            min-height: 44px;
+            min-width: 160px;
+            border-radius: 6px;
+            &.md-primary {
+                background-color: $main-button-color;
+                box-shadow: none;
+                &:hover {
+                    background-color: $main-button-color;
+                }
+            }
+            span {
+                font-size: 12px;
+                font-weight: bold;
+                letter-spacing: 1px;
+            }
+            &.learn-more-btn {
+                border: rgba(158,158,158,0.2) 2px solid;
+            }
+        }
+    }
+}

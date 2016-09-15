@@ -34,7 +34,9 @@
                         & > a.nav-tab {
                             font-size: 11px;
                             color: black;
+                            vertical-align: middle;
                             text-transform: uppercase;
+                            letter-spacing: 1px;
                         }
                     }
                 }
@@ -56,6 +58,8 @@
                             box-shadow: none;
                             input:not(.md-input) {
                                 height: 80px;
+                                font-family: Open Sans;
+                                font-size: 13px;
                                 font-style: italic;
                             }
                         }
