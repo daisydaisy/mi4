@@ -1,9 +1,9 @@
 <md-toolbar>
     <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="Icon">
+        <md-button class="md-icon-button" aria-label="Icon" flex="none">
             <span>Mi</span><sub>4</sub>
         </md-button>
-        <div class="desktop-nav" flex="50">
+        <div class="desktop-nav" flex="45">
             <ul class="nav-list" layout>
                 <li>
                     <a class="nav-tab" ui-sref="Main.Home">My Portfolio</a>
@@ -16,7 +16,7 @@
                 </li>
             </ul>
         </div>
-        <div class="search-wrapper" flex="50">
+        <div class="search-wrapper" flex="35">
             <form class="search-form" role="search" novalidate flex="none" layout="row" layout-align="center center">
                 <i class="fa fa-search" flex="none"></i>
                 <md-autocomplete class="search-input" flex
@@ -36,6 +36,13 @@
                     </md-not-found>
                 </md-autocomplete>
             </form>
+        </div>
+        <div class="profile-info" flex="20" layout layout-align="end center">
+            <img src="/images/reload.png" alt="reload" class="info-icon reload">
+            <img src="/images/bell.png" alt="bell" class="info-icon bell-icon">
+            <div class="img-responsive profile-img">
+                <img src="/images/master-ball.png" alt="profile">
+            </div>
         </div>
     </div>
 </md-toolbar>

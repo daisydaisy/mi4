@@ -46,6 +46,7 @@
                     border-left-style: solid;
                     padding-left: 40px;
                     .fa.fa-search {
+                        font-size: 14px;
                         color: $icon-color;
                     }
                     md-autocomplete {
@@ -62,6 +63,22 @@
                         
                     }
 
+                }
+            }
+            .profile-info {
+                height: 30px;
+                text-align: right;
+                .info-icon {
+                    width: 18px;
+                    margin-left: 40px;
+                }
+                .profile-img {
+                    margin-left: 40px;
+                    img {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                    }
                 }
             }
         }
