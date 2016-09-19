@@ -4,5 +4,6 @@
         'ngMaterial',
         'ngAnimate',
         'ui.router',
+        'slick'
     ]);
 })();

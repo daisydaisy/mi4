@@ -1,5 +1,6 @@
 .heading {
-    box-shadow: $heading-shadow;
+    margin-bottom: 50px;
+    box-shadow: $container-shadow;
     .info-wrapper {
         padding-top: 67px;
         padding-bottom: 63px;
@@ -16,23 +17,20 @@
             border-radius: 0;
             color: white;
             span {
-                font-size: 22px;
+                @include montserrat-font-size(22px);
                 text-transform: none; 
             }
             sub {
-                font-size: 16px;
+                @include montserrat-font-size(16px);
                 display: inline-block;
             }
         }
         .title {
-            font-size: 20px;
-            font-weight: normal;
+            @include montserrat-font-size-weight(20px, normal);
             margin-top: 22px;
         }
         .title-small {
-            font-family: Open Sans;
-            font-size: 13px;
-            font-weight: normal;
+            @include open-sans-font-size-weight(13px, normal);
             margin: 0 auto;
             &.first {
                 margin-top: 13px;
@@ -41,21 +39,7 @@
         .btn-wrapper {
             margin-top: 30px;
             .md-button {
-                min-height: 44px;
-                min-width: 160px;
-                border-radius: 6px;
-                &.md-primary {
-                    background-color: $main-button-color;
-                    box-shadow: none;
-                    &:hover {
-                        background-color: $main-button-color;
-                    }
-                }
-                span {
-                    font-size: 12px;
-                    font-weight: bold;
-                    letter-spacing: 1px;
-                }
+                @include accept-button;
                 &.learn-more-btn {
                     border: rgba(158,158,158,0.2) 2px solid;
                 }
@@ -63,7 +47,7 @@
         }
     }
     .filter-wrapper {
-        font-size: 13px;
+        @include montserrat-font;
         padding-left: 126px;
         background: white;
         md-select {
@@ -101,5 +85,14 @@
             }
             
         }
+    }
+}
+.companies-grid {
+    padding-left: 72px;
+    .title {
+        @include open-sans-font-size(24px);
+        margin-left: 10px;
+        margin-bottom: 27px;
+        color: $title-color;
     }
 }

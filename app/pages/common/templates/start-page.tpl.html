@@ -12,19 +12,36 @@
         </div>
     </div>
     <div class="filter-wrapper" layout layout-align="start center">
-         <md-select ng-model="vm.filter" placeholder="Filter" class="md-no-underline">
-          <md-option value="inc">Inc</md-option>
-          <md-option value="corp">Corp</md-option>
-          <md-option value="date">Date</md-option>
+        <md-select ng-model="vm.filter" placeholder="Filter" class="md-no-underline">
+            <md-option value="inc">Inc</md-option>
+            <md-option value="corp">Corp</md-option>
+            <md-option value="date">Date</md-option>
         </md-select>
         <md-select ng-model="vm.sort" placeholder="Sort" class="md-no-underline">
-          <md-option value="name">Name</md-option>
-          <md-option value="rating">Rating</md-option>
-          <md-option value="price">Price</md-option>
+            <md-option value="name">Name</md-option>
+            <md-option value="rating">Rating</md-option>
+            <md-option value="price">Price</md-option>
         </md-select>
         <md-button class="md-icon-button more-button" aria-label="More">
             <md-icon md-svg-icon="images/more_vert.svg"></md-icon>
         </md-button>
-
+    </div>
+</section>
+<section class="companies-grid">
+    <div class="title">Recommended for You</div>
+    <div class="carousel-wrapper">
+        <slick infinite=false slides-to-show=4 slides-to-scroll=1 init-onload=true data="vm.corps"> 
+            <div ng-repeat="corp in vm.corps">
+                <bb-corp-card></bb-corp-card>
+            </div>
+        </slick>
+    </div>
+    <div class="title">Browse</div>
+    <div class="carousel-wrapper">
+        <slick infinite=false slides-to-show=4 slides-to-scroll=1 init-onload=true data="vm.corps"> 
+            <div ng-repeat="corp in vm.corps">
+                <bb-corp-card></bb-corp-card>
+            </div>
+        </slick>
     </div>
 </section>

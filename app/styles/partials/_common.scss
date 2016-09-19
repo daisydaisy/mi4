@@ -1,9 +1,10 @@
 html,
 body {
+  @include montserrat-font;
   height: 100%;
   width: 100%;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   background-color: $background-color;
-  color: initial;
+  color: $general-text-color;
 }

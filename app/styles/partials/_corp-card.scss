@@ -1,0 +1,69 @@
+.corp-card {
+    display: inline-block;
+    max-width: 298px;
+    margin-bottom: 44px;
+    padding-top: 41px;
+    text-align: center;
+    background: white;
+    border-radius: 6px;
+    box-shadow: $container-shadow;
+    .corp-card-image {
+        width: 90px;
+        height: 90px;
+        margin: 0 auto;
+        border-radius: 50%;
+        background-size: cover;
+
+    }
+    .corp-title {
+        @include montserrat-font-size(20px);
+        line-height: 1.5;
+        margin-top: 25px;
+    }
+    .corp-sub-title {
+        @include open-sans-font-size(15px);
+        font-style: italic;
+        margin-bottom: 40px;
+        .percent {
+            color: $negative-color;
+            &.positive {
+                color: $positive-color;
+            }
+        }
+    }
+    .corp-description {
+        @include open-sans-font;
+        margin-bottom: 22px;
+        padding-left: 37px;
+        padding-right: 37px;
+        color: $text-color;
+    }
+    .corp-rating {
+        color: $rating-color;
+        .rating-value {
+            @include montserrat-font-size(16px);
+            &.excellent {
+                color: $excellent-mark-color;
+            }
+            &.acceptable {
+                color: $acceptable-mark-color;
+            }
+            &.failing {
+                color: $failing-mark-color;
+            }
+        }
+    }
+    .btn-wrapper {
+        padding-left: 17px;
+        padding-right: 17px;
+        .add-btn {
+            @include accept-button;
+            width: 100%;
+            margin-top: 27px;
+            margin-bottom: 22px;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+    
+}
