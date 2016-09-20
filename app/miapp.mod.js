@@ -4,6 +4,7 @@
         'ngMaterial',
         'ngAnimate',
         'ui.router',
-        'slick'
+        // 'slick',
+        'angular-flexslider'
     ]);
 })();

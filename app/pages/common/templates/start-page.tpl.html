@@ -30,18 +30,18 @@
 <section class="companies-grid">
     <div class="title">Recommended for You</div>
     <div class="carousel-wrapper">
-        <slick infinite=false slides-to-show=4 slides-to-scroll=1 init-onload=true data="vm.corps"> 
-            <div ng-repeat="corp in vm.corps">
+        <flex-slider animation="slide" animation-loop="false" item-width="298" item-margin="33" slide="corp in vm.corps track by $index">
+            <li>
                 <bb-corp-card></bb-corp-card>
-            </div>
-        </slick>
+            </li>
+        </flex-slider>
     </div>
     <div class="title">Browse</div>
     <div class="carousel-wrapper">
-        <slick infinite=false slides-to-show=4 slides-to-scroll=1 init-onload=true data="vm.corps"> 
-            <div ng-repeat="corp in vm.corps">
+        <flex-slider animation="slide" animation-loop="false" item-width="298" item-margin="33" slide="corp in vm.corps track by $index">
+            <li>
                 <bb-corp-card></bb-corp-card>
-            </div>
-        </slick>
+            </li>
+        </flex-slider>
     </div>
 </section>

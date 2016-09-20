@@ -95,4 +95,13 @@
         margin-bottom: 27px;
         color: $title-color;
     }
+    .flexslider {
+        margin: 0;
+        background: none;
+        border: none;
+        overflow: hidden;
+        .flex-control-nav {
+            display: none;
+        }
+    }
 }
