@@ -25,15 +25,30 @@
                     background-color: $main-button-color;
                 }
             }
+
+            .mobile-nav {
+                .fa.fa-bars {
+                    color: $general-text-color;
+                }
+            }
             .desktop-nav {
+                height: 100%;
                 width: 100%;
                 border-right-width: 2px;
                 border-color: #eee;
                 border-right-style: solid;
                 .nav-list {
+                    @media screen and (max-width: 1015px) {
+                        padding-left: 14px;
+                    }
+                    margin: 28px auto;
                     li {
                         float: left;
                         padding: 0 44px 0 0;
+
+                        // @media screen and (max-width: 1015px) {
+                        //     padding: 0 35px 0 0;
+                        // }
                         & > a.nav-tab {
                             font-size: 11px;
                             color: $general-text-color;
@@ -87,4 +102,8 @@
             }
         }
     }
+}
+
+.md-open-menu-container {
+    top: 60px !important;
 }

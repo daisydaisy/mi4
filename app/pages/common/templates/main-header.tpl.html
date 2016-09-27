@@ -4,7 +4,7 @@
             <span>Mi</span><sub>4</sub>
         </md-button>
         <div class="desktop-nav" flex="45" hide-xs hide-sm>
-            <ul class="nav-list" layout>
+            <ul class="nav-list" layout layout-align="start center">
                 <li>
                     <a class="nav-tab" ui-sref="Main.Home">My Portfolio</a>
                 </li>
@@ -16,7 +16,7 @@
                 </li>
             </ul>
         </div>
-        <div class="search-wrapper" flex="35" flex-xs="80">
+        <div class="search-wrapper" flex="35" flex-xs="60" flex-sm="60">
             <form class="search-form" role="search" novalidate flex="none" layout="row" layout-align="center center">
                 <i class="fa fa-search" flex="none"></i>
                 <md-autocomplete class="search-input" flex
@@ -37,15 +37,26 @@
                 </md-autocomplete>
             </form>
         </div>
-        <div class="profile-info" flex="20" layout layout-align="end center">
+        <div class="profile-info" flex="20" flex-xs="35" flex-sm="35" layout layout-align="end center">
             <img src="/images/reload.png" alt="reload" class="info-icon reload">
             <img src="/images/bell.png" alt="bell" class="info-icon bell-icon">
             <div class="img-responsive profile-img">
                 <img src="/images/master-ball.png" alt="profile">
             </div>
+            <md-menu>
+                <a class="mobile-nav info-icon" ng-click="$mdOpenMenu($event)" hide show-xs show-sm><i class="fa fa-bars"></i></a>
+                <md-menu-content width="4">
+                    <md-menu-item>
+                        <md-button> <span md-menu-align-target>My Portfolio</span></md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button> <span md-menu-align-target>Browse</span></md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button> <span md-menu-align-target>My Values</span></md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
         </div>
     </div>
-    <!--<md-button class="md-icon-button" aria-label="Settings">
-        <md-icon md-svg-icon="/images/menu.svg"></md-icon>
-    </md-button>-->
 </md-toolbar>
