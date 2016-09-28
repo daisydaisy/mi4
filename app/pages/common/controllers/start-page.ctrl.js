@@ -4,8 +4,10 @@
     angular.module('miApp')
         .controller('StartPageCtrl', StartPageCtrl);
 
-    function StartPageCtrl($scope) {
+    function StartPageCtrl($scope, $mdDialog) {
         var vm = this;
+        vm.showTabDialog = showTabDialog;
+
 
         vm.corps = [
             {
@@ -16,7 +18,7 @@
                 description: 'Starbucks is an international chain of restaurants that retails handcrafted coffee, tea, and fresh food items.',
                 mark: 'B',
                 markClass: 'excellent'
-                
+
             },
             {
                 title: 'Starbucks Corporation',
@@ -53,7 +55,7 @@
                 description: 'Starbucks is an international chain of restaurants that retails handcrafted coffee, tea, and fresh food items.',
                 mark: 'B',
                 markClass: 'excellent'
-                
+
             },
             {
                 title: 'Starbucks Corporation',
@@ -82,6 +84,22 @@
                 mark: 'B',
                 markClass: 'excellent'
             }
-        ]
+        ];
+
+        function showTabDialog(ev) {
+            $mdDialog.show({
+                controller: 'CompaniesDialogCtrl',
+                controllerAs: 'vm',
+                templateUrl: 'app/pages/common/templates/companies-dialog.html',
+                // parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true
+            }).then(function (answer) {
+                console.log('fff')
+            }, function () {
+                console.log('vvv')
+
+            });
+        }
     }
 })();

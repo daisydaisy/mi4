@@ -1,0 +1,48 @@
+.companies-dialog {
+    .companies-content {
+        max-width:800px;
+        max-height:810px;
+        md-tabs-canvas {
+            height: 127px;
+            margin-left: 40px;
+            md-pagination-wrapper {
+                height: 127px;
+                width: 100% !important;
+                md-tab-item.md-tab {
+                    padding: 0;
+                    padding-top: 38px;
+                    margin-right: -10px;
+                    .label-wrapper {
+                        float: left;
+                        .md-icon-button {
+                            box-shadow: none;
+                            background-color: $main-button-color;
+                            &:hover {
+                                background-color: $main-button-color;
+                            }
+                            .not-checked {
+                                @include montserrat-font-size(11px);
+                            }
+                        }
+                    }
+                    .line {
+                        display: inline-block;
+                        height: 3px;
+                        width: 137px;
+                        margin-left: -10px;
+                        margin-top: 18px;
+                        background-color: $line-color;
+                        box-shadow: 0 0 1px 0 $line-color;
+                    }
+                    .tab-name {
+                        @include montserrat-font-size(10px);
+                        text-align: center;
+                    }
+                    &.md-active {
+                        color: $main-button-color;
+                    }
+                }
+            }
+        }
+    }
+}
