@@ -15,10 +15,15 @@
                     .label-wrapper {
                         float: left;
                         .md-icon-button {
+                            padding: 0;
                             box-shadow: none;
-                            background-color: $main-button-color;
+                            background-color: transparent;
+                            border: $disabled-tab-color 3px solid;
                             &:hover {
-                                background-color: $main-button-color;
+                                background-color: transparent;
+                            }
+                            span, i {
+                                color: $disabled-tab-color;
                             }
                             .not-checked {
                                 @include montserrat-font-size(11px);
@@ -36,11 +41,33 @@
                     }
                     .tab-name {
                         @include montserrat-font-size(10px);
+                        color: $disabled-tab-color;
                         text-align: center;
+                    }
+                    .md-ripple-container {
+                        display: none;
                     }
                     &.md-active {
                         color: $main-button-color;
+                        .label-wrapper {
+                            .md-icon-button {
+                                background-color: $main-button-color;
+                                border: none;
+                                &:hover {
+                                    background-color: $main-button-color;
+                                }
+                                span, i {
+                                    color: white;
+                                }
+                            }
+                        }
+                        .tab-name {
+                            color: $main-button-color;
+                        }
                     }
+                }
+                md-ink-bar {
+                    display: none;
                 }
             }
         }
