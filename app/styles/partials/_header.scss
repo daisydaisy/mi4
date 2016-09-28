@@ -87,9 +87,28 @@
             .profile-info {
                 height: 30px;
                 text-align: right;
+                .search-icon {
+                    min-width: auto;
+                    min-height: auto;
+                    margin: 0;
+                    padding: 0;
+                    background-color: transparent;
+                    color: $general-text-color;
+                    .fa.fa-search {
+                        font-size: 1.5em;
+                    }
+                }
                 .info-icon {
                     width: 18px;
                     margin-left: 40px;
+
+                    @media (max-width: $mobile-width-md) {
+                        &.reload,
+                        &.bell-icon {
+                            display: none;
+                        }
+                    }
+                    
                 }
                 .profile-img {
                     margin-left: 40px;
@@ -106,4 +125,13 @@
 
 .md-open-menu-container {
     top: 60px !important;
+    .icon-item {
+        @media (min-width: $mobile-width-md) {
+            display: none;
+        }
+        img {
+            width: 18px;
+        }
+    }
+    
 }
