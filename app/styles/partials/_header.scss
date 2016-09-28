@@ -119,6 +119,13 @@
                     }
                 }
             }
+            &.search-header {
+                .md-icon-button {
+                    .fa.fa-arrow-left {
+                        font-size: 24px;
+                    }
+                }
+            }
         }
     }
 }
@@ -133,5 +140,14 @@
             width: 18px;
         }
     }
-    
+    .text-item {
+        .md-button {
+            span {
+                font-size: 11px;
+                color: $general-text-color;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+        }
+    }
 }
