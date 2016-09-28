@@ -6,5 +6,6 @@
 
     function CompaniesDialogCtrl($scope, $mdDialog) {
         var vm = this;
+        vm.selectedTab = 0;
     }
 })();
