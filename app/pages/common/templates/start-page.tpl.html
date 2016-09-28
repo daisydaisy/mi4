@@ -11,20 +11,22 @@
             <md-button class="learn-more-btn">Learn More</md-button>
         </div>
     </div>
-    <div class="filter-wrapper" layout layout-align="start center">
-        <md-select ng-model="vm.filter" placeholder="Filter" class="md-no-underline">
-            <md-option value="inc">Inc</md-option>
-            <md-option value="corp">Corp</md-option>
-            <md-option value="date">Date</md-option>
-        </md-select>
-        <md-select ng-model="vm.sort" placeholder="Sort" class="md-no-underline">
-            <md-option value="name">Name</md-option>
-            <md-option value="rating">Rating</md-option>
-            <md-option value="price">Price</md-option>
-        </md-select>
-        <md-button class="md-icon-button more-button" aria-label="More">
-            <md-icon md-svg-icon="images/more_vert.svg"></md-icon>
-        </md-button>
+    <div class="filter-wrapper">
+        <div class="filter-body" layout layout-align="start center">
+            <md-select ng-model="vm.filter" placeholder="Filter" class="md-no-underline">
+                <md-option value="inc">Inc</md-option>
+                <md-option value="corp">Corp</md-option>
+                <md-option value="date">Date</md-option>
+            </md-select>
+            <md-select ng-model="vm.sort" placeholder="Sort" class="md-no-underline">
+                <md-option value="name">Name</md-option>
+                <md-option value="rating">Rating</md-option>
+                <md-option value="price">Price</md-option>
+            </md-select>
+            <md-button class="md-icon-button more-button" aria-label="More">
+                <md-icon md-svg-icon="images/more_vert.svg"></md-icon>
+            </md-button>
+        </div>
     </div>
 </section>
 <section class="companies-grid">

@@ -85,7 +85,14 @@
             }
             
         }
-        // @media
+        @media (max-width: $mobile-width-md) {
+            padding-left: 0;
+            text-align: center;
+            .filter-body {
+                display: -webkit-inline-flex;
+                display: inline-flex;
+            }
+        }
     }
 }
 .companies-grid {
@@ -116,5 +123,12 @@
         .flex-control-nav {
             display: none;
         }
+    }
+    @media (max-width: $mobile-width-md) {
+        padding-left: 20px;
+         @media (max-width: $mobile-width-xs) {
+            padding-left: 7px;
+        }
+
     }
 }
