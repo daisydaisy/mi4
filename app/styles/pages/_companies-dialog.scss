@@ -17,13 +17,13 @@
                         .md-icon-button {
                             padding: 0;
                             box-shadow: none;
-                            background-color: transparent;
-                            border: $disabled-tab-color 3px solid;
+                            background-color: $main-button-color;
+                            border: none;
                             &:hover {
-                                background-color: transparent;
+                                background-color: $main-button-color;
                             }
                             span, i {
-                                color: $disabled-tab-color;
+                                color: white;
                             }
                             .not-checked {
                                 @include montserrat-font-size(11px);
@@ -63,6 +63,24 @@
                         }
                         .tab-name {
                             color: $main-button-color;
+                        }
+                    }
+                    &.md-disabled {
+                        color: $disabled-tab-color;
+                        .label-wrapper {
+                            .md-icon-button {
+                                background-color: transparent;
+                                border: $disabled-tab-color 3px solid;
+                                &:hover {
+                                    background-color: transparent;
+                                }
+                                span, i {
+                                    color: $disabled-tab-color;
+                                }
+                            }
+                        }
+                        .tab-name {
+                            color: $disabled-tab-color;
                         }
                     }
                 }
