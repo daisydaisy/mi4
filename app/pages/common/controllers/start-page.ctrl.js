@@ -95,9 +95,9 @@
                 targetEvent: ev,
                 clickOutsideToClose: true
             }).then(function (answer) {
-                console.log('fff')
-            }, function () {
-                console.log('vvv')
+                console.log(answer)
+            }, function (canceled) {
+                console.log('canceled')
 
             });
         }

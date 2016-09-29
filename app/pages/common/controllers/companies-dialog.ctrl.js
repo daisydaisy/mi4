@@ -20,6 +20,10 @@
         });
 
         function selecNextTab(tab) {
+            if (!tab) {
+                $mdDialog.hide('done');
+            }
+
             vm.disabledTabs[tab] = false;
             vm.selectedTab = tab;
         }
