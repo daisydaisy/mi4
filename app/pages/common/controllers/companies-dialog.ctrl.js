@@ -4,23 +4,30 @@
     angular.module('miApp')
         .controller('CompaniesDialogCtrl', CompaniesDialogCtrl);
 
-    function CompaniesDialogCtrl($scope, $mdDialog) {
+    function CompaniesDialogCtrl($scope, $mdDialog, $http) {
         var vm = this;
         vm.selectedTab = 0;
-        vm.selecNextTab = selecNextTab;
-        vm.countOfTabs = 4;
+        vm.questions = [];
+        vm.selectNextTab = selectNextTab;
+        vm.countOfTabs = 0;
         vm.disabledTabs = [false];
 
-        for (var i = 1; i < vm.countOfTabs; i++) {
-            vm.disabledTabs.push(true);
-        }
+        $http.get('/json/questions.json').then(function(response) {
+            vm.questions = response.data;
+            vm.countOfTabs = vm.questions.length;
 
-        $scope.$watch('vm.selectedTab', function() {
-               
+            for (var i = 1; i < vm.countOfTabs; i++) {
+                vm.disabledTabs.push(true);
+            }
+        }, function(err) {
+            console.log(err);
         });
 
-        function selecNextTab(tab) {
-            if (!tab) {
+        $scope.$watch('vm.selectedTab', function() {
+        });
+
+        function selectNextTab(tab) {
+            if (!tab || tab === vm.countOfTabs) {
                 $mdDialog.hide('done');
             }
 

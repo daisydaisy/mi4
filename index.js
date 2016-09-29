@@ -5,6 +5,7 @@ var app = express();
 app.set('port', (process.env.PORT || 2020));
 
 app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname + 'json')));
 
 app.set('views', __dirname + '/app/pages');
 

@@ -1,0 +1,78 @@
+[
+    {
+        "section": "Community",
+        "title": "Community Ethics",
+        "question": "How much do you care about the  employment ethics of each company in your  portfolio?",
+        "sliders": [
+            {
+                "name": "Women in management",
+                "range": 0
+            },
+            {
+                "name": "LGBT policy",
+                "range": 0
+            },
+            {
+                "name": "Equal pay",
+                "range": 0
+            }
+        ]
+    },
+    {
+        "section": "Employment",
+        "title": "Employment Ethics",
+        "question": "How much do you care about the  employment ethics of each company in your  portfolio?",
+        "sliders": [
+            {
+                "name": "Women in management",
+                "range": 0
+            },
+            {
+                "name": "LGBT policy",
+                "range": 0
+            },
+            {
+                "name": "Equal pay",
+                "range": 0
+            }
+        ]
+    },
+    {
+        "section": "Environment",
+        "title": "Environment Ethics",
+        "question": "How much do you care about the  employment ethics of each company in your  portfolio?",
+        "sliders": [
+            {
+                "name": "Women in management",
+                "range": 0
+            },
+            {
+                "name": "LGBT policy",
+                "range": 0
+            },
+            {
+                "name": "Equal pay",
+                "range": 0
+            }
+        ]
+    },
+    {
+        "section": "Covernance",
+        "title": "Covernance Ethics",
+        "question": "How much do you care about the  employment ethics of each company in your  portfolio?",
+        "sliders": [
+            {
+                "name": "Women in management",
+                "range": 0
+            },
+            {
+                "name": "LGBT policy",
+                "range": 0
+            },
+            {
+                "name": "Equal pay",
+                "range": 0
+            }
+        ]
+    }
+]
