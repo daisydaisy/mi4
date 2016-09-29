@@ -11,7 +11,7 @@
                             </md-button>
                             <div class="tab-name">Community</div>
                         </div>
-                        <div class="line"></div>
+                        <div class="line" ng-class="{'is-done': vm.disabledTabs[1] === false}"></div>
                     </md-tab-label>
                     <md-tab-body>
                         <md-content class="md-padding">
@@ -32,7 +32,7 @@
                             </md-button>
                             <div class="tab-name">Employment</div>
                         </div>
-                        <div class="line"></div>
+                        <div class="line" ng-class="{'is-done': vm.disabledTabs[2] === false}"></div>
                     </md-tab-label>
                     <md-tab-body>
                         <md-content class="md-padding">
@@ -71,7 +71,7 @@
                             </md-button>
                             <div class="tab-name">Environment</div>
                         </div>
-                        <div class="line"></div>
+                        <div class="line" ng-class="{'is-done': vm.disabledTabs[3] === false}"></div>
                     </md-tab-label>
                     <md-tab-body>
                         <md-content class="md-padding">

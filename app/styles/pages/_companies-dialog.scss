@@ -36,12 +36,18 @@
                         width: 137px;
                         margin-left: -10px;
                         margin-top: 18px;
-                        background-color: $line-color;
-                        box-shadow: 0 0 1px 0 $line-color;
+                        opacity: 0.7;
+                        background-color: $disabled-tab-color;
+                        box-shadow: 0 0 1px 0 $disabled-tab-color;
+                        &.is-done {
+                            opacity: 1;
+                            background-color: $line-color;
+                            box-shadow: 0 0 1px 0 $line-color;
+                        }
                     }
                     .tab-name {
                         @include montserrat-font-size(10px);
-                        color: $disabled-tab-color;
+                        color: $main-button-color;
                         text-align: center;
                     }
                     .md-ripple-container {
@@ -67,6 +73,7 @@
                     }
                     &.md-disabled {
                         color: $disabled-tab-color;
+                        opacity: 0.7;
                         .label-wrapper {
                             .md-icon-button {
                                 background-color: transparent;
