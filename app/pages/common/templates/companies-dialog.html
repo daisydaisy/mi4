@@ -5,8 +5,8 @@
                 <md-tab class="company-tab" ng-disabled="vm.disabledTabs[0]">
                     <md-tab-label class="company-label">
                         <div class="label-wrapper">
-                             <md-button class="md-primary md-icon-button md-raised">
-                                <i class="fa fa-check" flex="none" ng-if="vm.selectedTab > 0"></i>
+                             <md-button class="md-primary md-icon-button md-raised" aria-label="Community">
+                                <i class="fa fa-check" ng-if="vm.selectedTab > 0"></i>
                                 <span class="not-checked" ng-if="vm.selectedTab == 0">01</span>
                             </md-button>
                             <div class="tab-name">Community</div>
@@ -19,15 +19,15 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus
                                 volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium
                                 ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
-                            <md-button class="md-primary md-raised" ng-click="vm.selecNextTab(1)">Next</md-button>
+                            <md-button class="md-primary md-raised" aria-label="Next" ng-click="vm.selecNextTab(1)">Next</md-button>
                         </md-content>
                     </md-tab-body>
                 </md-tab>
                 <md-tab class="company-tab" ng-disabled="vm.disabledTabs[1]">
                     <md-tab-label class="company-label">
                         <div class="label-wrapper">
-                            <md-button class="md-primary md-icon-button md-raised">
-                                <i class="fa fa-check" flex="none" ng-if="vm.selectedTab > 1"></i>
+                            <md-button class="md-primary md-icon-button md-raised" aria-label="Employment">
+                                <i class="fa fa-check" ng-if="vm.selectedTab > 1"></i>
                                 <span class="not-checked" ng-if="vm.selectedTab <= 1">02</span>
                             </md-button>
                             <div class="tab-name">Employment</div>
@@ -58,15 +58,15 @@
                                 molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit
                                 erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac
                                 est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-                            <md-button class="md-primary md-raised" ng-click="vm.selecNextTab(2)">Next</md-button>
+                            <md-button class="md-primary md-raised" aria-label="Next" ng-click="vm.selecNextTab(2)">Next</md-button>
                         </md-content>
                     </md-tab-body>
                 </md-tab>
                 <md-tab class="company-tab" ng-disabled="vm.disabledTabs[2]">
                     <md-tab-label class="company-label">
                         <div class="label-wrapper">
-                            <md-button class="md-primary md-icon-button md-raised">
-                                <i class="fa fa-check" flex="none" ng-if="vm.selectedTab > 2"></i>
+                            <md-button class="md-primary md-icon-button md-raised" aria-label="Environment">
+                                <i class="fa fa-check" ng-if="vm.selectedTab > 2"></i>
                                 <span class="not-checked" ng-if="vm.selectedTab <= 2">03</span>
                             </md-button>
                             <div class="tab-name">Environment</div>
@@ -80,15 +80,15 @@
                                 molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit
                                 erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac
                                 est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-                            <md-button class="md-primary md-raised" ng-click="vm.selecNextTab(3)">Next</md-button>
+                            <md-button class="md-primary md-raised" aria-label="Next" ng-click="vm.selecNextTab(3)">Next</md-button>
                         </md-content>
                     </md-tab-body>
                 </md-tab>
                 <md-tab class="company-tab" ng-disabled="vm.disabledTabs[3]">
                     <md-tab-label class="company-label">
                         <div class="label-wrapper">
-                            <md-button class="md-primary md-icon-button md-raised">
-                                <i class="fa fa-check" flex="none" ng-if="vm.selectedTab > 3"></i>
+                            <md-button class="md-primary md-icon-button md-raised" aria-label="Covernance">
+                                <i class="fa fa-check" ng-if="vm.selectedTab > 3"></i>
                                 <span class="not-checked" ng-if="vm.selectedTab <= 3">04</span>
                             </md-button>
                             <div class="tab-name">Covernance</div>
@@ -102,7 +102,7 @@
                                 molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit
                                 erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac
                                 est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-                            <md-button class="md-primary md-raised" ng-click="vm.selecNextTab()">Done</md-button>
+                            <md-button class="md-primary md-raised" aria-label="Done" ng-click="vm.selecNextTab()">Done</md-button>
                         </md-content>
                     </md-tab-body>
 

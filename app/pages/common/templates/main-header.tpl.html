@@ -1,6 +1,6 @@
 <md-toolbar>
     <div class="md-toolbar-tools" ng-hide="showSearchBarDiv">
-        <md-button class="md-icon-button" aria-label="Icon" flex="none">
+        <md-button class="md-icon-button" aria-label="Icon">
             <span>Mi</span><sub>4</sub>
         </md-button>
         <div class="desktop-nav" flex="45" hide-xs hide-sm>
@@ -33,7 +33,7 @@
             </form>
         </div>
         <div class="profile-info" layout layout-align="end center">
-            <md-button class="search-icon" hide show-sm show-xs ng-click="showSearchBarDiv = true">
+            <md-button class="search-icon" aria-label="Search" hide show-sm show-xs ng-click="showSearchBarDiv = true">
                 <i class="fa fa-search" flex="none"></i>
             </md-button>
             <img src="/images/reload.png" alt="reload" class="info-icon reload">
@@ -45,26 +45,26 @@
                 <a class="mobile-nav info-icon" ng-click="$mdOpenMenu($event)" hide show-xs show-sm><i class="fa fa-bars"></i></a>
                 <md-menu-content width="2">
                     <md-menu-item class="icon-item">
-                        <md-button> <span md-menu-align-target><img src="/images/reload.png" alt="reload" class="info-icon reload"></span></md-button>
+                        <md-button aria-label="Reload"><span md-menu-align-target><img src="/images/reload.png" alt="reload" class="info-icon reload"></span></md-button>
                     </md-menu-item>
                     <md-menu-item class="icon-item">
-                        <md-button> <span md-menu-align-target><img src="/images/bell.png" alt="bell" class="info-icon bell-icon"></span></md-button>
+                        <md-button aria-label="Bell"><span md-menu-align-target><img src="/images/bell.png" alt="bell" class="info-icon bell-icon"></span></md-button>
                     </md-menu-item>
                     <md-menu-item class="text-item">
-                        <md-button> <span md-menu-align-target>My Portfolio</span></md-button>
+                        <md-button aria-label="Portfolio"><span md-menu-align-target>My Portfolio</span></md-button>
                     </md-menu-item>
                     <md-menu-item class="text-item">
-                        <md-button> <span md-menu-align-target>Browse</span></md-button>
+                        <md-button aria-label="Browse"><span md-menu-align-target>Browse</span></md-button>
                     </md-menu-item>
                     <md-menu-item class="text-item">
-                        <md-button> <span md-menu-align-target>My Values</span></md-button>
+                        <md-button aria-label="Values"><span md-menu-align-target>My Values</span></md-button>
                     </md-menu-item>
                 </md-menu-content>
             </md-menu>
         </div>
     </div>
     <div layout="row" class="md-toolbar-tools search-header" show-sm show-md hide-gt-md ng-show="showSearchBarDiv">
-        <md-button class="md-icon-button" ng-click="showSearchBarDiv = false">
+        <md-button class="md-icon-button" aria-label="Back" ng-click="showSearchBarDiv = false">
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
         </md-button>
         <div class="search-wrapper" flex>
