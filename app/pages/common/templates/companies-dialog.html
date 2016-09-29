@@ -6,8 +6,8 @@
                     <md-tab-label class="company-label">
                         <div class="label-wrapper">
                              <md-button class="md-primary md-icon-button md-raised" aria-label="Community">
-                                <i class="fa fa-check" ng-if="vm.disabledTabs[1] === false"></i>
-                                <span class="not-checked" ng-if="vm.selectedTab === 0 && vm.disabledTabs[1] === true">01</span>
+                                <i class="fa fa-check" ng-if="vm.selectedTab > 0"></i>
+                                <span class="not-checked" ng-if="vm.selectedTab === 0">01</span>
                             </md-button>
                             <div class="tab-name">Community</div>
                         </div>
@@ -27,8 +27,8 @@
                     <md-tab-label class="company-label">
                         <div class="label-wrapper">
                             <md-button class="md-primary md-icon-button md-raised" aria-label="Employment">
-                                <i class="fa fa-check" ng-if="vm.disabledTabs[2] === false"></i>
-                                <span class="not-checked" ng-if="vm.selectedTab <= 1 && vm.disabledTabs[2] === true">02</span>
+                                <i class="fa fa-check" ng-if="vm.selectedTab > 1"></i>
+                                <span class="not-checked" ng-if="vm.selectedTab <= 1">02</span>
                             </md-button>
                             <div class="tab-name">Employment</div>
                         </div>
@@ -66,8 +66,8 @@
                     <md-tab-label class="company-label">
                         <div class="label-wrapper">
                             <md-button class="md-primary md-icon-button md-raised" aria-label="Environment">
-                                <i class="fa fa-check" ng-if="vm.disabledTabs[3] === false"></i>
-                                <span class="not-checked" ng-if="vm.selectedTab <= 2 && vm.disabledTabs[3] === true">03</span>
+                                <i class="fa fa-check" ng-if="vm.selectedTab > 2"></i>
+                                <span class="not-checked" ng-if="vm.selectedTab <= 2">03</span>
                             </md-button>
                             <div class="tab-name">Environment</div>
                         </div>
