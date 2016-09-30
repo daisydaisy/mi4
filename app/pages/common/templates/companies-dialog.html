@@ -1,13 +1,13 @@
 <md-dialog class="companies-dialog">
     <form>
         <md-dialog-content class="companies-content">
-            <md-tabs md-dynamic-height md-border-bottom md-selected="vm.selectedTab">
+            <md-tabs md-dynamic-height md-border-bottom md-selected="vm.selectedTab" md-autoselect>
                 <!--<md-tab class="company-tab" ng-disabled="vm.disabledTabs[$index]" ng-repeat="question in vm.questions">
                     <md-tab-label class="company-label">
                         <div class="label-wrapper">
                              <md-button class="md-primary md-icon-button md-raised" aria-label="{{question.section}}">
                                 <i class="fa fa-check" ng-show="vm.selectedTab > $index && $index < vm.countOfTabs"></i>
-                                <span class="not-checked" ng-show="vm.selectedTab === $index">0{{$index + 1}}</span>
+                                <span class="not-checked" ng-show="vm.selectedTab <= $index">0{{$index + 1}}</span>
                             </md-button>
                             <div class="tab-name">{{question.section}}</div>
                         </div>

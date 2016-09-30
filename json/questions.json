@@ -1,5 +1,6 @@
 [
     {
+        "id": 0,
         "section": "Community",
         "title": "Community Ethics",
         "question": "How much do you care about the  employment ethics of each company in your  portfolio?",
@@ -19,6 +20,7 @@
         ]
     },
     {
+        "id": 1,
         "section": "Employment",
         "title": "Employment Ethics",
         "question": "How much do you care about the  employment ethics of each company in your  portfolio?",
@@ -38,6 +40,7 @@
         ]
     },
     {
+        "id": 2,
         "section": "Environment",
         "title": "Environment Ethics",
         "question": "How much do you care about the  employment ethics of each company in your  portfolio?",
@@ -57,6 +60,7 @@
         ]
     },
     {
+        "id": 3,
         "section": "Covernance",
         "title": "Covernance Ethics",
         "question": "How much do you care about the  employment ethics of each company in your  portfolio?",
