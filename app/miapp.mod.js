@@ -4,6 +4,7 @@
         'ngMaterial',
         'ngAnimate',
         'ui.router',
-        'angular-flexslider'
+        'angular-flexslider',
+        'portfolio'
     ]);
 })();

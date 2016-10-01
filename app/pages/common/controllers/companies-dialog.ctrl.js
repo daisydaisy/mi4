@@ -34,7 +34,7 @@
             }
             vm.disabledTabs[tab] = false;
             
-            //It is running digest circle for applying changes in vm.selectedTab
+            //For some reason we can't switch to next tab from the first time.
             $timeout(function(){ 
                 vm.selectedTab = tab;
                 $timeout(function(){

@@ -1,0 +1,11 @@
+.portfilio {
+    .portfolio-content {
+        min-height: 600px;
+        background-color: $background-color;
+        .blue-bgd {
+            width: 100%;
+            height: 280px;
+            background-color: $main-button-color;
+        }
+    }
+}

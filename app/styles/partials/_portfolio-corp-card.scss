@@ -1,0 +1,38 @@
+.portfolio-corp-card {
+    position: absolute;
+    max-width: 620px;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: 54px;
+    padding-top: 41px;
+    text-align: center;
+    background: white;
+    border-radius: 6px;
+    box-shadow: $container-shadow;
+    .corp-card-image {
+        @include corp-card-image;
+    }
+    .corp-title {
+        @include montserrat-font-size(20px);
+        line-height: 1.5;
+        margin-top: 25px;
+    }
+    .corp-sub-title {
+        @include open-sans-font-size(15px);
+        font-style: italic;
+        margin-bottom: 40px;
+        .percent {
+            color: $negative-color;
+            &.positive {
+                color: $positive-color;
+            }
+        }
+    }
+    .btn-wrapper {
+        .md-button {
+            @include accept-button;
+        }
+    }
+}

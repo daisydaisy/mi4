@@ -58,3 +58,11 @@
         color: white;
     }
 }
+
+@mixin corp-card-image {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-size: cover;
+}
