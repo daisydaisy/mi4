@@ -4,11 +4,13 @@
     angular.module('miApp')
         .controller('CompaniesDialogCtrl', CompaniesDialogCtrl);
 
-    function CompaniesDialogCtrl($scope, $mdDialog, $http) {
+    function CompaniesDialogCtrl($scope, $mdDialog, $http, $timeout) {
         var vm = this;
         vm.selectedTab = 0;
         vm.questions = [];
         vm.selectNextTab = selectNextTab;
+        vm.selectBackTab = selectBackTab;
+        vm.selectRange = selectRange;
         vm.countOfTabs = 0;
         vm.disabledTabs = [false];
 
@@ -30,9 +32,21 @@
             if (!tab || tab === vm.countOfTabs) {
                 $mdDialog.hide('done');
             }
-
             vm.disabledTabs[tab] = false;
+            
+            //It is running digest circle for applying changes in vm.selectedTab
+            $timeout(function(){ 
+                vm.selectedTab = tab;
+                $timeout(function(){
+                    vm.selectedTab = tab;
+                });
+            });
+        }
+        function selectBackTab(tab) {
             vm.selectedTab = tab;
+        }
+        function selectRange(qId, rIndex, range) {
+            vm.questions[qId].sliders[rIndex].range = range;
         }
     }
 })();

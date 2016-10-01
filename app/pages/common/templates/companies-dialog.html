@@ -1,149 +1,42 @@
 <md-dialog class="companies-dialog">
     <form>
         <md-dialog-content class="companies-content">
-            <md-tabs md-dynamic-height md-border-bottom md-selected="vm.selectedTab" md-autoselect>
-                <!--<md-tab class="company-tab" ng-disabled="vm.disabledTabs[$index]" ng-repeat="question in vm.questions">
+            <md-tabs md-dynamic-height md-border-bottom md-selected="vm.selectedTab">
+                <md-tab class="company-tab" ng-disabled="vm.disabledTabs[$index]" ng-repeat="question in vm.questions">
                     <md-tab-label class="company-label">
                         <div class="label-wrapper">
                              <md-button class="md-primary md-icon-button md-raised" aria-label="{{question.section}}">
-                                <i class="fa fa-check" ng-show="vm.selectedTab > $index && $index < vm.countOfTabs"></i>
-                                <span class="not-checked" ng-show="vm.selectedTab <= $index">0{{$index + 1}}</span>
+                                <i class="fa fa-check" ng-if="vm.selectedTab > $index && $index < vm.countOfTabs"></i>
+                                <span class="not-checked" ng-if="vm.selectedTab <= $index">0{{$index + 1}}</span>
                             </md-button>
                             <div class="tab-name">{{question.section}}</div>
                         </div>
                         <div class="line" ng-class="{'is-done': vm.disabledTabs[$index + 1] === false}" ng-show="$index < vm.countOfTabs - 1"></div>
                     </md-tab-label>
                     <md-tab-body>
-                        <md-content class="md-padding">
-                            <h1 class="md-display-2">{{question.title}}</h1>
-                            <p>{{question.question}}</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus
-                                volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium
-                                ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.
-                                Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim,
-                                vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur
-                                a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis
-                                tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed
-                                felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis
-                                tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur
-                                faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec
-                                luctus mauris semper.</p>
-                            <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec
-                                magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis.
-                                Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras
-                                ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor
-                                turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl
-                                consectetur, rhoncus sapien sit amet, tempus sapien.</p>
-                            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere
-                                molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit
-                                erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac
-                                est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-                            <md-button class="md-primary md-raised" aria-label="Next" ng-click="vm.selectNextTab($index + 1)">
-                                <span ng-show="$index < vm.countOfTabs - 1">Next</span>
-                                <span ng-hide="$index < vm.countOfTabs - 1">Done</span>
-                            </md-button>
-                        </md-content>
-                    </md-tab-body>
-                </md-tab>-->
-                <md-tab class="company-tab" ng-disabled="vm.disabledTabs[0]">
-                    <md-tab-label class="company-label">
-                        <div class="label-wrapper">
-                             <md-button class="md-primary md-icon-button md-raised" aria-label="Community">
-                                <i class="fa fa-check" ng-if="vm.selectedTab > 0"></i>
-                                <span class="not-checked" ng-if="vm.selectedTab === 0">01</span>
-                            </md-button>
-                            <div class="tab-name">Community</div>
-                        </div>
-                        <div class="line" ng-class="{'is-done': vm.disabledTabs[1] === false}"></div>
-                    </md-tab-label>
-                    <md-tab-body>
-                        <md-content class="md-padding">
-                            <h1 class="md-display-2">Tab One</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus
-                                volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium
-                                ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
-                            <md-button class="md-primary md-raised" aria-label="Next" ng-click="vm.selectNextTab(1)">Next</md-button>
-                        </md-content>
-                    </md-tab-body>
-                </md-tab>
-                <md-tab class="company-tab" ng-disabled="vm.disabledTabs[1]">
-                    <md-tab-label class="company-label">
-                        <div class="label-wrapper">
-                            <md-button class="md-primary md-icon-button md-raised" aria-label="Employment">
-                                <i class="fa fa-check" ng-if="vm.selectedTab > 1"></i>
-                                <span class="not-checked" ng-if="vm.selectedTab <= 1">02</span>
-                            </md-button>
-                            <div class="tab-name">Employment</div>
-                        </div>
-                        <div class="line" ng-class="{'is-done': vm.disabledTabs[2] === false}"></div>
-                    </md-tab-label>
-                    <md-tab-body>
-                        <md-content class="md-padding">
-                            <h1 class="md-display-2">Tab Two</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus
-                                volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium
-                                ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.
-                                Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim,
-                                vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur
-                                a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis
-                                tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed
-                                felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis
-                                tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur
-                                faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec
-                                luctus mauris semper.</p>
-                            <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec
-                                magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis.
-                                Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras
-                                ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor
-                                turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl
-                                consectetur, rhoncus sapien sit amet, tempus sapien.</p>
-                            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere
-                                molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit
-                                erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac
-                                est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-                            <md-button class="md-primary md-raised" aria-label="Next" ng-click="vm.selectNextTab(2)">Next</md-button>
-                        </md-content>
-                    </md-tab-body>
-                </md-tab>
-                <md-tab class="company-tab" ng-disabled="vm.disabledTabs[2]">
-                    <md-tab-label class="company-label">
-                        <div class="label-wrapper">
-                            <md-button class="md-primary md-icon-button md-raised" aria-label="Environment">
-                                <i class="fa fa-check" ng-if="vm.selectedTab > 2"></i>
-                                <span class="not-checked" ng-if="vm.selectedTab <= 2">03</span>
-                            </md-button>
-                            <div class="tab-name">Environment</div>
-                        </div>
-                        <div class="line" ng-class="{'is-done': vm.disabledTabs[3] === false}"></div>
-                    </md-tab-label>
-                    <md-tab-body>
-                        <md-content class="md-padding">
-                            <h1 class="md-display-2">Tab Three</h1>
-                            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere
-                                molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit
-                                erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac
-                                est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-                            <md-button class="md-primary md-raised" aria-label="Next" ng-click="vm.selectNextTab(3)">Next</md-button>
-                        </md-content>
-                    </md-tab-body>
-                </md-tab>
-                <md-tab class="company-tab" ng-disabled="vm.disabledTabs[3]">
-                    <md-tab-label class="company-label">
-                        <div class="label-wrapper">
-                            <md-button class="md-primary md-icon-button md-raised" aria-label="Covernance">
-                                <span class="not-checked" ng-if="vm.selectedTab <= 3">04</span>
-                            </md-button>
-                            <div class="tab-name">Covernance</div>
-                        </div>
-                    </md-tab-label>
-                    <md-tab-body>
-                        <md-content class="md-padding">
-                            <h1 class="md-display-2">Tab Three</h1>
-                            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere
-                                molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit
-                                erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac
-                                est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-                            <md-button class="md-primary md-raised" aria-label="Done" ng-click="vm.selectNextTab()">Done</md-button>
+                        <md-content class="section-container">
+                            <div class="question-title"><span>{{question.title}}</span></div>
+                            <div class="question"><span>{{question.question}}</span></div>
+                            <div class="sliders-wrapper">
+                                <div class="slider-body" ng-repeat="slider in question.sliders">
+                                    <div class="slider-name">{{slider.name}}</div>
+                                    <md-slider-container class="slider-range">
+                                        <i class="fa fa-circle-o start" ng-click="vm.selectRange(question.id, $index, 0)"></i>
+                                        <md-slider  min="0" max="10" step="2" ng-model="slider.range" aria-label="{{slider.name}}" flex>
+                                        </md-slider>
+                                        <i class="fa fa-circle-o end" ng-click="vm.selectRange(question.id, $index, 10)"></i>
+                                    </md-slider-container>
+                                </div>
+                            </div>
+                            <div class="btn-wrapper">
+                                <md-button ng-if="$index != 0" class="md-primary md-raised" aria-label="Back" ng-click="vm.selectBackTab($index - 1)">
+                                    <span>Back</span>
+                                </md-button>
+                                <md-button class="md-primary md-raised" aria-label="Next" ng-click="vm.selectNextTab($index + 1)">
+                                    <span ng-show="$index < vm.countOfTabs - 1">Next</span>
+                                    <span ng-hide="$index < vm.countOfTabs - 1">Done</span>
+                                </md-button>
+                            </div>
                         </md-content>
                     </md-tab-body>
                 </md-tab>

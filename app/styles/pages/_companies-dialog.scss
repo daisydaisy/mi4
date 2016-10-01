@@ -1,4 +1,6 @@
 .companies-dialog {
+    width: 682px;
+    min-height: 600px;
     .companies-content {
         max-width:800px;
         max-height:810px;
@@ -33,7 +35,7 @@
                     .line {
                         display: inline-block;
                         height: 3px;
-                        width: 137px;
+                        width: 120px;
                         margin-left: -10px;
                         margin-top: 18px;
                         opacity: 0.7;
@@ -93,6 +95,75 @@
                 }
                 md-ink-bar {
                     display: none;
+                }
+            }
+        }
+        .section-container {
+            padding: 0 78px;
+            background-color: white;
+            .question-title {
+                margin-top: 50px;
+                margin-bottom: 15px;
+                span {
+                    @include montserrat-font-size(20px);
+                    color: $title-color;
+                }
+            }
+            .question {
+                max-width: 335px;
+                margin-bottom: 53px;
+                line-height: 20px;
+                span {
+                    @include open-sans-font;
+                    color: $text-color;
+                }
+            }
+            .sliders-wrapper {
+                @include montserrat-font;
+                color: $text-color;
+                text-transform: uppercase;
+                .slider-body {
+                    .slider-name {
+
+                    }
+                    .slider-range {
+                        i.fa.fa-circle-o {
+                            font-size: 16px;
+                            position: absolute;
+                            padding: 0;
+                            margin: 0;
+                            margin-top: 4px;
+                            border-radius: 50%;
+                            background-color: white;
+                            outline: none;
+                            &.start {
+                                min-width: 13px;
+                                left: 75px;
+                                color: $main-button-color;
+                                z-index: 5;
+                            }
+                            &.end {
+                                right: 64px;
+                                color: $range-color;
+                            }
+                        }
+                        .md-track {
+                            background-color: $range-color;
+                            &.md-track-fill {
+                                background-color: $main-button-color;
+                            }
+                        }
+                        
+                       
+                        .md-thumb-container {
+                            z-index: 5;
+                            .md-thumb:after {
+                                border-color: $main-button-color;
+                                background-color: $main-button-color;
+                            }
+                        }
+                        
+                    }
                 }
             }
         }
