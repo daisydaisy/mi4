@@ -96,30 +96,23 @@
     }
 }
 .companies-grid {
-    padding-left: 72px;
+    // padding-left: 72px;
     .title {
         @include open-sans-font-size(24px);
         margin-left: 10px;
         margin-bottom: 27px;
+        padding-left: 72px;
         color: $title-color;
     }
-    // .carousel-wrapper:after {
-    //     content: '';
-    //     width: 0.1px;
-    //     display: block;
-    //     height: 399px;
-    //     background: transparent;
-    //     position: absolute;
-    //     z-index: 1;
-    //     right: 0;
-    //     margin-top: -469px;
-    //     box-shadow: 0 0px 70px 20px rgb(244, 241, 234);
-    // }
     .flexslider {
         margin: 0;
+        padding-left: 72px;
         background: none;
         border: none;
         overflow: hidden;
+        .flex-viewport {
+            overflow: visible !important;
+        }
         .flex-control-nav {
             display: none;
         }
