@@ -1,20 +1,20 @@
 <md-dialog class="companies-dialog">
-    <form>
-        <md-dialog-content class="companies-content">
-            <md-tabs md-dynamic-height md-border-bottom md-selected="vm.selectedTab">
-                <md-tab class="company-tab" ng-disabled="vm.disabledTabs[$index]" ng-repeat="question in vm.questions">
-                    <md-tab-label class="company-label">
-                        <div class="label-wrapper">
-                             <md-button class="md-primary md-icon-button md-raised" aria-label="{{question.section}}">
-                                <i class="fa fa-check" ng-if="vm.selectedTab > $index && $index < vm.countOfTabs"></i>
-                                <span class="not-checked" ng-if="vm.selectedTab <= $index">0{{$index + 1}}</span>
-                            </md-button>
-                            <div class="tab-name">{{question.section}}</div>
-                        </div>
-                        <div class="line" ng-class="{'is-done': vm.disabledTabs[$index + 1] === false}" ng-show="$index < vm.countOfTabs - 1"></div>
-                    </md-tab-label>
-                    <md-tab-body>
-                        <md-content class="section-container">
+    <md-dialog-content class="companies-content">
+        <md-tabs md-dynamic-height md-border-bottom md-selected="vm.selectedTab">
+            <md-tab class="company-tab" ng-disabled="vm.disabledTabs[$index]" ng-repeat="question in vm.questions">
+                <md-tab-label class="company-label">
+                    <div class="label-wrapper">
+                            <md-button class="md-primary md-icon-button md-raised" aria-label="{{question.section}}">
+                            <i class="fa fa-check" ng-if="vm.selectedTab > $index && $index < vm.countOfTabs"></i>
+                            <span class="not-checked" ng-if="vm.selectedTab <= $index">0{{$index + 1}}</span>
+                        </md-button>
+                        <div class="tab-name">{{question.section}}</div>
+                    </div>
+                    <div class="line" ng-class="{'is-done': vm.disabledTabs[$index + 1] === false}" ng-show="$index < vm.countOfTabs - 1"></div>
+                </md-tab-label>
+                <md-tab-body>
+                    <md-content class="section-container">
+                        <div class="question-body">
                             <div class="question-title"><span>{{question.title}}</span></div>
                             <div class="question"><span>{{question.question}}</span></div>
                             <div class="sliders-wrapper">
@@ -22,25 +22,29 @@
                                     <div class="slider-name">{{slider.name}}</div>
                                     <md-slider-container class="slider-range">
                                         <i class="fa fa-circle-o start" ng-click="vm.selectRange(question.id, $index, 0)"></i>
+                                        <div class="point-name">Not important</div>
                                         <md-slider  min="0" max="10" step="2" ng-model="slider.range" aria-label="{{slider.name}}" flex>
                                         </md-slider>
+                                        <div class="point-name">Very important</div>
                                         <i class="fa fa-circle-o end" ng-click="vm.selectRange(question.id, $index, 10)"></i>
                                     </md-slider-container>
                                 </div>
                             </div>
-                            <div class="btn-wrapper">
-                                <md-button ng-if="$index != 0" class="md-primary md-raised" aria-label="Back" ng-click="vm.selectBackTab($index - 1)">
-                                    <span>Back</span>
-                                </md-button>
-                                <md-button class="md-primary md-raised" aria-label="Next" ng-click="vm.selectNextTab($index + 1)">
-                                    <span ng-show="$index < vm.countOfTabs - 1">Next</span>
-                                    <span ng-hide="$index < vm.countOfTabs - 1">Done</span>
-                                </md-button>
-                            </div>
-                        </md-content>
-                    </md-tab-body>
-                </md-tab>
-            </md-tabs>
-        </md-dialog-content>
-    </form>
+                        </div>
+                        <hr>
+                        <div class="btn-wrapper" layout="row"  layout-align="space-between center">
+                            <md-button ng-if="$index != 0" class="back" aria-label="Back" ng-click="vm.selectBackTab($index - 1)">
+                                <span>Back</span>
+                            </md-button>
+                            <span flex></span>
+                            <md-button class="md-primary md-raised next" aria-label="Next" ng-click="vm.selectNextTab($index + 1)">
+                                <span ng-show="$index < vm.countOfTabs - 1">Next</span>
+                                <span ng-hide="$index < vm.countOfTabs - 1">Done</span>
+                            </md-button>
+                        </div>
+                    </md-content>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+    </md-dialog-content>
 </md-dialog>

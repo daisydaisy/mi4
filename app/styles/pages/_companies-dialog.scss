@@ -1,6 +1,7 @@
 .companies-dialog {
     width: 682px;
     min-height: 600px;
+    max-height: 100%;
     .companies-content {
         max-width:800px;
         max-height:810px;
@@ -99,70 +100,102 @@
             }
         }
         .section-container {
-            padding: 0 78px;
             background-color: white;
-            .question-title {
-                margin-top: 50px;
-                margin-bottom: 15px;
-                span {
-                    @include montserrat-font-size(20px);
-                    color: $title-color;
-                }
-            }
-            .question {
-                max-width: 335px;
-                margin-bottom: 53px;
-                line-height: 20px;
-                span {
-                    @include open-sans-font;
-                    color: $text-color;
-                }
-            }
-            .sliders-wrapper {
-                @include montserrat-font;
-                color: $text-color;
-                text-transform: uppercase;
-                .slider-body {
-                    .slider-name {
-
+            .question-body {
+                padding: 0 78px;
+                .question-title {
+                    margin-top: 50px;
+                    margin-bottom: 15px;
+                    span {
+                        @include montserrat-font-size(20px);
+                        color: $title-color;
                     }
-                    .slider-range {
-                        i.fa.fa-circle-o {
-                            font-size: 16px;
-                            position: absolute;
-                            padding: 0;
-                            margin: 0;
-                            margin-top: 4px;
-                            border-radius: 50%;
-                            background-color: white;
-                            outline: none;
-                            &.start {
-                                min-width: 13px;
-                                left: 75px;
-                                color: $main-button-color;
+                }
+                .question {
+                    max-width: 335px;
+                    margin-bottom: 53px;
+                    line-height: 20px;
+                    span {
+                        @include open-sans-font;
+                        color: $text-color;
+                    }
+                }
+                .sliders-wrapper {
+                    @include montserrat-font;
+                    color: $text-color;
+                    text-transform: uppercase;
+                    .slider-body {
+                        margin-bottom: 55px;
+                        .slider-name {
+                        }
+                        .slider-range {
+                            i.fa.fa-circle-o {
+                                font-size: 16px;
+                                position: absolute;
+                                padding: 0;
+                                margin: 0;
+                                margin-top: 4px;
+                                border-radius: 50%;
+                                background-color: white;
+                                outline: none;
+                                &.start {
+                                    min-width: 13px;
+                                    left: 75px;
+                                    color: $main-button-color;
+                                    z-index: 5;
+                                    &+.point-name {
+                                        left: 75px;
+                                    }
+                                }
+                                &.end {
+                                    right: 64px;
+                                    color: $range-color;
+                                }
+                            }
+                            .md-track {
+                                background-color: $range-color;
+                                &.md-track-fill {
+                                    background-color: $main-button-color;
+                                }
+                            }
+                            
+                        
+                            .md-thumb-container {
                                 z-index: 5;
+                                .md-thumb:after {
+                                    border-color: $main-button-color;
+                                    background-color: $main-button-color;
+                                }
                             }
-                            &.end {
-                                right: 64px;
-                                color: $range-color;
-                            }
-                        }
-                        .md-track {
-                            background-color: $range-color;
-                            &.md-track-fill {
-                                background-color: $main-button-color;
-                            }
-                        }
-                        
-                       
-                        .md-thumb-container {
-                            z-index: 5;
-                            .md-thumb:after {
-                                border-color: $main-button-color;
-                                background-color: $main-button-color;
+                            .point-name {
+                                @include montserrat-font-size(10px);
+                                max-width: 100px;
+                                right: 74px;
+                                position: absolute;
+                                margin-top: 24px;
+                                text-transform: uppercase;
+                                color: $range-label-color;
+
                             }
                         }
-                        
+                    }
+                }
+            }
+            hr {
+                opacity: 0.2;
+            }
+            .btn-wrapper {
+                padding: 0 50px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+                .md-button {
+                    @include accept-button;
+                    min-width: 109px;
+                    &.back {
+                        border: rgba(158,158,158,0.4) 2px solid;
+                        span {
+                            color: $text-color;
+                        }
                     }
                 }
             }

@@ -90,15 +90,15 @@
             $mdDialog.show({
                 controller: 'CompaniesDialogCtrl',
                 controllerAs: 'vm',
+                disableParentScroll: true,
                 templateUrl: 'app/pages/common/templates/companies-dialog.html',
                 // parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true
-            }).then(function (answer) {
-                console.log(answer)
+            }).then(function (data) {
+                console.log(data)
             }, function (canceled) {
                 console.log('canceled')
-
             });
         }
     }

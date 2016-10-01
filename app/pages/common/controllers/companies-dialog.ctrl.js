@@ -30,7 +30,7 @@
 
         function selectNextTab(tab) {
             if (!tab || tab === vm.countOfTabs) {
-                $mdDialog.hide('done');
+                $mdDialog.hide(vm.questions);
             }
             vm.disabledTabs[tab] = false;
             
