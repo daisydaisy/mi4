@@ -33,6 +33,13 @@
     .btn-wrapper {
         .md-button {
             @include accept-button;
+            min-width: 109px;
+            &.share-btn {
+                border: rgba(158,158,158,0.4) 2px solid;
+                span {
+                    color: $text-color;
+                }
+            }
         }
     }
 }
