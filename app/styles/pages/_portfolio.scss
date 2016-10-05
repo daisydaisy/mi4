@@ -7,5 +7,63 @@
             height: 280px;
             background-color: $main-button-color;
         }
+        .sidenav-arrow {
+            position: absolute;
+            height: 50px;
+            width: 18px;
+            margin-top: 65px;
+            background-color: white;
+            z-index: 1;
+            .fa {
+                color: $general-text-color;
+            }
+        }
+    }
+    .md-sidenav-left {
+        width: 100%;
+        max-width: 620px;
+        .sidenav-corp-list {
+            .sidenav-corp-card {
+                width: 100%;
+                .card-image {
+                    display: table;
+                    height: 180px;
+                    width: 180px;
+                    background-size: cover;
+                }
+                .card-content {
+                    padding: 0 40px;
+                    border-bottom: $border-btn-color 1px solid;
+                    .title {
+                        @include montserrat-font-size(20px);
+                        margin-top: 25px;
+                        margin-bottom: 8px;
+                        line-height: 1.5;
+                        .general {
+                        }
+                    }
+                    .description {
+                        @include open-sans-font;
+                        margin-bottom: 22px;
+                        color: $text-color;
+                    }
+                    .rating {
+                        @include montserrat-font;
+                        color: $rating-color;
+                        .overal {
+                            margin-right: 25px;
+                        }
+                        .symbol {
+                            @include montserrat-font-size(16px);
+                            display: inline-block;
+                            padding: 4px;
+                            color: $excellent-mark-color;
+                            border: $excellent-mark-color 3px solid;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

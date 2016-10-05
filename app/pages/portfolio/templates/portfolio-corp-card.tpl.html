@@ -7,9 +7,38 @@
         <span><b>SBUX - </b>$55.80</span>
         <span class="percent positive">-0.52 (-0.93%)</span>
     </div>
-    <div class="btn-wrapper" layout="row"  layout-align="space-between center">
+    <div class="btn-wrapper" layout="row"  layout-align="space-between center" layout-xs="column">
         <md-button class="md-primary md-raised back-btn" aria-label="Back"><span>Add to portfolio</span></md-button>
-        <!--<span flex></span>-->
         <md-button class="share-btn" aria-label="Share" ng-click="vm.toggleLeft()"><span>Share</span></md-button>
+    </div>
+    <div class="rating-wrapper">
+        <div class="general-rating" layout="row">
+            <div class="overal rating" flex>
+                <div class="symbol">B</div>
+                <div class="title">Overal Rating</div>
+            </div>
+            <div class="personal rating" flex>
+                <div class="symbol">A-</div>
+                <div class="title">Personal Values Match</div>
+            </div>
+        </div>
+        <div class="second-rating" layout="row">
+            <div class="community rating" flex>
+                <div class="symbol">B</div>
+                <div class="title">Community</div>
+            </div>
+            <div class="employees rating" flex>
+                <div class="symbol">A-</div>
+                <div class="title">Employees</div>
+            </div>
+            <div class="environment rating" flex>
+                <div class="symbol">C+</div>
+                <div class="title">Environment</div>
+            </div>
+            <div class="governance rating" flex>
+                <div class="symbol">A-</div>
+                <div class="title">Governance</div>
+            </div>
+        </div>
     </div>
 </div>

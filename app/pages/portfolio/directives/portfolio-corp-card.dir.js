@@ -8,7 +8,10 @@
         return {
             restrict: 'E',
             templateUrl: 'app/pages/portfolio/templates/portfolio-corp-card.tpl.html',
-            replace: true
+            replace: true,
+            scope: {
+                corpList: '='
+            }
         };
     }
 })();

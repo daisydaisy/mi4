@@ -31,15 +31,49 @@
         }
     }
     .btn-wrapper {
+        padding: 0 40px;
         .md-button {
             @include accept-button;
-            min-width: 109px;
+            width: 100%;
+            max-width: 250px;
+            margin: 6px 0;
             &.share-btn {
-                border: rgba(158,158,158,0.4) 2px solid;
+                border: $border-btn-color 2px solid;
                 span {
                     color: $text-color;
                 }
             }
+        }
+    }
+    .rating-wrapper {
+        margin-top: 30px;
+        margin-bottom: 34px;
+        .rating {
+            &:not(:last-child) {
+                border-right: $border-btn-color 2px solid;
+            }
+            .symbol {
+                @include montserrat-font-size(40px);
+                color: $excellent-mark-color;
+            }
+            .title {
+                @include montserrat-font-size(14px);
+                color: $rating-color;
+            }
+        }
+        .general-rating {
+            margin-bottom: 48px;
+        }
+        .second-rating {
+            .rating {
+                .symbol {
+                    @include montserrat-font-size(21px);
+                }
+                .title {
+                    @include montserrat-font-size(12px);
+                }
+            }
+            
         }
     }
 }

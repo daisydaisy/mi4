@@ -192,7 +192,7 @@
                     @include accept-button;
                     min-width: 109px;
                     &.back {
-                        border: rgba(158,158,158,0.4) 2px solid;
+                        border: $border-btn-color 2px solid;
                         span {
                             color: $text-color;
                         }
