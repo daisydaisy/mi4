@@ -65,5 +65,24 @@
                 }
             }
         }
+         &::-webkit-scrollbar {
+        -webkit-appearance: none;
+        }
+
+        &::-webkit-scrollbar:vertical {
+            width: 0px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #c7c7c7;
+            border-radius: 1px;
+            border: 1px solid #c7c7c7;
+        }
+
+        &::-webkit-scrollbar-track {
+            //border-radius: 10px;
+            background-color: #dddddd;
+
+        }
     }
 }

@@ -7,8 +7,6 @@
     function StartPageCtrl($scope, $mdDialog) {
         var vm = this;
         vm.showTabDialog = showTabDialog;
-
-
         vm.corps = [
             {
                 title: 'Starbucks Corporation',

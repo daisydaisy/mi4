@@ -8,6 +8,11 @@
         var vm = this;
         vm.isSideNavOpen= false;
         vm.toggleLeft = buildToggler('left');
+        vm.showInfo = showInfo;
+        console.log(window);
+        var windowHeight = window.innerHeight - 80;
+        var result = angular.element(document.getElementsByClassName("md-sidenav-left"))[0];
+        result.style.height = windowHeight + 'px';
 
         vm.corps = [
             {
@@ -66,6 +71,9 @@
                 vm.isSideNavOpen=!vm.isSideNavOpen;
                 $mdSidenav(componentId).toggle();
             }
+        }
+        function showInfo(index) {
+
         }
     }
 })();

@@ -1,8 +1,8 @@
 <section class="portfilio" layout="row" flex>
-    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="vm.isSideNavOpen"md-whiteframe="4">
-        <md-content>
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="vm.isSideNavOpen" md-whiteframe="4">
+        <md-content style="overflow: visible;">
             <div class="sidenav-corp-list">
-                <div class="sidenav-corp-card" ng-repeat="corp in vm.corps" layout="row">
+                <div class="sidenav-corp-card" ng-repeat="corp in vm.corps" layout="row" ng-click="vm.showInfo($index)">
                     <div class="card-image" ng-style="{'background-image': 'url(http://placekitten.com/180/180)'}"></div>
                     <div class="card-content" flex>
                         <div class="title">
@@ -27,7 +27,7 @@
             </div>
         </md-content>
     </md-sidenav>
-    <md-content class="portfolio-content" flex>
+    <md-content class="portfolio-content" layout="column" flex>
         <div class="sidenav-arrow" layout="row" layout-align="center center" ng-click="vm.toggleLeft()">
             <i class="fa fa-arrow-left" ng-if="vm.isSideNavOpen"></i>
             <i class="fa fa-arrow-right" ng-if="!vm.isSideNavOpen"></i>
