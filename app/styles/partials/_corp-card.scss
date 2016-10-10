@@ -1,15 +1,6 @@
 .corp-card {
+    @include corp-card-box(298px, 44px);
     display: inline-block;
-    max-width: 298px;
-    margin-bottom: 44px;
-    padding-top: 41px;
-    text-align: center;
-    background: white;
-    border-radius: 6px;
-    box-shadow: $container-shadow;
-    .corp-card-image {
-        @include corp-card-image;
-    }
     .corp-title {
         @include montserrat-font-size(20px);
         line-height: 1.5;

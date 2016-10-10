@@ -1,0 +1,33 @@
+.portfolio-corp-overview {
+    @include corp-card-box(620px, 34px);
+    padding-left:  40px;
+    padding-right:  40px;
+    color: $general-text-color;
+    text-align: left;
+    .overview-title {
+        @include montserrat-font-size(24px);
+        margin-bottom: 34px;
+        // line-height: 1.5;
+    }
+    .overview-description {
+        @include open-sans-font;
+        margin-bottom: 30px;
+
+    }
+    .overview-properties {
+        @include open-sans-font;
+        margin-bottom: 15px;
+        .property {
+            display: inline-block;
+            width: 49%;
+            margin-bottom: 15px;
+            .name {
+                font-weight: bold;
+
+            }
+            .value {
+                color:  $text-color;
+            }
+        }
+    }
+}

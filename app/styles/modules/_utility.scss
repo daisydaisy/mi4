@@ -59,10 +59,19 @@
     }
 }
 
-@mixin corp-card-image {
-  width: 90px;
-  height: 90px;
-  margin: 0 auto;
-  border-radius: 50%;
-  background-size: cover;
+@mixin corp-card-box($max-width, $margin-bottom) {
+  max-width: $max-width;
+  margin-bottom: $margin-bottom;
+  padding-top: 41px;
+  text-align: center;
+  background: white;
+  border-radius: 6px;
+  box-shadow: $container-shadow;
+  .corp-card-image {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-size: cover;
+  }
 }
