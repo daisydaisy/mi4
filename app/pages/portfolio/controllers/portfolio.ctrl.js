@@ -8,7 +8,7 @@
         console.log(ChartJs);
         ChartJs.Chart.defaults.global.defaultFontFamily = 'Open Sans';
         ChartJs.Chart.defaults.global.defaultFontSize = 11;
-        ChartJs.Chart.defaults.global.tooltips.xAlign = 'right';
+        // ChartJs.Chart.defaults.global.tooltips.xAlign = 'right';
         var vm = this;
         vm.isSideNavOpen = false;
         vm.toggleLeft = buildToggler('left');

@@ -1,7 +1,6 @@
 .portfolio-corp-rating {
     @include corp-card-box(620px, 34px);
     width: 100%;
-    
     text-align: left;
     .rating-title {
         @include montserrat-font-size(24px);

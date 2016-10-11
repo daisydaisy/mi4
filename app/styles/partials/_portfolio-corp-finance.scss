@@ -1,0 +1,57 @@
+.portfolio-corp-finance {
+    @include corp-card-box(620px, 34px);
+    width: 100%;
+    padding-left:  40px;
+    padding-right:  20px;
+    padding-bottom:  30px;
+    text-align: left;
+    .finance-title {
+        @include montserrat-font-size(24px);
+        margin-bottom: 28px;
+    }
+    .persent-box {
+        margin-bottom: 20px;
+        line-height: 1;
+        .general {
+            @include open-sans-font-size-weight(24px, bold);  
+            color: black;
+        }
+        .second {
+            @include open-sans-font-size-weight(16px, bold);  
+            color: $negative-percent-color;
+        }
+        .date-info {
+            @include open-sans-font-size(10px);
+            line-height: 1;
+            color: $text-color;
+        }
+    }
+    .finance-table {
+        @include open-sans-font-size(9px);
+        color: black;
+        .table-box {
+                margin-right: 20px;
+            &.first {
+                margin-right: 10px;
+            }
+            table {
+                border-collapse: collapse;
+                tr {
+                    th {
+                        padding-top: 5px;
+                        padding-bottom: 5px;
+                        border-bottom: $disabled-tab-color 1px solid;
+                        &.property {
+                            font-weight: 600;
+                        }
+                        &.value {
+                            font-weight: bold;
+                            text-align: right;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
