@@ -1,0 +1,48 @@
+.portfolio-corp-rating {
+    @include corp-card-box(620px, 34px);
+    width: 100%;
+    
+    text-align: left;
+    .rating-title {
+        @include montserrat-font-size(24px);
+        margin-bottom: 34px;
+        padding-left:  40px;
+        padding-right:  40px;
+    }
+    .chart-box {
+        margin-bottom:  30px;
+        padding-left:  40px;
+        padding-right:  40px;
+    }
+    hr {
+        opacity: 0.2;
+    }
+    .rating-legend-box {
+        @include open-sans-font-size(11px);
+        font-style: italic;
+        padding: 30px 60px;
+        padding-bottom: 37px;
+        color: $text-color;
+        .legend {
+            .company-line,
+            .average-line {
+                display: inline-block;
+                height: 4px;
+                width: 27px;
+                margin-right: 10px;
+                background-color: $graph-line-color;
+            }
+            .average-line {
+                background-color: $disabled-tab-color;
+            }
+            .text {
+                margin-right: 10px;
+            }
+        }
+        .affect-box {
+            img {
+                margin-right: 10px;
+            }
+        }
+    }
+}

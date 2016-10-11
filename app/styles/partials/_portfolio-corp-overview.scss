@@ -7,7 +7,6 @@
     .overview-title {
         @include montserrat-font-size(24px);
         margin-bottom: 34px;
-        // line-height: 1.5;
     }
     .overview-description {
         @include open-sans-font;
