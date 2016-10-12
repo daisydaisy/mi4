@@ -15,11 +15,11 @@
                         <div class="rating" layout="row">
                             <div class="overal">
                                 <span class="text">Overal Rating: </span>
-                                <span class="symbol">B+</span>
+                                <span class="symbol" ng-class="corp.overalColor" ng-style="{'border-color': corp.overalColor}">{{corp.overalMark}}</span>
                             </div>
                             <div class="personal">
                                 <span class="text">My4 Personal Values Matching Score:</span>
-                                <span class="symbol">B-</span>
+                                <span class="symbol" ng-class="corp.personalColor">{{corp.personalMark}}</span>
                             </div>
                         </div>
                     </div>
