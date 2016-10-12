@@ -61,6 +61,8 @@
 
 @mixin corp-card-box($max-width, $margin-bottom) {
   max-width: $max-width;
+  margin-left: auto; 
+  margin-right: auto; 
   margin-bottom: $margin-bottom;
   padding-top: 41px;
   text-align: center;
@@ -73,5 +75,21 @@
     margin: 0 auto;
     border-radius: 50%;
     background-size: cover;
+  }
+}
+@mixin hidden-scrollbar {
+  &::-webkit-scrollbar {
+      -webkit-appearance: none;
+  }
+  &::-webkit-scrollbar:vertical {
+      width: 0px;
+  }
+  &::-webkit-scrollbar-thumb {
+      background-color: #c7c7c7;
+      border-radius: 1px;
+      border: 1px solid #c7c7c7;
+  }
+  &::-webkit-scrollbar-track {
+      background-color: #dddddd;
   }
 }

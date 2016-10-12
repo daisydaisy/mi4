@@ -64,12 +64,6 @@
                 ]
             }
         };
-        var windowHeight = window.innerHeight - 80;
-        var result = angular.element(document.getElementsByClassName("md-sidenav-left"))[0];
-        result.style.height = windowHeight + 'px';
-
-        
-
         function buildToggler(componentId) {
             return function () {
                 vm.isSideNavOpen = !vm.isSideNavOpen;

@@ -1,6 +1,6 @@
 .portfilio {
     .portfolio-content {
-        min-height: 600px;
+        min-height: 100px;
         background-color: $background-color;
         .blue-bgd {
             width: 100%;
@@ -18,71 +18,56 @@
                 color: $general-text-color;
             }
         }
+        @include hidden-scrollbar;
     }
     .md-sidenav-left {
         width: 100%;
         max-width: 620px;
-        .sidenav-corp-list {
-            .sidenav-corp-card {
-                width: 100%;
-                .card-image {
-                    display: table;
-                    height: 180px;
-                    width: 180px;
-                    background-size: cover;
-                }
-                .card-content {
-                    padding: 0 40px;
-                    border-bottom: $border-btn-color 1px solid;
-                    .title {
-                        @include montserrat-font-size(20px);
-                        margin-top: 25px;
-                        margin-bottom: 8px;
-                        line-height: 1.5;
-                        .general {
-                        }
+        .side-content {
+            .sidenav-corp-list {
+                .sidenav-corp-card {
+                    width: 100%;
+                    .card-image {
+                        display: table;
+                        height: 180px;
+                        width: 180px;
+                        background-size: cover;
                     }
-                    .description {
-                        @include open-sans-font;
-                        margin-bottom: 22px;
-                        color: $text-color;
-                    }
-                    .rating {
-                        @include montserrat-font;
-                        color: $rating-color;
-                        .overal {
-                            margin-right: 25px;
+                    .card-content {
+                        padding: 0 40px;
+                        border-bottom: $border-btn-color 1px solid;
+                        .title {
+                            @include montserrat-font-size(20px);
+                            margin-top: 25px;
+                            margin-bottom: 8px;
+                            line-height: 1.5;
+                            .general {
+                            }
                         }
-                        .symbol {
-                            @include montserrat-font-size(16px);
-                            display: inline-block;
-                            padding: 4px;
-                            color: $excellent-mark-color;
-                            border: $excellent-mark-color 3px solid;
-                            border-radius: 50%;
+                        .description {
+                            @include open-sans-font;
+                            margin-bottom: 22px;
+                            color: $text-color;
+                        }
+                        .rating {
+                            @include montserrat-font;
+                            color: $rating-color;
+                            .overal {
+                                margin-right: 25px;
+                            }
+                            .symbol {
+                                @include montserrat-font-size(16px);
+                                display: inline-block;
+                                padding: 4px;
+                                color: $excellent-mark-color;
+                                border: $excellent-mark-color 3px solid;
+                                border-radius: 50%;
+                            }
                         }
                     }
                 }
             }
-        }
-         &::-webkit-scrollbar {
-        -webkit-appearance: none;
-        }
-
-        &::-webkit-scrollbar:vertical {
-            width: 0px;
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background-color: #c7c7c7;
-            border-radius: 1px;
-            border: 1px solid #c7c7c7;
-        }
-
-        &::-webkit-scrollbar-track {
-            //border-radius: 10px;
-            background-color: #dddddd;
-
+            @include hidden-scrollbar;
         }
     }
 }

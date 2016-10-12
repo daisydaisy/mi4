@@ -41,7 +41,7 @@
             .md-button {
                 @include accept-button;
                 &.learn-more-btn {
-                    border: rgba(158,158,158,0.2) 2px solid;
+                    border: $learn-more-border-color 2px solid;
                 }
             }
         }
