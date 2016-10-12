@@ -66,7 +66,7 @@ $lines-to-show: 5;
                     @include open-sans-font-size(15px);
                     display: block;
                     display: -webkit-box;
-                    height: $font-size*$line-height*$lines-to-show;
+                    max-height: $font-size*$line-height*$lines-to-show;
                     max-width: 500px;
                     line-height: $line-height;
                     color: $text-color;
