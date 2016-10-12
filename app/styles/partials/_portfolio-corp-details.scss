@@ -1,0 +1,41 @@
+.portfolio-corp-details {
+    @include corp-card-box(620px, 34px);
+    width: 100%;
+    padding-left:  40px;
+    padding-right:  55px;
+    text-align: left;
+    .details-title {
+        @include montserrat-font-size(24px);
+        margin-bottom: 20px;
+    }
+        .fa.fa-paperclip {
+            color: $link-color;
+            margin-right: 7px;
+            margin-bottom: 20px;
+        }
+        .link-text {
+            @include montserrat-font-size-weight(12px, bold);
+            display: inline-block;
+            color: $link-color;
+            text-transform: uppercase;
+        }
+    .download-report {
+        .video-box {
+            cursor: pointer;
+            .video-poster {
+                height: 92px;
+                width: 124px;
+                border-radius: 6px;
+                background-size: cover;
+                background-position: center;
+                img {
+                    display: block;
+                    height: 30px;
+                    margin-top: 25%;
+                    border-radius: 50%;
+                }
+            }
+        }
+        
+    }
+}
