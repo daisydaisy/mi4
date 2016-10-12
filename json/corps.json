@@ -2,7 +2,8 @@
     {
         "title": "SouthwestAirlinesCo.",
         "nyse": "LUV",
-        "description": "SouthwestAirlines(NYSE: LUV)continuestodifferentiateitselffromothercarrierswithexemlaplary",
+        "imgUrl": "/images/southwest.png",
+        "description": "Southwest Airlines (NYSE: LUV) continues to differentiate itself from other carriers with exemlaplary",
         "overalMark": "B+",
         "personalMark": "B-",
         "info": [
@@ -22,51 +23,38 @@
                 "title": "Gender Diversity",
                 "text": "11 of 43 senior management are women. 3 of 11 board members are represented by women."
             }
-           
         ] 
-        
-        
     },
     {
-        "title": "SouthwestAirlinesCo.",
-        "nyse": "LUV",
-        "description": "SouthwestAirlines(NYSE: LUV)continuestodifferentiateitselffromothercarrierswithexemlaplary",
-        "overalMark": "B+",
-        "personalMark": "B-"
+        "title": "Starbucks Corporation",
+        "nyse": "SBUX",
+        "imgUrl": "/images/starbucks.png",
+        "description": "Starbucks is an international chain of restaurants that retails handcrafted coffee, tea, and fresh food items.",
+        "overalMark": "B",
+        "personalMark": "A-"
     },
     {
-        "title": "SouthwestAirlinesCo.",
-        "nyse": "LUV",
-        "description": "SouthwestAirlines(NYSE: LUV)continuestodifferentiateitselffromothercarrierswithexemlaplary",
+        "title": "Alphabet Inc.",
+        "nyse": "GOOGL",
+        "imgUrl": "/images/google.png",
+        "description": "Google is a multinational corporation that is specialized in internet-related services and products.",
         "overalMark": "B+",
-        "personalMark": "B-"
+        "personalMark": "A-"
     },
     {
-        "title": "SouthwestAirlinesCo.",
-        "nyse": "LUV",
-        "description": "SouthwestAirlines(NYSE: LUV)continuestodifferentiateitselffromothercarrierswithexemlaplary",
-        "overalMark": "B+",
-        "personalMark": "B-"
+        "title": "Exxon Mobil Corp.",
+        "nyse": "XOM",
+        "imgUrl": "/images/exxonmobil.png",
+        "description": "World's largest publicly traded international oil and gas company.",
+        "overalMark": "C-",
+        "personalMark": "D-"
     },
     {
-        "title": "SouthwestAirlinesCo.",
-        "nyse": "LUV",
-        "description": "SouthwestAirlines(NYSE: LUV)continuestodifferentiateitselffromothercarrierswithexemlaplary",
+        "title": "Vanguard Russell 1000",
+        "nyse": "VONE",
+        "imgUrl": "/images/venguard.png",
+        "description": "Vanguard Russell 1000 is a publicly traded ETF for.",
         "overalMark": "B+",
-        "personalMark": "B-"
-    },
-    {
-        "title": "SouthwestAirlinesCo.",
-        "nyse": "LUV",
-        "description": "SouthwestAirlines(NYSE: LUV)continuestodifferentiateitselffromothercarrierswithexemlaplary",
-        "overalMark": "B+",
-        "personalMark": "B-"
-    },
-    {
-        "title": "SouthwestAirlinesCo.",
-        "nyse": "LUV",
-        "description": "SouthwestAirlines(NYSE: LUV)continuestodifferentiateitselffromothercarrierswithexemlaplary",
-        "overalMark": "B+",
-        "personalMark": "B-"
+        "personalMark": "A-"
     }
 ]
