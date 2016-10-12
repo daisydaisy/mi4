@@ -9,13 +9,13 @@
         
         ChartJs.Chart.defaults.global.defaultFontFamily = 'Open Sans';
         ChartJs.Chart.defaults.global.defaultFontSize = 11;
+        vm.maxVisibleDescrLength = 800;
 
         $http.get('/json/corps.json').then(function(response) {
             vm.corps = response.data;
         }, function(err) {
             console.log(err);
         });
-
         vm.isSideNavOpen = false;
         vm.toggleLeft = buildToggler('left');
         vm.showVideo = showVideo;

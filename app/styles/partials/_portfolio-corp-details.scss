@@ -1,3 +1,6 @@
+$font-size: 15px;
+$line-height: 1.4;
+$lines-to-show: 5;
 .portfolio-corp-details {
     @include corp-card-box(620px, 34px);
     width: 100%;
@@ -61,7 +64,16 @@
                 }
                 .description {
                     @include open-sans-font-size(15px);
+                    display: block;
+                    display: -webkit-box;
+                    height: $font-size*$line-height*$lines-to-show;
+                    max-width: 500px;
+                    line-height: $line-height;
                     color: $text-color;
+                    -webkit-line-clamp: $lines-to-show;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
             }
         }
