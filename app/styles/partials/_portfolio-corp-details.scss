@@ -6,6 +6,7 @@ $lines-to-show: 5;
     width: 100%;
     padding-left:  40px;
     padding-right:  50px;
+    padding-bottom:  30px;
     text-align: left;
     .details-title {
         @include montserrat-font-size(24px);
