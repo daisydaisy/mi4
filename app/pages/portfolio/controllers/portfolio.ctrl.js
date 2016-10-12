@@ -4,12 +4,18 @@
     angular.module('portfolio')
         .controller('PortfolioCtrl', PortfolioCtrl);
 
-    function PortfolioCtrl($scope, $mdSidenav, $mdDialog, ChartJs) {
-        console.log(ChartJs);
+    function PortfolioCtrl($scope, $http, $mdSidenav, $mdDialog, ChartJs) {
+        var vm = this;
+        
         ChartJs.Chart.defaults.global.defaultFontFamily = 'Open Sans';
         ChartJs.Chart.defaults.global.defaultFontSize = 11;
-        // ChartJs.Chart.defaults.global.tooltips.xAlign = 'right';
-        var vm = this;
+
+        $http.get('/json/corps.json').then(function(response) {
+            vm.corps = response.data;
+        }, function(err) {
+            console.log(err);
+        });
+
         vm.isSideNavOpen = false;
         vm.toggleLeft = buildToggler('left');
         vm.showVideo = showVideo;
@@ -62,57 +68,7 @@
         var result = angular.element(document.getElementsByClassName("md-sidenav-left"))[0];
         result.style.height = windowHeight + 'px';
 
-        vm.corps = [
-            {
-                title: 'Southwest Airlines Co.',
-                nyse: 'LUV',
-                description: 'Southwest Airlines (NYSE: LUV) continues to differentiate itself from other carriers with exemlaplary',
-                overalMark: 'B+',
-                personalMark: 'B-'
-            },
-            {
-                title: 'Southwest Airlines Co.',
-                nyse: 'LUV',
-                description: 'Southwest Airlines (NYSE: LUV) continues to differentiate itself from other carriers with exemlaplary',
-                overalMark: 'B+',
-                personalMark: 'B-'
-            },
-            {
-                title: 'Southwest Airlines Co.',
-                nyse: 'LUV',
-                description: 'Southwest Airlines (NYSE: LUV) continues to differentiate itself from other carriers with exemlaplary',
-                overalMark: 'B+',
-                personalMark: 'B-'
-            },
-            {
-                title: 'Southwest Airlines Co.',
-                nyse: 'LUV',
-                description: 'Southwest Airlines (NYSE: LUV) continues to differentiate itself from other carriers with exemlaplary',
-                overalMark: 'B+',
-                personalMark: 'B-'
-            },
-            {
-                title: 'Southwest Airlines Co.',
-                nyse: 'LUV',
-                description: 'Southwest Airlines (NYSE: LUV) continues to differentiate itself from other carriers with exemlaplary',
-                overalMark: 'B+',
-                personalMark: 'B-'
-            },
-            {
-                title: 'Southwest Airlines Co.',
-                nyse: 'LUV',
-                description: 'Southwest Airlines (NYSE: LUV) continues to differentiate itself from other carriers with exemlaplary',
-                overalMark: 'B+',
-                personalMark: 'B-'
-            },
-            {
-                title: 'Southwest Airlines Co.',
-                nyse: 'LUV',
-                description: 'Southwest Airlines (NYSE: LUV) continues to differentiate itself from other carriers with exemlaplary',
-                overalMark: 'B+',
-                personalMark: 'B-'
-            }
-        ];
+        
 
         function buildToggler(componentId) {
             return function () {
@@ -124,9 +80,7 @@
             $mdDialog.show({
                 controller: 'VideoDialogCtrl',
                 controllerAs: 'vm',
-                // disableParentScroll: true,
                 templateUrl: 'app/pages/portfolio/templates/video-dialog.tpl.html',
-                // parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true
             }).then(function (data) {

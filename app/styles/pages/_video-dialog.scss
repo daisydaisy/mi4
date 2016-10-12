@@ -1,3 +1,10 @@
 .video-dialog {
     background: transparent;
+    .fa.fa-times-circle {
+        position: absolute;
+        font-size: 2em;
+        color: $close-button-color;
+        right: 5px;
+        top: 5px;
+    }
 }

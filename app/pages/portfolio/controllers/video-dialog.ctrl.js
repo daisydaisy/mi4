@@ -6,5 +6,10 @@
 
     function VideoDialogCtrl($scope, $mdDialog, $http, $timeout) {
         var vm = this;
+        vm.close = close;
+
+        function close() {
+            $mdDialog.cancel();
+        };
     }
 })();

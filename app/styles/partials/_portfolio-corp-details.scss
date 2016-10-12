@@ -2,7 +2,7 @@
     @include corp-card-box(620px, 34px);
     width: 100%;
     padding-left:  40px;
-    padding-right:  55px;
+    padding-right:  50px;
     text-align: left;
     .details-title {
         @include montserrat-font-size(24px);
@@ -35,7 +35,38 @@
                     border-radius: 50%;
                 }
             }
-        }
-        
+        } 
     }
+    .corp-info-box {
+        .info-body {
+            .title-box {
+                .fa.fa-circle {
+                    font-size: 8px;
+                    margin-right: 20px;
+                    color: $info-point-color;
+                }
+                .title {
+                    @include montserrat-font-size(20px);
+                    display: inline-block;
+                }
+            }
+            .description-box {
+                padding-left: 26px;
+                border-left: $description-section-color 2px solid;
+                margin-left: 2px;
+                padding-top: 5px;
+                padding-bottom: 22px;
+                &.last-box {
+                    border-left: transparent 2px solid;
+                }
+                .description {
+                    @include open-sans-font-size(15px);
+                    color: $text-color;
+                }
+            }
+        }
+    }
+}
+md-content {
+    color: inherit;
 }
