@@ -106,7 +106,7 @@
                     width: 18px;
                     margin-left: 40px;
 
-                    @media (max-width: $mobile-width-md) {
+                    @media (max-width: $mobile-width-sm) {
                         &.reload,
                         &.bell-icon {
                             display: none;
@@ -137,7 +137,7 @@
 .md-open-menu-container {
     top: 60px !important;
     .icon-item {
-        @media (min-width: $mobile-width-md) {
+        @media (min-width: $mobile-width-sm) {
             display: none;
         }
         img {

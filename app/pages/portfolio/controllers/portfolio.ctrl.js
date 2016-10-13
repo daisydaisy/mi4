@@ -23,6 +23,7 @@
         vm.isSideNavOpen = false;
         vm.toggleLeft = buildToggler('left');
         vm.showVideo = showVideo;
+        vm.showInfo = showInfo;
         vm.chartLabels = ["", "Jun 2016", "Jul 2016", "Aug 2016", "Sept 2016", "Oct 2016"];
         vm.chartSeries = ['This company'];
         vm.chartData = [
@@ -73,6 +74,9 @@
                 vm.isSideNavOpen = !vm.isSideNavOpen;
                 $mdSidenav(componentId).toggle();
             }
+        }
+        function showInfo(index) {
+            vm.toggleLeft();
         }
         function showVideo(ev) {
             $mdDialog.show({

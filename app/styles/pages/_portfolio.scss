@@ -23,6 +23,7 @@
     .md-sidenav-left {
         width: 100%;
         max-width: 620px;
+        background-color: transparent;
         .side-content {
             .sidenav-corp-list {
                 .sidenav-corp-card {
@@ -30,7 +31,8 @@
                     .card-image {
                         display: table;
                         height: 180px;
-                        width: 180px;
+                        max-height: 180px;
+                        width: auto;
                         background-size: cover;
                     }
                     .card-content {
@@ -41,19 +43,46 @@
                             margin-top: 25px;
                             margin-bottom: 8px;
                             line-height: 1.5;
-                            .general {
+
+                            @media (max-width: 543px) {
+                                @include montserrat-font-size(17px);
+                                margin-top: 8px;
+                                 @media (max-width: 480px) {
+                                    overflow: hidden;
+                                    white-space: nowrap;
+                                    text-overflow: ellipsis;
+                                    @media (max-width: 399px) {
+                                        font-size: 15px;
+                                        margin-bottom: 5px;
+                                    }
+                                 }
                             }
                         }
                         .description {
                             @include open-sans-font;
                             margin-bottom: 22px;
                             color: $text-color;
+                            @media (max-width: 543px) {
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                                @media (max-width: 521px) {
+                                    margin-bottom: 5px;
+                                    @media (max-width: 480px) {
+                                        display: none;
+                                    }
+                                }
+
+                            }
                         }
                         .rating {
                             @include montserrat-font;
                             color: $rating-color;
                             .overal {
                                 margin-right: 25px;
+                                @media (max-width: 543px) {
+                                    margin-right: 10px;
+                                }
                             }
                             .symbol {
                                 @include montserrat-font-size(16px);
@@ -63,7 +92,26 @@
                                 border: 3px solid;
                                 border-radius: 50%;
                                 text-align: center;
+                                @media (max-width: 399px) {
+                                    font-size: 14px;
+                                    padding: 2px;
+                                    border: 2px solid;
+                                }
                             }
+                            @media (max-width: 521px) {
+                                &.layout-row {
+                                    -webkit-box-orient: vertical;
+                                    -webkit-box-direction: normal;
+                                    -webkit-flex-direction: column;
+                                    flex-direction: column;
+                                }
+                            }
+                             @media (max-width: 399px) {
+                                font-size: 12px;
+                            }
+                        }
+                        @media (max-width: 599px) {
+                            padding: 0 20px;
                         }
                     }
                 }
