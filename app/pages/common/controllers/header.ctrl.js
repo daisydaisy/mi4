@@ -4,11 +4,11 @@
     angular.module('miApp')
         .controller('HeaderCtrl', HeaderCtrl);
 
-    function HeaderCtrl($scope, $timeout, $q) {
+    function HeaderCtrl($scope, $state, $timeout, $q) {
         var vm = this;
         vm.simulateQuery = false;
         vm.isDisabled = false;
-
+        vm.goHome = goHome;
         vm.companies = loadAll();
         vm.querySearch = querySearch;
 
@@ -57,6 +57,10 @@
                 return (company.value.indexOf(lowercaseQuery) === 0);
             };
 
+        }
+
+        function goHome() {
+            $state.go('Main.Home');
         }
     }
 })();
