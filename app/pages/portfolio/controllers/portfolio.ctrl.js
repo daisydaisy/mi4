@@ -8,8 +8,7 @@
         var vm = this;
         vm.currentCorp = {};
         var color = '#faf8f5';
-        var currentIndex = 0;
-        var selectedIndex = 0;
+        var currentIndex = $rootScope.selectedCompany || 0;
         vm.isSideNavOpen = true;
         var wentFromAnotherState = false;
         vm.baseurl = 'http://localhost:2020'
@@ -25,8 +24,8 @@
                 vm.corps[i].bgdColor = 'white';
             }
             console.log('json')
-            vm.corps[0].bgdColor = color;
-            vm.currentCorp = vm.corps[0];
+            vm.corps[currentIndex].bgdColor = color;
+            vm.currentCorp = vm.corps[currentIndex];
         }, function (err) {
             console.log(err);
         });
@@ -79,14 +78,14 @@
                 ]
             }
         };
-        $rootScope.$on('selectedCompany', function (event, index) {
-            console.log(index);
-            selectedIndex = index;
-            vm.corps[currentIndex].bgdColor = 'white';
-            vm.corps[index].bgdColor = color;
-            currentIndex = index;
-            vm.currentCorp = vm.corps[index];
-        });
+        // $rootScope.$on('selectedCompany', function (event, index) {
+        //     console.log(index);
+        //     selectedIndex = index;
+        //     vm.corps[currentIndex].bgdColor = 'white';
+        //     vm.corps[index].bgdColor = color;
+        //     currentIndex = index;
+        //     vm.currentCorp = vm.corps[index];
+        // });
 
         function getCurrentImage() {
             return 'url(' + vm.currentCorp.imgUrl + ')';

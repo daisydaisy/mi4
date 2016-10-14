@@ -8,6 +8,7 @@
         var vm = this;
         vm.simulateQuery = false;
         vm.isDisabled = false;
+        var selectedCompany = 0;
         vm.goHome = goHome;
         vm.companies = [];
         vm.querySearch = querySearch;
@@ -69,13 +70,22 @@
 
         }
         function openCompanyPage(company) {
-            console.log(company);
-            $rootScope.$emit('selectedCompany', company.index);
-            $state.go('Main.Portfolio');
+            if (company) {
+                selectedCompany = company.index;
+                // $rootScope.$emit('selectedCompany', company.index);
+                $state.go('Main.Portfolio');
+            }
+            
         }
 
         function goHome() {
             $state.go('Main.Home');
         }
+
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
+            if (toState.name === 'Main.Portfolio') {
+                $rootScope.selectedCompany = selectedCompany;
+            }
+        });
     }
 })();
