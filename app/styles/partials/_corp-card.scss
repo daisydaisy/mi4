@@ -1,3 +1,6 @@
+$font-size: 13px;
+$line-height: 1.4;
+$lines-to-show: 2;
 .corp-card {
     @include corp-card-box(298px, 44px);
     display: inline-block;
@@ -19,10 +22,18 @@
     }
     .corp-description {
         @include open-sans-font;
+        display: block;
+        display: -webkit-box;
+        max-height: $font-size*$line-height*$lines-to-show;
         margin-bottom: 22px;
         padding-left: 37px;
         padding-right: 37px;
+        line-height: $line-height;
         color: $text-color;
+        -webkit-line-clamp: $lines-to-show;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .corp-rating {
         color: $rating-color;

@@ -2,6 +2,8 @@
     {
         "title": "SouthwestAirlinesCo.",
         "nyse": "LUV",
+        "percent": "-0.52 (-0.93%)",
+        "price": "$55.80",
         "imgUrl": "/images/southwest.png",
         "description": "Southwest Airlines (NYSE: LUV) continues to differentiate itself from other carriers with exemlaplary",
         "overalMark": "B+",
@@ -23,38 +25,118 @@
                 "title": "Gender Diversity",
                 "text": "11 of 43 senior management are women. 3 of 11 board members are represented by women."
             }
-        ] 
+        ]
     },
     {
         "title": "Starbucks Corporation",
         "nyse": "SBUX",
+        "percent": "-0.52 (-0.93%)",
+        "price": "$55.80",
         "imgUrl": "/images/starbucks.png",
         "description": "Starbucks is an international chain of restaurants that retails handcrafted coffee, tea, and fresh food items.",
         "overalMark": "B",
-        "personalMark": "A-"
+        "personalMark": "A-",
+        "info": [
+            {
+                "title": "Environmental",
+                "text": "Southwest is committed to continuing to lead the industry in emissions reductions through fuel efficiency. We have maintained our position as an industry leader in fuel efficiency and greenhouse gas (GHG) reductions through comprehensive programs of reinvestment in equipment and technological innovation and partnerships with industry fsgwef"
+            },
+            {
+                "title": "Social",
+                "text": "We champion causes that matter most in the communities we serve by developing relationships with nonprofit organizations on both a local and national level. Building these relationships involves committing our resources of time, tickets, and love to be your hometown carrier that cares. You’ll also find Southwest Employees volunteering across the street dfwdef fes"
+            },
+            {
+                "title": "Governance",
+                "text": "Standard disclosure."
+            },
+            {
+                "title": "Gender Diversity",
+                "text": "11 of 43 senior management are women. 3 of 11 board members are represented by women."
+            }
+        ]
     },
     {
         "title": "Alphabet Inc.",
         "nyse": "GOOGL",
+        "percent": "-0.52 (-0.93%)",
+        "price": "$55.80",
         "imgUrl": "/images/google.png",
         "description": "Google is a multinational corporation that is specialized in internet-related services and products.",
         "overalMark": "B+",
-        "personalMark": "A-"
+        "personalMark": "A-",
+        "info": [
+            {
+                "title": "Environmental",
+                "text": "Southwest is committed to continuing to lead the industry in emissions reductions through fuel efficiency. We have maintained our position as an industry leader in fuel efficiency and greenhouse gas (GHG) reductions through comprehensive programs of reinvestment in equipment and technological innovation and partnerships with industry fsgwef"
+            },
+            {
+                "title": "Social",
+                "text": "We champion causes that matter most in the communities we serve by developing relationships with nonprofit organizations on both a local and national level. Building these relationships involves committing our resources of time, tickets, and love to be your hometown carrier that cares. You’ll also find Southwest Employees volunteering across the street dfwdef fes"
+            },
+            {
+                "title": "Governance",
+                "text": "Standard disclosure."
+            },
+            {
+                "title": "Gender Diversity",
+                "text": "11 of 43 senior management are women. 3 of 11 board members are represented by women."
+            }
+        ]
     },
     {
         "title": "Exxon Mobil Corp.",
         "nyse": "XOM",
+        "percent": "-0.52 (-0.93%)",
+        "price": "$55.80",
         "imgUrl": "/images/exxonmobil.png",
         "description": "World's largest publicly traded international oil and gas company.",
         "overalMark": "C-",
-        "personalMark": "D-"
+        "personalMark": "D-",
+        "info": [
+            {
+                "title": "Environmental",
+                "text": "Southwest is committed to continuing to lead the industry in emissions reductions through fuel efficiency. We have maintained our position as an industry leader in fuel efficiency and greenhouse gas (GHG) reductions through comprehensive programs of reinvestment in equipment and technological innovation and partnerships with industry fsgwef"
+            },
+            {
+                "title": "Social",
+                "text": "We champion causes that matter most in the communities we serve by developing relationships with nonprofit organizations on both a local and national level. Building these relationships involves committing our resources of time, tickets, and love to be your hometown carrier that cares. You’ll also find Southwest Employees volunteering across the street dfwdef fes"
+            },
+            {
+                "title": "Governance",
+                "text": "Standard disclosure."
+            },
+            {
+                "title": "Gender Diversity",
+                "text": "11 of 43 senior management are women. 3 of 11 board members are represented by women."
+            }
+        ]
     },
     {
         "title": "Vanguard Russell 1000",
         "nyse": "VONE",
+        "percent": "-0.52 (-0.93%)",
+        "price": "$55.80",
         "imgUrl": "/images/venguard.png",
         "description": "Vanguard Russell 1000 is a publicly traded ETF for.",
         "overalMark": "B+",
-        "personalMark": "A-"
+        "personalMark": "A-",
+        "info": [
+            {
+                "title": "Environmental",
+                "text": "Southwest is committed to continuing to lead the industry in emissions reductions through fuel efficiency. We have maintained our position as an industry leader in fuel efficiency and greenhouse gas (GHG) reductions through comprehensive programs of reinvestment in equipment and technological innovation and partnerships with industry fsgwef"
+            },
+            {
+                "title": "Social",
+                "text": "We champion causes that matter most in the communities we serve by developing relationships with nonprofit organizations on both a local and national level. Building these relationships involves committing our resources of time, tickets, and love to be your hometown carrier that cares. You’ll also find Southwest Employees volunteering across the street dfwdef fes"
+            },
+            {
+                "title": "Governance",
+                "text": "Standard disclosure."
+            },
+            {
+                "title": "Gender Diversity",
+                "text": "11 of 43 senior management are women. 3 of 11 board members are represented by women."
+            }
+        ]
     }
 ]

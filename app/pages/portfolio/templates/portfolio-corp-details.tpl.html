@@ -8,19 +8,20 @@
         <span flex></span>
         <div class="download-report" layout="row">
             <div class="video-box" ng-click="vm.showVideo($event)">
-                <div class="video-poster" layout="row" layout-align="center" ng-style="{'background-image': 'url(http://www.zastavki.com/pictures/originals/2015/Games_Poster_Video_Game_Destiny_101197_.jpg)'}">
+                <!--<div class="video-poster" layout="row" layout-align="center" ng-style="{'background-image': 'url(http://localhost:2020{{vm.currentCorp.imgUrl}})'}">-->
+                <div class="video-poster" layout="row" layout-align="center" ng-style="{'background-image': vm.getCurrentImage()}">
                     <img src="/images/play-button.png" alt="play">
                 </div>
             </div>
         </div>
     </div>
     <div class="corp-info-box">
-        <div class="info-body" ng-repeat="info in vm.corps[0].info">
+        <div class="info-body" ng-repeat="info in vm.currentCorp.info">
             <div class="title-box" layout="row" layout-align=" start center">
                 <i class="fa fa-circle" aria-hidden="true"></i>
                 <div class="title">{{info.title}}</div>
             </div>
-            <div class="description-box" ng-class="{'last-box': $index == vm.corps[0].info.length - 1}">
+            <div class="description-box" ng-class="{'last-box': $index == vm.currentCorp.info.length - 1}">
                 <div class="description">{{info.text}}</div>
             </div>
         </div>

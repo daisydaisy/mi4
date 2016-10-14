@@ -4,85 +4,20 @@
     angular.module('miApp')
         .controller('StartPageCtrl', StartPageCtrl);
 
-    function StartPageCtrl($scope, $mdDialog) {
+    function StartPageCtrl($scope, $mdDialog, $http) {
         var vm = this;
         vm.showTabDialog = showTabDialog;
-        vm.corps = [
-            {
-                title: 'Starbucks Corporation',
-                sbux: '$55.80',
-                percent: '-0.52 (-0.93%)',
-                percentClass: 'positive',
-                description: 'Starbucks is an international chain of restaurants that retails handcrafted coffee, tea, and fresh food items.',
-                mark: 'B',
-                markClass: 'excellent'
+        vm.corps = [];
 
-            },
-            {
-                title: 'Starbucks Corporation',
-                sbux: '$55.80',
-                percent: '-0.52 (-0.93%)',
-                percentClass: 'positive',
-                description: 'Starbucks is an international chain of restaurants that retails handcrafted coffee, tea, and fresh food items.',
-                mark: 'B',
-                markClass: 'excellent'
-            },
-            {
-                title: 'Starbucks Corporation',
-                sbux: '$55.80',
-                percent: '-0.52 (-0.93%)',
-                percentClass: 'positive',
-                description: 'Starbucks is an international chain of restaurants that retails handcrafted coffee, tea, and fresh food items.',
-                mark: 'B',
-                markClass: 'excellent'
-            },
-            {
-                title: 'Starbucks Corporation',
-                sbux: '$55.80',
-                percent: '-0.52 (-0.93%)',
-                percentClass: 'positive',
-                description: 'Starbucks is an international chain of restaurants that retails handcrafted coffee, tea, and fresh food items.',
-                mark: 'B',
-                markClass: 'excellent'
-            },
-            {
-                title: 'Starbucks Corporation',
-                sbux: '$55.80',
-                percent: '-0.52 (-0.93%)',
-                percentClass: 'positive',
-                description: 'Starbucks is an international chain of restaurants that retails handcrafted coffee, tea, and fresh food items.',
-                mark: 'B',
-                markClass: 'excellent'
-
-            },
-            {
-                title: 'Starbucks Corporation',
-                sbux: '$55.80',
-                percent: '-0.52 (-0.93%)',
-                percentClass: 'positive',
-                description: 'Starbucks is an international chain of restaurants that retails handcrafted coffee, tea, and fresh food items.',
-                mark: 'B',
-                markClass: 'excellent'
-            },
-            {
-                title: 'Starbucks Corporation',
-                sbux: '$55.80',
-                percent: '-0.52 (-0.93%)',
-                percentClass: 'positive',
-                description: 'Starbucks is an international chain of restaurants that retails handcrafted coffee, tea, and fresh food items.',
-                mark: 'B',
-                markClass: 'excellent'
-            },
-            {
-                title: 'Starbucks Corporation',
-                sbux: '$55.80',
-                percent: '-0.52 (-0.93%)',
-                percentClass: 'positive',
-                description: 'Starbucks is an international chain of restaurants that retails handcrafted coffee, tea, and fresh food items.',
-                mark: 'B',
-                markClass: 'excellent'
+        $http.get('/json/corps.json').then(function (response) {
+            vm.corps = response.data;
+            for (var i = 0; i < vm.corps.length; i++) {
+                vm.corps[i].overalColor = getMarkColor(vm.corps[i].overalMark);
+                vm.corps[i].personalColor = getMarkColor(vm.corps[i].personalMark);
             }
-        ];
+        }, function (err) {
+            console.log(err);
+        });
 
         function showTabDialog(ev) {
             $mdDialog.show({
@@ -90,7 +25,6 @@
                 controllerAs: 'vm',
                 disableParentScroll: true,
                 templateUrl: 'app/pages/common/templates/companies-dialog.html',
-                // parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true
             }).then(function (data) {
@@ -98,6 +32,11 @@
             }, function (canceled) {
                 console.log('canceled')
             });
+        }
+
+         function getMarkColor(mark) {
+            var mark = mark.charAt(0).toLowerCase();
+            return mark + '-color';
         }
     }
 })();

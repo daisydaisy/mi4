@@ -1,11 +1,11 @@
 <div class="portfolio-corp-card" flex>
-    <div class="corp-card-image" ng-style="{'background-image': 'url(http://placekitten.com/90/90)'}"></div>
+    <div class="corp-card-image" ng-style="{'background-image': vm.getCurrentImage()}"></div>
     <div class="corp-title">
-        Starbucks Corporation
+        {{vm.currentCorp.title}}
     </div>
     <div class="corp-sub-title">
-        <span><b>SBUX - </b>$55.80</span>
-        <span class="percent positive">-0.52 (-0.93%)</span>
+        <span><b>{{vm.currentCorp.nyse}} - </b>{{vm.currentCorp.price}}</span>
+        <span class="percent positive">{{vm.currentCorp.percent}}</span>
     </div>
     <div class="btn-wrapper" layout="row"  layout-align="space-between center" layout-xs="column">
         <md-button class="md-primary md-raised back-btn" aria-label="Back"><span>Add to portfolio</span></md-button>
@@ -14,29 +14,29 @@
     <div class="rating-wrapper">
         <div class="general-rating" layout="row">
             <div class="overal rating" flex>
-                <div class="symbol">B</div>
+                <div class="symbol" ng-class="vm.currentCorp.overalColor">{{vm.currentCorp.overalMark}}</div>
                 <div class="title">Overal Rating</div>
             </div>
             <div class="personal rating" flex>
-                <div class="symbol">A-</div>
-                <div class="title">My4 Personal Values Matching Score</div>
+                <div class="symbol" ng-class="vm.currentCorp.personalColor">{{vm.currentCorp.personalMark}}</div>
+                <div class="title">Personal Values Matching Score</div>
             </div>
         </div>
         <div class="second-rating" layout="row">
             <div class="community rating" flex>
-                <div class="symbol">B</div>
+                <div class="symbol b-color">B</div>
                 <div class="title">Community</div>
             </div>
             <div class="employees rating" flex>
-                <div class="symbol">A-</div>
+                <div class="symbol a-color">A-</div>
                 <div class="title">Employees</div>
             </div>
             <div class="environment rating" flex>
-                <div class="symbol">C+</div>
+                <div class="symbol c-color">C+</div>
                 <div class="title">Environment</div>
             </div>
             <div class="governance rating" flex>
-                <div class="symbol">A-</div>
+                <div class="symbol a-color">A-</div>
                 <div class="title">Governance</div>
             </div>
         </div>
