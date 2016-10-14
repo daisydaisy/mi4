@@ -78,14 +78,17 @@
                 ]
             }
         };
-        // $rootScope.$on('selectedCompany', function (event, index) {
-        //     console.log(index);
-        //     selectedIndex = index;
-        //     vm.corps[currentIndex].bgdColor = 'white';
-        //     vm.corps[index].bgdColor = color;
-        //     currentIndex = index;
-        //     vm.currentCorp = vm.corps[index];
-        // });
+
+        $rootScope.$on('changedSearch', function (event, value) {
+            showInfo(value, true);
+            console.log(value)
+        });
+
+        $rootScope.$watch($rootScope.selectedCompany, function (evebt, newValue, oldValue) {
+            if (vm.corps) {
+                showInfo(newValue, true);
+            }
+        })
 
         function getCurrentImage() {
             return 'url(' + vm.currentCorp.imgUrl + ')';
@@ -97,12 +100,14 @@
                 $mdSidenav(componentId).toggle();
             }
         }
-        function showInfo(index) {
+        function showInfo(index, notToggle) {
             vm.corps[currentIndex].bgdColor = 'white';
             vm.corps[index].bgdColor = color;
             currentIndex = index;
             vm.currentCorp = vm.corps[index];
-            vm.toggleLeft();
+            if (!notToggle) {
+                vm.toggleLeft();
+            }
         }
         function showVideo(ev) {
             $mdDialog.show({

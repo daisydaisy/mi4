@@ -71,8 +71,8 @@
         }
         function openCompanyPage(company) {
             if (company) {
-                selectedCompany = company.index;
-                // $rootScope.$emit('selectedCompany', company.index);
+                $rootScope.selectedCompany = company.index;
+                $rootScope.$emit("changedSearch", company.index);
                 $state.go('Main.Portfolio');
             }
             
@@ -81,11 +81,5 @@
         function goHome() {
             $state.go('Main.Home');
         }
-
-        $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
-            if (toState.name === 'Main.Portfolio') {
-                $rootScope.selectedCompany = selectedCompany;
-            }
-        });
     }
 })();
