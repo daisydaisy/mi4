@@ -61,8 +61,8 @@
     },
     {
         "id": 3,
-        "section": "Covernance",
-        "title": "Covernance Ethics",
+        "section": "Governance",
+        "title": "Governance Ethics",
         "question": "How much do you care about the  employment ethics of each company in your  portfolio?",
         "sliders": [
             {
