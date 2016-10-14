@@ -4,7 +4,7 @@
     angular.module('portfolio')
         .controller('PortfolioCtrl', PortfolioCtrl);
 
-    function PortfolioCtrl($scope, $http, $mdSidenav, $mdDialog, $timeout, $rootScope, ChartJs) {
+    function PortfolioCtrl($scope, $http, $mdSidenav, $mdDialog, $timeout, $rootScope, $mdMedia, ChartJs) {
         var vm = this;
         vm.currentCorp = {};
         var color = '#faf8f5';
@@ -105,7 +105,7 @@
             vm.corps[index].bgdColor = color;
             currentIndex = index;
             vm.currentCorp = vm.corps[index];
-            if (!notToggle) {
+            if (!notToggle && !$mdMedia('gt-sm')) {
                 vm.toggleLeft();
             }
         }
