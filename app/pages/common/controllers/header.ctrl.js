@@ -4,13 +4,22 @@
     angular.module('miApp')
         .controller('HeaderCtrl', HeaderCtrl);
 
-    function HeaderCtrl($scope, $state, $timeout, $q) {
+    function HeaderCtrl($scope, $state, $timeout, $q, $http, $rootScope) {
         var vm = this;
         vm.simulateQuery = false;
         vm.isDisabled = false;
         vm.goHome = goHome;
-        vm.companies = loadAll();
+        vm.companies = [];
         vm.querySearch = querySearch;
+        vm.corps = [];
+        vm.openCompanyPage = openCompanyPage;
+
+        $http.get('/json/corps.json').then(function (response) {
+            vm.corps = response.data;
+            vm.companies = loadAll();
+        }, function (err) {
+            console.log(err);
+        });
 
         function querySearch(query) {
             var results = query ? vm.companies.filter(createFilterFor(query)) : vm.companies,
@@ -42,10 +51,11 @@
                 'eBay'
             ];
 
-            return allCompanies.map(function (company) {
+            return vm.corps.map(function (company, index) {
                 return {
-                    value: company.toLowerCase(),
-                    display: company
+                    value: company.title.toLowerCase(),
+                    display: company.title,
+                    index: index
                 };
             });
         }
@@ -57,6 +67,11 @@
                 return (company.value.indexOf(lowercaseQuery) === 0);
             };
 
+        }
+        function openCompanyPage(company) {
+            console.log(company);
+            $rootScope.$emit('selectedCompany', company.index);
+            $state.go('Main.Portfolio');
         }
 
         function goHome() {
