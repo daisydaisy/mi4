@@ -7,6 +7,8 @@
     function PortfolioCtrl($scope, $http, $mdSidenav, $mdDialog, $timeout, ChartJs) {
         var vm = this;
         vm.currentCorp = {};
+        var color = '#faf8f5';
+        var currentIndex = 0;
         vm.baseurl = 'http://localhost:2020'
         ChartJs.Chart.defaults.global.defaultFontFamily = 'Open Sans';
         ChartJs.Chart.defaults.global.defaultFontSize = 11;
@@ -17,12 +19,13 @@
             for (var i = 0; i < vm.corps.length; i++) {
                 vm.corps[i].overalColor = getMarkColor(vm.corps[i].overalMark);
                 vm.corps[i].personalColor = getMarkColor(vm.corps[i].personalMark);
+                vm.corps[i].bgdColor = 'white';
             }
+            vm.corps[0].bgdColor = color;
             vm.currentCorp = vm.corps[0];
         }, function (err) {
             console.log(err);
         });
-        vm.isSideNavOpen = false;
         vm.toggleLeft = buildToggler('left');
         vm.getCurrentImage = getCurrentImage;
         vm.showVideo = showVideo;
@@ -79,11 +82,13 @@
 
             function buildToggler(componentId) {
                 return function () {
-                    vm.isSideNavOpen = !vm.isSideNavOpen;
                     $mdSidenav(componentId).toggle();
                 }
             }
             function showInfo(index) {
+                vm.corps[currentIndex].bgdColor = 'white';
+                vm.corps[index].bgdColor = color;
+                currentIndex = index;
                 vm.currentCorp = vm.corps[index];
                 vm.toggleLeft();
             }
