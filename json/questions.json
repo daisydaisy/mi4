@@ -6,15 +6,15 @@
         "question": "How much do you care about the  employment ethics of each company in your  portfolio?",
         "sliders": [
             {
-                "name": "Women in management",
+                "name": "Community Development",
                 "range": 0
             },
             {
-                "name": "LGBT policy",
+                "name": "Philanthropy",
                 "range": 0
             },
             {
-                "name": "Equal pay",
+                "name": "Women and Girls",
                 "range": 0
             }
         ]
@@ -26,15 +26,15 @@
         "question": "How much do you care about the  employment ethics of each company in your  portfolio?",
         "sliders": [
             {
-                "name": "Women in management",
+                "name": "Gender diversity",
                 "range": 0
             },
             {
-                "name": "LGBT policy",
+                "name": "LGBT Policy",
                 "range": 0
             },
             {
-                "name": "Equal pay",
+                "name": "Equal Pay",
                 "range": 0
             }
         ]
@@ -46,15 +46,15 @@
         "question": "How much do you care about the  employment ethics of each company in your  portfolio?",
         "sliders": [
             {
-                "name": "Women in management",
+                "name": "Climate Change",
                 "range": 0
             },
             {
-                "name": "LGBT policy",
+                "name": "Renewable Energy",
                 "range": 0
             },
             {
-                "name": "Equal pay",
+                "name": "Water & resource usage",
                 "range": 0
             }
         ]
@@ -66,15 +66,15 @@
         "question": "How much do you care about the  employment ethics of each company in your  portfolio?",
         "sliders": [
             {
-                "name": "Women in management",
+                "name": "Board compensation",
                 "range": 0
             },
             {
-                "name": "LGBT policy",
+                "name": "Leadership Ethics",
                 "range": 0
             },
             {
-                "name": "Equal pay",
+                "name": "Management Diversity",
                 "range": 0
             }
         ]
