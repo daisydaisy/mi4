@@ -19,6 +19,7 @@
         $http.get('/json/corps.json').then(function (response) {
             vm.corps = response.data;
             for (var i = 0; i < vm.corps.length; i++) {
+                vm.corps[i].percentColor = getPercentColor(vm.corps[i].percent);
                 vm.corps[i].overalColor = getMarkColor(vm.corps[i].overalMark);
                 vm.corps[i].personalColor = getMarkColor(vm.corps[i].personalMark);
                 vm.corps[i].bgdColor = 'white';
@@ -125,6 +126,11 @@
         function getMarkColor(mark) {
             var mark = mark.charAt(0).toLowerCase();
             return mark + '-color';
+        }
+
+        function getPercentColor(percent) {
+            var symbol = percent.charAt(0);
+            return symbol === '+';
         }
     }
 })();

@@ -5,7 +5,7 @@
     </div>
     <div class="corp-sub-title">
         <span><b>{{vm.currentCorp.nyse}} - </b>{{vm.currentCorp.price}}</span>
-        <span class="percent positive">{{vm.currentCorp.percent}}</span>
+        <span class="percent" ng-class="{'positive': vm.currentCorp.percentColor }">{{vm.currentCorp.percent}}</span>
     </div>
     <div class="btn-wrapper" layout="row"  layout-align="space-between center" layout-xs="column">
         <md-button class="md-primary md-raised back-btn" aria-label="Back"><span>Add to portfolio</span></md-button>

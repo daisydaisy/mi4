@@ -5,15 +5,13 @@
     </div>
     <div class="corp-sub-title">
         <span><b>{{corp.nyse}} - </b>{{corp.price}}</span>
-        <!--<span class="percent" ng-class="vm.isPositive()">-0.52 (-0.93%)</span>-->
-        <span class="percent" ng-class="corp.percentClass">{{corp.percent}}</span>
+        <span class="percent" ng-class="{'positive': corp.percentColor }">{{corp.percent}}</span>
     </div>
     <div class="corp-description">
         {{corp.description}}
     </div>
     <div class="corp-rating">
         <span class="rating-title">Overal Rating:</span>
-        <!--<span class="rating-value" ng-class="vm.markColor()">B</span>-->
         <span class="rating-value" ng-class="corp.overalColor">{{corp.overalMark}}</span>
          
     </div>

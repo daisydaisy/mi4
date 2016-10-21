@@ -1,9 +1,9 @@
 [
     {
-        "title": "SouthwestAirlinesCo.",
+        "title": "Southwest Airlines Co.",
         "nyse": "LUV",
-        "percent": "-0.52 (-0.93%)",
-        "price": "$55.80",
+        "percent": "-0.14 (-0.36%)",
+        "price": "$38.54",
         "imgUrl": "/images/southwest.png",
         "description": "Southwest Airlines (NYSE: LUV) continues to differentiate itself from other carriers with exemlaplary",
         "overalMark": "B+",
@@ -58,8 +58,8 @@
     {
         "title": "Alphabet Inc.",
         "nyse": "GOOGL",
-        "percent": "-0.52 (-0.93%)",
-        "price": "$55.80",
+        "percent": "-5.48 (-0.68%)",
+        "price": "$802.56",
         "imgUrl": "/images/google.png",
         "description": "Google is a multinational corporation that is specialized in internet-related services and products.",
         "overalMark": "B+",
@@ -86,7 +86,7 @@
     {
         "title": "Exxon Mobil Corp.",
         "nyse": "XOM",
-        "percent": "-0.52 (-0.93%)",
+        "percent": "+0.87 (+0.96%)",
         "price": "$55.80",
         "imgUrl": "/images/exxonmobil.png",
         "description": "World's largest publicly traded international oil and gas company.",
@@ -114,8 +114,8 @@
     {
         "title": "Vanguard Russell 1000",
         "nyse": "VONE",
-        "percent": "-0.52 (-0.93%)",
-        "price": "$55.80",
+        "percent": "+0 (0%)",
+        "price": "$98.18",
         "imgUrl": "/images/venguard.png",
         "description": "Vanguard Russell 1000 is a publicly traded ETF for.",
         "overalMark": "B+",

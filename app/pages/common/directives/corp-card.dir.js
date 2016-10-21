@@ -8,8 +8,6 @@
         return {
             restrict: 'E',
             templateUrl: 'app/pages/common/templates/corp-card.tpl.html',
-            // controller: 'CorpCardCtrl',
-            // controllerAs: 'vm',
             replace: true
         };
     }
