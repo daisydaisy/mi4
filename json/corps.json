@@ -8,6 +8,10 @@
         "description": "Southwest Airlines (NYSE: LUV) continues to differentiate itself from other carriers with exemlaplary",
         "overalMark": "B+",
         "personalMark": "B-",
+        "communityMark": "B",
+        "governanceMark": "A",
+        "employmentMark": "B-",
+        "environmentMark": "A+",
         "info": [
             {
                 "title": "Environmental",
@@ -36,6 +40,10 @@
         "description": "Starbucks is an international chain of restaurants that retails handcrafted coffee, tea, and fresh food items.",
         "overalMark": "B",
         "personalMark": "A-",
+        "communityMark": "C+",
+        "governanceMark": "B+",
+        "employmentMark": "A-",
+        "environmentMark": "B",
         "info": [
             {
                 "title": "Environmental",
@@ -64,6 +72,10 @@
         "description": "Google is a multinational corporation that is specialized in internet-related services and products.",
         "overalMark": "B+",
         "personalMark": "A-",
+        "communityMark": "A-",
+        "governanceMark": "C+",
+        "employmentMark": "B+",
+        "environmentMark": "A",
         "info": [
             {
                 "title": "Environmental",
@@ -92,6 +104,10 @@
         "description": "World's largest publicly traded international oil and gas company.",
         "overalMark": "C-",
         "personalMark": "D-",
+        "communityMark": "C",
+        "governanceMark": "D+",
+        "employmentMark": "B",
+        "environmentMark": "C+",
         "info": [
             {
                 "title": "Environmental",
@@ -120,6 +136,10 @@
         "description": "Vanguard Russell 1000 is a publicly traded ETF for.",
         "overalMark": "B+",
         "personalMark": "A-",
+        "communityMark": "A-",
+        "governanceMark": "B-",
+        "employmentMark": "C+",
+        "environmentMark": "A",
         "info": [
             {
                 "title": "Environmental",

@@ -22,6 +22,10 @@
                 vm.corps[i].percentColor = getPercentColor(vm.corps[i].percent);
                 vm.corps[i].overalColor = getMarkColor(vm.corps[i].overalMark);
                 vm.corps[i].personalColor = getMarkColor(vm.corps[i].personalMark);
+                vm.corps[i].communityColor = getMarkColor(vm.corps[i].communityMark);
+                vm.corps[i].governanceColor = getMarkColor(vm.corps[i].governanceMark);
+                vm.corps[i].employmentColor = getMarkColor(vm.corps[i].employmentMark);
+                vm.corps[i].environmentColor = getMarkColor(vm.corps[i].environmentMark);
                 vm.corps[i].bgdColor = 'white';
             }
             console.log('json')

@@ -24,19 +24,19 @@
         </div>
         <div class="second-rating" layout="row">
             <div class="community rating" flex>
-                <div class="symbol b-color">B</div>
+                <div class="symbol" ng-class="vm.currentCorp.communityColor">{{vm.currentCorp.communityMark}}</div>
                 <div class="title">Community</div>
             </div>
             <div class="employees rating" flex>
-                <div class="symbol a-color">A-</div>
+                <div class="symbol" ng-class="vm.currentCorp.employmentColor">{{vm.currentCorp.employmentMark}}</div>
                 <div class="title">Employees</div>
             </div>
             <div class="environment rating" flex>
-                <div class="symbol c-color">C+</div>
+                <div class="symbol" ng-class="vm.currentCorp.environmentColor">{{vm.currentCorp.environmentMark}}</div>
                 <div class="title">Environment</div>
             </div>
             <div class="governance rating" flex>
-                <div class="symbol a-color">A-</div>
+                <div class="symbol" ng-class="vm.currentCorp.governanceColor">{{vm.currentCorp.governanceMark}}</div>
                 <div class="title">Governance</div>
             </div>
         </div>
