@@ -1,12 +1,13 @@
 (function () {
     'use strict';
 
+
     angular.module('miApp')
         .config(miAppConfig);
 
-    function miAppConfig($stateProvider, $locationProvider) {
+    function miAppConfig($stateProvider, $locationProvider, $httpProvider) {
         $locationProvider.html5Mode(true);
-
+        //$httpProvider.interceptors.push('APIInterceptor');
         $stateProvider
             .state('Main', {
                 abstract: true,
@@ -30,5 +31,7 @@
                 controller: 'StartPageCtrl',
                 controllerAs: 'vm'
             });
+
+
     }
 })();

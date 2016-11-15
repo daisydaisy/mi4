@@ -17,7 +17,11 @@ app.get('/', function(request, response) {
 });
 
 app.all('/*', function(req, res){
-  res.sendFile('index.html', { root: __dirname })
+  res.sendFile('index.html', { root: __dirname });
+    // res.header("Access-Control-Allow-Origin", "*");
+    // res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    // res.header("Access-Control-Allow-Methods", "GET, POST", "PUT", "DELETE", "OPTIONS");
+    // next();
 });
 
 app.listen(app.get('port'), function() {
