@@ -4,7 +4,7 @@
     angular.module('portfolio')
         .controller('PortfolioCtrl', PortfolioCtrl);
 
-    function PortfolioCtrl($scope, $http, $mdSidenav, $mdDialog, $timeout, $rootScope, $mdMedia, ChartJs, CompanyDataService) {
+    function PortfolioCtrl($scope, $http, $mdSidenav, $mdDialog, $timeout, $rootScope, $mdMedia,$localStorage,  ChartJs, CompanyDataService) {
         var vm = this;
         vm.currentCorp = {};
         var color = '#faf8f5';
@@ -15,9 +15,32 @@
         ChartJs.Chart.defaults.global.defaultFontFamily = 'Open Sans';
         ChartJs.Chart.defaults.global.defaultFontSize = 11;
         vm.maxVisibleDescrLength = 800;
+        if ($localStorage.corps === undefined) {
+            CompanyDataService.getAll().then(function (response) {
+                vm.corps = response.data.results;
 
-        CompanyDataService.getAll().then(function (response) {
-            vm.corps = response.data.results;
+                for (var i = 0; i < vm.corps.length; i++) {
+
+                    vm.corps[i].percentColor = getPercentColor(vm.corps[i].transparency_reporting);
+                    vm.corps[i].overalColor = getMarkColor(vm.corps[i].ratings);
+                    vm.corps[i].personalColor = getMarkColor(vm.corps[i].ratings);
+                    vm.corps[i].communityColor = getMarkColor(vm.corps[i].community);
+                    vm.corps[i].governanceColor = getMarkColor(vm.corps[i].governance);
+                    vm.corps[i].employmentColor = getMarkColor(vm.corps[i].employees);
+                    vm.corps[i].environmentColor = getMarkColor(vm.corps[i].environment);
+                    vm.corps[i].bgdColor = 'white';
+                    vm.corps[i]['img_url'] = '/images/no_photo.png';
+                }
+                console.log('json')
+                vm.corps[currentIndex].bgdColor = color;
+                vm.currentCorp = vm.corps[currentIndex];
+            }, function (err) {
+                console.log(err);
+            });
+        }
+        else{
+
+            vm.corps = $localStorage.corps;
 
             for (var i = 0; i < vm.corps.length; i++) {
 
@@ -32,11 +55,15 @@
                 vm.corps[i]['img_url'] = '/images/no_photo.png';
             }
             console.log('json')
-            vm.corps[currentIndex].bgdColor = color;
+            if ('bgdColor' in vm.corps[currentIndex]) {
+                vm.corps[currentIndex].bgdColor = color;
+            }
+            else{
+                vm.corps[currentIndex]['bgdColor'] = color;
+            }
             vm.currentCorp = vm.corps[currentIndex];
-        }, function (err) {
-            console.log(err);
-        });
+
+        }
         vm.toggleLeft = buildToggler('left');
         vm.getCurrentImage = getCurrentImage;
         vm.showVideo = showVideo;
@@ -111,6 +138,7 @@
             }
         }
         function showInfo(index, notToggle) {
+
             vm.corps[currentIndex].bgdColor = 'white';
             vm.corps[index].bgdColor = color;
             currentIndex = index;
