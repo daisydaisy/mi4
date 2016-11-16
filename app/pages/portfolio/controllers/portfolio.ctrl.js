@@ -18,7 +18,9 @@
 
         CompanyDataService.getAll().then(function (response) {
             vm.corps = response.data.results;
+
             for (var i = 0; i < vm.corps.length; i++) {
+
                 vm.corps[i].percentColor = getPercentColor(vm.corps[i].transparency_reporting);
                 vm.corps[i].overalColor = getMarkColor(vm.corps[i].ratings);
                 vm.corps[i].personalColor = getMarkColor(vm.corps[i].ratings);

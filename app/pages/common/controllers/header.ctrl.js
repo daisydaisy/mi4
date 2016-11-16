@@ -4,7 +4,7 @@
     angular.module('miApp')
         .controller('HeaderCtrl', HeaderCtrl);
 
-    function HeaderCtrl($scope, $state, $timeout, $q, $http, $rootScope, CompanyDataService) {
+    function HeaderCtrl($scope, $state, $timeout, $q, $http, $rootScope, $localStorage, CompanyDataService) {
         var vm = this;
         vm.simulateQuery = false;
         vm.isDisabled = false;
@@ -13,11 +13,13 @@
         vm.companies = [];
         vm.querySearch = querySearch;
         vm.corps = [];
+        $localStorage.corps = undefined;
         vm.openCompanyPage = openCompanyPage;
 
         CompanyDataService.getAll().then(function (response) {
             console.log(response);
             vm.corps = response.data.results;
+            $localStorage.corps = vm.corps;
             vm.companies = loadAll();
         }, function (err) {
             console.log(err);

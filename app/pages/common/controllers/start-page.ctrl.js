@@ -3,13 +3,17 @@
 
     angular.module('miApp')
         .controller('StartPageCtrl',  StartPageCtrl);
-    function StartPageCtrl($rootScope, $scope, $mdDialog, $http, CompanyDataService) {
+    function StartPageCtrl($rootScope, $scope, $mdDialog, $http,$localStorage, CompanyDataService) {
         var vm = this;
         vm.showTabDialog = showTabDialog;
         vm.corps = [];
+
         // pulling company data
-        CompanyDataService.getAll().then(function (response) {
+        if ($localStorage.corps === undefined) {
+            CompanyDataService.getAll().then(function (response) {
                 vm.corps = response.data.results;
+                vm.corps = vm.corps.slice(0, 20);
+                console.log(vm.corps);
                 for (var i = 0; i < vm.corps.length; i++) {
                     vm.corps[i].percentColor = getPercentColor(vm.corps[i].transparency_reporting);
                     vm.corps[i].overalColor = getMarkColor(vm.corps[i].ratings);
@@ -19,6 +23,19 @@
             }, function (err) {
                 console.log(err);
             });
+        }
+        else{
+            vm.corps = $localStorage.corps;
+            vm.corps = vm.corps.slice(0, 20);
+            console.log(vm.corps);
+            for (var i = 0; i < vm.corps.length; i++) {
+                vm.corps[i].percentColor = getPercentColor(vm.corps[i].transparency_reporting);
+                vm.corps[i].overalColor = getMarkColor(vm.corps[i].ratings);
+                vm.corps[i].personalColor = getMarkColor(vm.corps[i].overall);
+                vm.corps[i]['imgUrl'] = '/images/round-no-image.png';
+            }
+
+        }
         // });
 
 
