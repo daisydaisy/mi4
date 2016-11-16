@@ -27,9 +27,7 @@
                 vm.corps[i].employmentColor = getMarkColor(vm.corps[i].employees);
                 vm.corps[i].environmentColor = getMarkColor(vm.corps[i].environment);
                 vm.corps[i].bgdColor = 'white';
-                vm.chartData = [
-                    [56, 54, 52, 50, 47, 44]
-                ];
+                vm.corps[i]['img_url'] = '/images/no_photo.png';
             }
             console.log('json')
             vm.corps[currentIndex].bgdColor = color;
@@ -99,7 +97,9 @@
         })
 
         function getCurrentImage() {
+            vm.currentCorp.imgUrl  = '/images/round-no-image.png';
             return 'url(' + vm.currentCorp.imgUrl + ')';
+            //return 'url(' + vm.currentCorp.imgUrl + ')';
         }
 
         function buildToggler(componentId) {

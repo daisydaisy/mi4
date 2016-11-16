@@ -22,17 +22,12 @@
     });
 
     angular.module('miApp').factory('myInterceptor', ['$q', '$injector', function($q, $injector) {
-        var service = this;
+        // var service = this;
         console.log('aya ha g');
             return {
                 request: function (config) {
                     if (config.url.indexOf('http://68.171.153.8/api-token-auth/') === -1) {
                         return $injector.get('AuthenticationService').getToken().then(function (response) {
-
-
-                            // $cookies.put('access_token', response.token);
-                            // $cookies.put('refresh_token', response.data.refreshToken.value);
-                            console.log(response);
                             config.headers.authorization = 'Token ' + response.data.token;
                             return config;
                         }).then(function () {
@@ -53,45 +48,6 @@
 
 
     }]);
-    //
-    // angular.module('miApp').service('APIInterceptor', function($rootScope,$injector) {
-    //     var service = this;
-    //     service.request = function(config) {
-    //         // var deferred = $q.defer();
-    //         var $http = $injector.get('$http');
-    //         $http.post('http://68.171.153.8/api-token-auth/', {'username':'my4', 'password':'flexipassword'}, {'method':'POST', 'headers':{'Content-Type':'application/json'}})
-    //             .then(function (data) {// token =  ;
-    //                 if (data.token) {
-    //                     config.headers.authorization = 'Token' + token;
-    //                 }
-    //
-    //             });
-    //         // return deferred.promise;
-    //
-    //
-    //         return config;
-    //     };
-    //     service.responseError = function(response) {
-    //         if (response.status === 401) {
-    //             $rootScope.$broadcast('unauthorized');
-    //         }
-    //         return response;
-    //     };
-    //
-    //     return
-    // }).config(function($httpProvider) {
-    //     $httpProvider.interceptors.push('APIInterceptor');
-    // })
-
-    //     .config(['$httpProvider', function ($httpProvider) {
-    //     // $httpProvider.defaults.useXDomain = true;
-    //     // delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    //     $httpProvider.interceptors.push('APIInterceptor');
-    //
-    // }]);
-
-
-
 
     angular.module('miApp').service('CompanyDataService', function ($http, $q) {
         return {

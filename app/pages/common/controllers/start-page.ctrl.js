@@ -14,6 +14,7 @@
                     vm.corps[i].percentColor = getPercentColor(vm.corps[i].transparency_reporting);
                     vm.corps[i].overalColor = getMarkColor(vm.corps[i].ratings);
                     vm.corps[i].personalColor = getMarkColor(vm.corps[i].overall);
+                    vm.corps[i]['imgUrl'] = '/images/round-no-image.png';
                 }
             }, function (err) {
                 console.log(err);
@@ -38,13 +39,17 @@
         }
 
          function getMarkColor(mark) {
-            var mark = mark.charAt(0).toLowerCase();
-            return mark + '-color';
+            if (mark) {
+                var mark = mark.charAt(0).toLowerCase();
+                return mark + '-color';
+            }
         }
 
         function getPercentColor(percent) {
-            var symbol = percent.charAt(0);
-            return symbol === '+';
+            if (percent) {
+                var symbol = percent.charAt(0);
+                return symbol === '+';
+            }
         }
     }
 })();
