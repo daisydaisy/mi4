@@ -1,18 +1,18 @@
 <div class="portfolio-corp-overview">
     <div class="overview-title">Company Overview</div>
     <div class="overview-description">
-        Southwest Airlines Co. operates passenger airlines that provide scheduled air transportation services in the United States
-        and near-international markets. As of December 31, 2015, it operated 704 Boeing 737 aircraft. The company served
-        97 destinations in 40 states, the District of Columbia, and the Commonwealth of Puerto
+        {{vm.currentCorp.description}}
+
     </div>
     <div class="overview-properties">
         <div class="property">
             <div class="name">Sector</div>
-            <div class="value">Regional Airline</div>
+            <div class="value">{{vm.currentCorp.industries[0]}}</div>
         </div>
         <div class="property">
             <div class="name">CSRHub</div>
-            <div class="value">56</div>
+            <div class="value">{{vm.currentCorp.board}}
+            </div>
         </div>
         <div class="property">
             <div class="name">Exchange</div>
@@ -20,23 +20,23 @@
         </div>
         <div class="property">
             <div class="name">The Street</div>
-            <div class="value">Buy B+</div>
+            <div class="value">{{vm.currentCorp.address}}</div>
         </div>
         <div class="property">
             <div class="name">Website</div>
-            <div class="value">www.southwest.com</div>
+            <div class="value">{{vm.currentCorp.website}}</div>
         </div>
         <div class="property">
             <div class="name">CSRHub</div>
-            <div class="value">56</div>
+            <div class="value">{{vm.currentCorp.overall}}</div>
         </div>
         <div class="property">
             <div class="name">Glassdoor</div>
             <div class="value">4.1</div>
         </div>
-        <div class="property">
-            <div class="name">The Street</div>
-            <div class="value">Buy B+</div>
-        </div>
+        <!--<div class="property">-->
+            <!--<div class="name">The Street</div>-->
+            <!--<div class="value">Buy B+</div>-->
+        <!--</div>-->
     </div>
 </div>

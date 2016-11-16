@@ -4,7 +4,7 @@
     angular.module('portfolio')
         .controller('PortfolioCtrl', PortfolioCtrl);
 
-    function PortfolioCtrl($scope, $http, $mdSidenav, $mdDialog, $timeout, $rootScope, $mdMedia, ChartJs) {
+    function PortfolioCtrl($scope, $http, $mdSidenav, $mdDialog, $timeout, $rootScope, $mdMedia, ChartJs, CompanyDataService) {
         var vm = this;
         vm.currentCorp = {};
         var color = '#faf8f5';
@@ -16,17 +16,20 @@
         ChartJs.Chart.defaults.global.defaultFontSize = 11;
         vm.maxVisibleDescrLength = 800;
 
-        $http.get('/json/corps.json').then(function (response) {
-            vm.corps = response.data;
+        CompanyDataService.getAll().then(function (response) {
+            vm.corps = response.data.results;
             for (var i = 0; i < vm.corps.length; i++) {
-                vm.corps[i].percentColor = getPercentColor(vm.corps[i].percent);
-                vm.corps[i].overalColor = getMarkColor(vm.corps[i].overalMark);
-                vm.corps[i].personalColor = getMarkColor(vm.corps[i].personalMark);
-                vm.corps[i].communityColor = getMarkColor(vm.corps[i].communityMark);
-                vm.corps[i].governanceColor = getMarkColor(vm.corps[i].governanceMark);
-                vm.corps[i].employmentColor = getMarkColor(vm.corps[i].employmentMark);
-                vm.corps[i].environmentColor = getMarkColor(vm.corps[i].environmentMark);
+                vm.corps[i].percentColor = getPercentColor(vm.corps[i].transparency_reporting);
+                vm.corps[i].overalColor = getMarkColor(vm.corps[i].ratings);
+                vm.corps[i].personalColor = getMarkColor(vm.corps[i].ratings);
+                vm.corps[i].communityColor = getMarkColor(vm.corps[i].community);
+                vm.corps[i].governanceColor = getMarkColor(vm.corps[i].governance);
+                vm.corps[i].employmentColor = getMarkColor(vm.corps[i].employees);
+                vm.corps[i].environmentColor = getMarkColor(vm.corps[i].environment);
                 vm.corps[i].bgdColor = 'white';
+                vm.chartData = [
+                    [56, 54, 52, 50, 47, 44]
+                ];
             }
             console.log('json')
             vm.corps[currentIndex].bgdColor = color;
@@ -128,13 +131,18 @@
             });
         }
         function getMarkColor(mark) {
-            var mark = mark.charAt(0).toLowerCase();
-            return mark + '-color';
+            if (mark !== null) {
+                var mark = mark.charAt(0).toLowerCase();
+                return mark + '-color';
+            }
         }
 
         function getPercentColor(percent) {
-            var symbol = percent.charAt(0);
+            if (percent !== null) {
+                var symbol = percent.charAt(0);
+
             return symbol === '+';
+            }
         }
     }
 })();

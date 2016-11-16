@@ -3,21 +3,17 @@
 
     angular.module('miApp')
         .controller('StartPageCtrl',  StartPageCtrl);
-
     function StartPageCtrl($rootScope, $scope, $mdDialog, $http, CompanyDataService) {
         var vm = this;
         vm.showTabDialog = showTabDialog;
         vm.corps = [];
-        // Restangular.all('http://68.171.153.8/api-token-auth/').post("", {'username':'my4', 'password':'flexipassword'});
-        // $http.post('http://68.171.153.8/api-token-auth/', {'username':'my4', 'password':'flexipassword'}, {'method':'POST', 'headers':{'Content-Type':'application/json'}} ).then(function(response){
-        //
-        //     $http.defaults.headers.common['Authorization'] = 'Token ' + response.data['token'];
+        // pulling company data
         CompanyDataService.getAll().then(function (response) {
-                vm.corps = response.data;
+                vm.corps = response.data.results;
                 for (var i = 0; i < vm.corps.length; i++) {
-                    vm.corps[i].percentColor = getPercentColor(vm.corps[i].percent);
-                    vm.corps[i].overalColor = getMarkColor(vm.corps[i].overalMark);
-                    vm.corps[i].personalColor = getMarkColor(vm.corps[i].personalMark);
+                    vm.corps[i].percentColor = getPercentColor(vm.corps[i].transparency_reporting);
+                    vm.corps[i].overalColor = getMarkColor(vm.corps[i].ratings);
+                    vm.corps[i].personalColor = getMarkColor(vm.corps[i].overall);
                 }
             }, function (err) {
                 console.log(err);

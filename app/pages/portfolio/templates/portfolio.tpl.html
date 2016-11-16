@@ -6,7 +6,7 @@
                     <img class="card-image" ng-src="{{corp.imgUrl}}" alt="img" set-height>
                     <div class="card-content"  ng-style="{'background-color': corp.bgdColor}" flex>
                         <div class="title">
-                            <span class="general">{{corp.title}}</span>
+                            <span class="general">{{corp.name}}</span>
                             <span class="nyse"> ({{corp.nyse}})</span>
                         </div>
                         <div class="description">
@@ -15,11 +15,11 @@
                         <div class="rating" layout="row">
                             <div class="overal">
                                 <span class="text">Overal Rating: </span>
-                                <span class="symbol" ng-class="corp.overalColor" ng-style="{'border-color': corp.overalColor}">{{corp.overalMark}}</span>
+                                <span class="symbol" ng-class="corp.overalColor" ng-style="{'border-color': corp.overalColor}">{{corp.ratings}}</span>
                             </div>
                             <div class="personal">
                                 <span class="text">Personal Values Match:</span>
-                                <span class="symbol" ng-class="corp.personalColor">{{corp.personalMark}}</span>
+                                <span class="symbol" ng-class="corp.personalColor">{{corp.ratings}}</span>
                             </div>
                         </div>
                     </div>

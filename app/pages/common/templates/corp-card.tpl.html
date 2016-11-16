@@ -1,18 +1,18 @@
 <div class="corp-card">
     <div class="corp-card-image" ng-style="{'background-image': 'url({{corp.imgUrl}})'}"></div>
     <div class="corp-title">
-        {{corp.title}}
+        {{corp.name}}
     </div>
     <div class="corp-sub-title">
-        <span><b>{{corp.nyse}} - </b>{{corp.price}}</span>
-        <span class="percent" ng-class="{'positive': corp.percentColor }">{{corp.percent}}</span>
+        <span><b>{{corp.nyse}} - </b>{{corp.overall}}</span>
+        <span class="percent" ng-class="{'positive': corp.percentColor }">{{corp.transparency_reporting}}</span>
     </div>
     <div class="corp-description">
         {{corp.description}}
     </div>
     <div class="corp-rating">
         <span class="rating-title">Overal Rating:</span>
-        <span class="rating-value" ng-class="corp.overalColor">{{corp.overalMark}}</span>
+        <span class="rating-value" ng-class="corp.overalColor">{{corp.ratings}}</span>
          
     </div>
     <div class="btn-wrapper">

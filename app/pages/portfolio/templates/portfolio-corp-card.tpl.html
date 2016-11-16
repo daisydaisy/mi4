@@ -1,11 +1,11 @@
 <div class="portfolio-corp-card" flex>
     <div class="corp-card-image" ng-style="{'background-image': vm.getCurrentImage()}"></div>
     <div class="corp-title">
-        {{vm.currentCorp.title}}
+        {{vm.currentCorp.name}}
     </div>
     <div class="corp-sub-title">
-        <span><b>{{vm.currentCorp.nyse}} - </b>{{vm.currentCorp.price}}</span>
-        <span class="percent" ng-class="{'positive': vm.currentCorp.percentColor }">{{vm.currentCorp.percent}}</span>
+        <span><b>{{vm.currentCorp.nyse}} - </b>{{vm.currentCorp.product}}</span>
+        <span class="percent" ng-class="{'positive': vm.currentCorp.percentColor }">{{vm.currentCorp.transparency_reporting}}</span>
     </div>
     <div class="btn-wrapper" layout="row"  layout-align="space-between center" layout-xs="column">
         <md-button class="md-primary md-raised back-btn" aria-label="Back"><span>Add to portfolio</span></md-button>
@@ -14,29 +14,29 @@
     <div class="rating-wrapper">
         <div class="general-rating" layout="row">
             <div class="overal rating" flex>
-                <div class="symbol" ng-class="vm.currentCorp.overalColor">{{vm.currentCorp.overalMark}}</div>
+                <div class="symbol" ng-class="vm.currentCorp.overalColor">{{vm.currentCorp.ratings}}</div>
                 <div class="title">Overal Rating</div>
             </div>
             <div class="personal rating" flex>
-                <div class="symbol" ng-class="vm.currentCorp.personalColor">{{vm.currentCorp.personalMark}}</div>
+                <div class="symbol" ng-class="vm.currentCorp.personalColor">{{vm.currentCorp.ratings}}</div>
                 <div class="title">Personal Values Matching Score</div>
             </div>
         </div>
         <div class="second-rating" layout="row">
             <div class="community rating" flex>
-                <div class="symbol" ng-class="vm.currentCorp.communityColor">{{vm.currentCorp.communityMark}}</div>
+                <div class="symbol" ng-class="vm.currentCorp.communityColor">{{vm.currentCorp.community}}</div>
                 <div class="title">Community</div>
             </div>
             <div class="employees rating" flex>
-                <div class="symbol" ng-class="vm.currentCorp.employmentColor">{{vm.currentCorp.employmentMark}}</div>
+                <div class="symbol" ng-class="vm.currentCorp.employmentColor">{{vm.currentCorp.employees}}</div>
                 <div class="title">Employees</div>
             </div>
             <div class="environment rating" flex>
-                <div class="symbol" ng-class="vm.currentCorp.environmentColor">{{vm.currentCorp.environmentMark}}</div>
+                <div class="symbol" ng-class="vm.currentCorp.environmentColor">{{vm.currentCorp.environment}}</div>
                 <div class="title">Environment</div>
             </div>
             <div class="governance rating" flex>
-                <div class="symbol" ng-class="vm.currentCorp.governanceColor">{{vm.currentCorp.governanceMark}}</div>
+                <div class="symbol" ng-class="vm.currentCorp.governanceColor">{{vm.currentCorp.governance}}</div>
                 <div class="title">Governance</div>
             </div>
         </div>

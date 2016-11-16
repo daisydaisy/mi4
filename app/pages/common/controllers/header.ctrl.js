@@ -4,7 +4,7 @@
     angular.module('miApp')
         .controller('HeaderCtrl', HeaderCtrl);
 
-    function HeaderCtrl($scope, $state, $timeout, $q, $http, $rootScope) {
+    function HeaderCtrl($scope, $state, $timeout, $q, $http, $rootScope, CompanyDataService) {
         var vm = this;
         vm.simulateQuery = false;
         vm.isDisabled = false;
@@ -15,8 +15,9 @@
         vm.corps = [];
         vm.openCompanyPage = openCompanyPage;
 
-        $http.get('/json/corps.json').then(function (response) {
-            vm.corps = response.data;
+        CompanyDataService.getAll().then(function (response) {
+            console.log(response);
+            vm.corps = response.data.results;
             vm.companies = loadAll();
         }, function (err) {
             console.log(err);
@@ -54,8 +55,8 @@
 
             return vm.corps.map(function (company, index) {
                 return {
-                    value: company.title.toLowerCase(),
-                    display: company.title,
+                    value: company.name.toLowerCase(),
+                    display: company.name,
                     index: index
                 };
             });

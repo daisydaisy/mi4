@@ -7,7 +7,7 @@
 
     function miAppConfig($stateProvider, $locationProvider, $httpProvider) {
         $locationProvider.html5Mode(true);
-        //$httpProvider.interceptors.push('APIInterceptor');
+        $httpProvider.interceptors.push('myInterceptor');
         $stateProvider
             .state('Main', {
                 abstract: true,
