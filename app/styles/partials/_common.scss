@@ -8,3 +8,9 @@ body {
   background-color: $background-color;
   color: $general-text-color;
 }
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}  

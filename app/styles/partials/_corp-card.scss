@@ -6,6 +6,7 @@ $lines-to-show: 2;
     display: inline-block;
     .corp-title {
         @include montserrat-font-size(20px);
+        padding: 0px 20px;
         line-height: 1.5;
         margin-top: 25px;
     }
@@ -23,7 +24,6 @@ $lines-to-show: 2;
     .corp-description {
         @include open-sans-font;
         display: block;
-        display: -webkit-box;
         max-height: $font-size*$line-height*$lines-to-show;
         margin-bottom: 22px;
         padding-left: 37px;
