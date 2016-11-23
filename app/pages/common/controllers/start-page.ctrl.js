@@ -3,7 +3,8 @@
 
     angular.module('miApp')
         .controller('StartPageCtrl',  StartPageCtrl);
-    function StartPageCtrl($rootScope, $scope, $mdDialog, $http,$localStorage, CompanyDataService, PortfolioDataService) {
+    function StartPageCtrl($rootScope, $scope, $mdDialog, $http,$localStorage, CompanyDataService,
+                           $injector) {
         var vm = this;
         vm.showTabDialog = showTabDialog;
         vm.corps = [];
@@ -12,10 +13,9 @@
         vm.employeesTopRatedCorps = [];
         vm.governanceTopRatedCorps = [];
 
-        PortfolioDataService.getPortfolio().then(function(response){
+        $injector.get('PortfolioDataService').getPortfolio().then(function(response){
 
             vm.porfolioCorps = response.data.results;
-
 
         }, function (err) {
             console.log(err);
