@@ -12,3 +12,9 @@ body {
 .portfilio .md-sidenav-left .side-content .sidenav-corp-list .sidenav-corp-card .card-content .rating .symbol{
   font-size: 14px !important;
 }
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
