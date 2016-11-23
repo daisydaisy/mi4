@@ -4,7 +4,8 @@
     angular.module('portfolio')
         .controller('PortfolioCtrl', PortfolioCtrl);
 
-    function PortfolioCtrl($scope, $http, $mdSidenav, $mdDialog, $timeout, $rootScope, $mdMedia,$localStorage,  ChartJs, CompanyDataService) {
+    function PortfolioCtrl($scope, $http, $mdSidenav, $mdDialog, $timeout, $rootScope, $mdMedia,$localStorage,  ChartJs,
+                           CompanyDataService, PortfolioDataService) {
         var vm = this;
         vm.currentCorp = {};
         var color = '#faf8f5';
@@ -15,21 +16,27 @@
         ChartJs.Chart.defaults.global.defaultFontFamily = 'Open Sans';
         ChartJs.Chart.defaults.global.defaultFontSize = 11;
         vm.maxVisibleDescrLength = 800;
-        if ($localStorage.corps === undefined) {
+        vm.porfolioCorps = [];
+        vm.corps_all = [];
+        vm.corps = [];
+
+        PortfolioDataService.getPortfolio().then(function(response){
+
+            vm.porfolioCorps = response.data.results;
+
+
+        }, function (err) {
+            console.log(err);
+        });
+
+
+        // if ($localStorage.corps === undefined) {
             CompanyDataService.getAll().then(function (response) {
-                vm.corps = response.data.results;
+                vm.corps_all = response.data.results;
 
-                for (var i = 0; i < vm.corps.length; i++) {
-
-                    vm.corps[i].percentColor = getPercentColor(vm.corps[i].transparency_reporting);
-                    vm.corps[i].overalColor = getMarkColor(vm.corps[i].ratings);
-                    vm.corps[i].personalColor = getMarkColor(vm.corps[i].ratings);
-                    vm.corps[i].communityColor = getMarkColor(vm.corps[i].community);
-                    vm.corps[i].governanceColor = getMarkColor(vm.corps[i].governance);
-                    vm.corps[i].employmentColor = getMarkColor(vm.corps[i].employees);
-                    vm.corps[i].environmentColor = getMarkColor(vm.corps[i].environment);
-                    vm.corps[i].bgdColor = 'white';
-                    vm.corps[i]['img_url'] = '/images/no_photo.png';
+                for (var i = 0; i < vm.porfolioCorps.length; i++) {
+                    var idx = getIndexIfObjWithOwnAttr(vm.corps_all,'company_id', vm.porfolioCorps[i].company);
+                    vm.corps.push(setValues(vm.corps_all[idx]));
                 }
                 console.log('json')
                 vm.corps[currentIndex].bgdColor = color;
@@ -37,33 +44,25 @@
             }, function (err) {
                 console.log(err);
             });
-        }
-        else{
-
-            vm.corps = $localStorage.corps;
-
-            for (var i = 0; i < vm.corps.length; i++) {
-
-                vm.corps[i].percentColor = getPercentColor(vm.corps[i].transparency_reporting);
-                vm.corps[i].overalColor = getMarkColor(vm.corps[i].ratings);
-                vm.corps[i].personalColor = getMarkColor(vm.corps[i].ratings);
-                vm.corps[i].communityColor = getMarkColor(vm.corps[i].community);
-                vm.corps[i].governanceColor = getMarkColor(vm.corps[i].governance);
-                vm.corps[i].employmentColor = getMarkColor(vm.corps[i].employees);
-                vm.corps[i].environmentColor = getMarkColor(vm.corps[i].environment);
-                vm.corps[i].bgdColor = 'white';
-                vm.corps[i]['img_url'] = '/images/no_photo.png';
-            }
-            console.log('json')
-            if ('bgdColor' in vm.corps[currentIndex]) {
-                vm.corps[currentIndex].bgdColor = color;
-            }
-            else{
-                vm.corps[currentIndex]['bgdColor'] = color;
-            }
-            vm.currentCorp = vm.corps[currentIndex];
-
-        }
+        // }
+        // else{
+        //
+        //     vm.corps = $localStorage.corps;
+        //
+        //     for (var i = 0; i < vm.corps.length; i++) {
+        //
+        //         vm.corps[i] = setValues(vm.corps[i]);
+        //     }
+        //     console.log('json')
+        //     if ('bgdColor' in vm.corps[currentIndex]) {
+        //         vm.corps[currentIndex].bgdColor = color;
+        //     }
+        //     else{
+        //         vm.corps[currentIndex]['bgdColor'] = color;
+        //     }
+        //     vm.currentCorp = vm.corps[currentIndex];
+        //
+        // }
         vm.toggleLeft = buildToggler('left');
         vm.getCurrentImage = getCurrentImage;
         vm.showVideo = showVideo;
@@ -123,8 +122,21 @@
             if (vm.corps) {
                 showInfo(newValue, true);
             }
-        })
+        });
+        function setValues(obj){
+            obj.percentColor = getPercentColor(obj.transparency_reporting);
+            obj.overalColor = getMarkColor(obj.ratings);
+            obj.personalColor = getMarkColor(obj.ratings);
+            obj.communityColor = getMarkColor(obj.community);
+            obj.governanceColor = getMarkColor(obj.governance);
+            obj.employmentColor = getMarkColor(obj.employees);
+            obj.environmentColor = getMarkColor(obj.environment);
+            obj.bgdColor = 'white';
+            obj['img_url'] = '/images/no_photo.png';
 
+            return obj;
+
+        }
         function getCurrentImage() {
             vm.currentCorp.imgUrl  = '/images/round-no-image.png';
             return 'url(' + vm.currentCorp.imgUrl + ')';
@@ -139,10 +151,13 @@
         }
         function showInfo(index, notToggle) {
 
-            vm.corps[currentIndex].bgdColor = 'white';
-            vm.corps[index].bgdColor = color;
-            currentIndex = index;
-            vm.currentCorp = vm.corps[index];
+            if (vm.corps[currentIndex] && 'bgdColor' in  vm.corps[currentIndex]) {
+                vm.corps[currentIndex].bgdColor = 'white';
+                vm.corps[index].bgdColor = color;
+
+                currentIndex = index;
+                vm.currentCorp = vm.corps[index];
+            }
             if (!notToggle && !$mdMedia('gt-sm')) {
                 vm.toggleLeft();
             }
@@ -173,6 +188,15 @@
 
             return symbol === '+';
             }
+        }
+
+        function getIndexIfObjWithOwnAttr(array, attr, value) {
+            for(var i = 0; i < array.length; i++) {
+                if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
+                    return i;
+                }
+            }
+            return -1;
         }
     }
 })();

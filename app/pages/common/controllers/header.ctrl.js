@@ -13,17 +13,20 @@
         vm.companies = [];
         vm.querySearch = querySearch;
         vm.corps = [];
-        $localStorage.corps = undefined;
+
+        $localStorage.corps = ('corps' in $localStorage)? $localStorage.corps: undefined;
         vm.openCompanyPage = openCompanyPage;
 
-        CompanyDataService.getAll().then(function (response) {
-            console.log(response);
-            vm.corps = response.data.results;
-            $localStorage.corps = vm.corps;
-            vm.companies = loadAll();
-        }, function (err) {
-            console.log(err);
-        });
+            CompanyDataService.getAll().then(function (response) {
+                console.log(response);
+                vm.corps = response.data.results;
+                $localStorage.corps = vm.corps;
+                vm.companies = loadAll();
+            }, function (err) {
+                console.log(err);
+            });
+
+
 
         function querySearch(query) {
             var results = query ? vm.companies.filter(createFilterFor(query)) : vm.companies,

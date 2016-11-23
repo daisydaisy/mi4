@@ -8,7 +8,7 @@
         <span class="percent" ng-class="{'positive': vm.currentCorp.percentColor }">{{vm.currentCorp.transparency_reporting}}</span>
     </div>
     <div class="btn-wrapper" layout="row"  layout-align="space-between center" layout-xs="column">
-        <md-button class="md-primary md-raised back-btn" aria-label="Back"><span>Add to portfolio</span></md-button>
+        <md-button class="md-primary md-raised back-btn" ng-disabled="true" style="opacity: 0.60;" aria-label="Back"><span>Add to portfolio</span></md-button>
         <md-button class="share-btn" aria-label="Share" ng-click="vm.toggleLeft()"><span>Share</span></md-button>
     </div>
     <div class="rating-wrapper">
