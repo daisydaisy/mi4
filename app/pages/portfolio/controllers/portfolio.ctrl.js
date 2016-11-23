@@ -125,12 +125,15 @@
         });
         function setValues(obj){
             obj.percentColor = getPercentColor(obj.transparency_reporting);
-            obj.overalColor = getMarkColor(obj.ratings);
-            obj.personalColor = getMarkColor(obj.ratings);
+            // obj.overalColor = getMarkColor(obj.ratings);
+            obj.overalColor = getMarkColor(getGradeFromPercent(obj.overall));
+            obj.personalColor = getMarkColor(getGradeFromPercent(obj.overall));
+            obj['overall_rating'] = getGradeFromPercent(obj.overall);
             obj.communityColor = getMarkColor(obj.community);
             obj.governanceColor = getMarkColor(obj.governance);
             obj.employmentColor = getMarkColor(obj.employees);
             obj.environmentColor = getMarkColor(obj.environment);
+
             obj.bgdColor = 'white';
             obj['img_url'] = '/images/no_photo.png';
 
@@ -189,7 +192,56 @@
             return symbol === '+';
             }
         }
+        function getGradeFromPercent(percent) {
+            var grade = "";
+            switch(true) {
+                case percent >= 80:
+                    grade = 'A+';
+                    break;
+                case percent < 80 && percent >=70:
+                    grade = "A";
+                    break;
+                case percent < 70 && percent >=60:
+                    grade = "A-";
+                    break;
+                case percent < 60 && percent >=56:
+                    grade = "B+";
+                    break;
+                case percent < 56 && percent >=53:
+                    grade = "B";
+                    break;
+                case percent < 53 && percent >=50:
+                    grade = "B-";
+                    break;
+                case percent < 50 && percent >=46:
+                    grade = "C+";
+                    break;
+                case percent < 46 && percent >=43:
+                    grade = "C";
+                    break;
+                case percent < 43 && percent >=40:
+                    grade = "C-";
+                    break;
+                case percent < 40 && percent >=36:
+                    grade = "D";
+                    break;
+                case percent < 36 && percent >=33:
+                    grade = "D+";
+                    break;
+                case percent < 33 && percent >=30:
+                    grade = "D-";
+                    break;
+                case percent < 30 :
+                    grade = "F";
+                    break;
+                default:
+                    grade = "NR";
+                    break;
 
+            }
+            return grade;
+
+        }
         function getIndexIfObjWithOwnAttr(array, attr, value) {
             for(var i = 0; i < array.length; i++) {
                 if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {

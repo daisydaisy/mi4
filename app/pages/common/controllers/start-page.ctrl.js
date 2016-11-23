@@ -7,37 +7,55 @@
         var vm = this;
         vm.showTabDialog = showTabDialog;
         vm.corps = [];
+        vm.communityTopRatedCorps = [];
+        vm.environmentTopRatedCorps = [];
+        vm.employeesTopRatedCorps = [];
+        vm.governanceTopRatedCorps = [];
+
+        PortfolioDataService.getPortfolio().then(function(response){
+
+            vm.porfolioCorps = response.data.results;
+
+
+        }, function (err) {
+            console.log(err);
+        });
 
         // pulling company data
-        if ($localStorage.corps === undefined || $localStorage.corps.length === 0) {
-            CompanyDataService.getAll().then(function (response) {
-                vm.corps = response.data.results;
-                vm.corps = vm.corps.slice(0, 20);
-                console.log(vm.corps);
-                for (var i = 0; i < vm.corps.length; i++) {
-                    vm.corps[i].percentColor = getPercentColor(vm.corps[i].transparency_reporting);
-                    vm.corps[i].overalColor = getMarkColor(vm.corps[i].ratings);
-                    vm.corps[i].personalColor = getMarkColor(vm.corps[i].overall);
-                    vm.corps[i]['imgUrl'] = '/images/round-no-image.png';
-                }
-            }, function (err) {
-                console.log(err);
-            });
-        }
-        else{
-            vm.corps = $localStorage.corps;
+        CompanyDataService.getAll().then(function (response) {
+            vm.corps = response.data.results;
             vm.corps = vm.corps.slice(0, 20);
             console.log(vm.corps);
             for (var i = 0; i < vm.corps.length; i++) {
                 vm.corps[i].percentColor = getPercentColor(vm.corps[i].transparency_reporting);
-                vm.corps[i].overalColor = getMarkColor(vm.corps[i].ratings);
-                vm.corps[i].personalColor = getMarkColor(vm.corps[i].overall);
+                vm.corps[i].overalColor = getMarkColor(getGradeFromPercent(vm.corps[i].overall));
+                vm.corps[i].personalColor = getMarkColor(getGradeFromPercent(vm.corps[i].overall));
+                vm.corps[i]['overall_rating'] = getGradeFromPercent(vm.corps[i].overall);
                 vm.corps[i]['imgUrl'] = '/images/round-no-image.png';
-            }
+                vm.corps[i]['disabled'] = checkIfAddedToCorp(vm.corps[i], vm.porfolioCorps);
+                }
 
-        }
-        // });
+            // sorting and making top rated rows
+            var community = vm.corps.slice();
+            vm.communityTopRatedCorps = community.sortBy('community');
 
+
+            var employeesTopRatedCorps = vm.corps.slice();
+            vm.employeesTopRatedCorps = employeesTopRatedCorps.sortBy('employees');
+
+            var environmentTopRatedCorps = vm.corps.slice();
+            vm.environmentTopRatedCorps = environmentTopRatedCorps.sortBy('environment');
+
+            var governanceTopRatedCorps = vm.corps.slice();
+            vm.governanceTopRatedCorps = governanceTopRatedCorps.sortBy('governance');
+            }, function (err) {
+                console.log(err);
+        });
+
+
+
+
+       // vm.community.sortBy('community');
 
 
         function showTabDialog(ev) {
@@ -69,6 +87,66 @@
             }
         }
 
+        function getGradeFromPercent(percent) {
+            var grade = "";
+            switch(true) {
+                case percent >= 80:
+                    grade = 'A+';
+                    break;
+                case percent < 80 && percent >=70:
+                    grade = "A";
+                    break;
+                case percent < 70 && percent >=60:
+                    grade = "A-";
+                    break;
+                case percent < 60 && percent >=56:
+                    grade = "B+";
+                    break;
+                case percent < 56 && percent >=53:
+                    grade = "B";
+                    break;
+                case percent < 53 && percent >=50:
+                    grade = "B-";
+                    break;
+                case percent < 50 && percent >=46:
+                    grade = "C+";
+                    break;
+                case percent < 46 && percent >=43:
+                    grade = "C";
+                    break;
+                case percent < 43 && percent >=40:
+                    grade = "C-";
+                    break;
+                case percent < 40 && percent >=36:
+                    grade = "D";
+                    break;
+                case percent < 36 && percent >=33:
+                    grade = "D+";
+                    break;
+                case percent < 33 && percent >=30:
+                    grade = "D-";
+                    break;
+                case percent < 30 :
+                    grade = "F";
+                    break;
+                default:
+                    grade = "NR";
+                    break;
+
+            }
+            return grade;
+
+        }
+
+        function checkIfAddedToCorp(corp, portfolioCorps) {
+            for(var i=0; i < portfolioCorps.length; i++){
+                if (portfolioCorps[i].company == corp.company_id){
+                    return true;
+                }
+            }
+            return false;
+        }
+
         $scope.addToPorfolio = function addToPorfolio(company){
 
             PortfolioDataService.addCompany(company.company_id, 7).then(function (response) {
@@ -81,3 +159,37 @@
         }
     }
 })();
+
+//Map implementation for older browsers
+[].map||(Array.prototype.map=function(a){for(var b=this,c=b.length,d=[],e=0,f;e<b;)d[e]=e in b?a.call(arguments[1],b[e],e++,b):f;return d})
+
+!function() {
+    function _dynamicSortMultiple(attr) {
+        var props = arguments;
+        return function (obj1, obj2) {
+            var i = 0, result = 0, numberOfProperties = props.length;
+            /* try getting a different result from 0 (equal)
+             * as long as we have extra properties to compare
+             */
+            while(result === 0 && i < numberOfProperties) {
+                result = _dynamicSort(props[i])(obj1, obj2);
+                i++;
+            }
+            return result;
+        }
+    }
+    function _dynamicSort(property) {
+        var sortOrder = 1;
+        if(property[0] === "-") {
+            sortOrder = -1;
+            property = property.substr(1, property.length - 1);
+        }
+        return function (a,b) {
+            var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+            return result * sortOrder;
+        }
+    }
+    Array.prototype.sortBy = function() {
+        return this.sort(_dynamicSortMultiple.apply(null, arguments));
+    }
+}();

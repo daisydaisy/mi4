@@ -33,7 +33,15 @@
     </div>
 </section>
 <section class="companies-grid">
-    <div class="title">Recommended for You</div>
+    <!--<div class="title">Recommended for You</div>-->
+    <!--<div class="carousel-wrapper">-->
+        <!--<flex-slider animation="slide" animation-loop="false" item-width="298" item-margin="33" slide="corp in vm.corps track by $index">-->
+            <!--<li>-->
+                <!--<bb-corp-card></bb-corp-card>-->
+            <!--</li>-->
+        <!--</flex-slider>-->
+    <!--</div>-->
+    <div class="title">Browse</div>
     <div class="carousel-wrapper">
         <flex-slider animation="slide" animation-loop="false" item-width="298" item-margin="33" slide="corp in vm.corps track by $index">
             <li>
@@ -41,9 +49,37 @@
             </li>
         </flex-slider>
     </div>
-    <div class="title">Browse</div>
+
+    <div class="title">Top Rated Community</div>
     <div class="carousel-wrapper">
-        <flex-slider animation="slide" animation-loop="false" item-width="298" item-margin="33" slide="corp in vm.corps track by $index">
+        <flex-slider animation="slide" animation-loop="false" item-width="298" item-margin="33" slide="corp in vm.communityTopRatedCorps  track by $index">
+            <li>
+                <bb-corp-card></bb-corp-card>
+            </li>
+        </flex-slider>
+    </div>
+
+    <div class="title">Top Rated Employees</div>
+    <div class="carousel-wrapper">
+        <flex-slider animation="slide" animation-loop="false" item-width="298" item-margin="33" slide="corp in vm.employeesTopRatedCorps  track by $index">
+            <li>
+                <bb-corp-card></bb-corp-card>
+            </li>
+        </flex-slider>
+    </div>
+
+    <div class="title">Top Rated Environment</div>
+    <div class="carousel-wrapper">
+        <flex-slider animation="slide" animation-loop="false" item-width="298" item-margin="33" slide="corp in vm.environmentTopRatedCorps  track by $index">
+            <li>
+                <bb-corp-card></bb-corp-card>
+            </li>
+        </flex-slider>
+    </div>
+
+    <div class="title">Top Rated Governance</div>
+    <div class="carousel-wrapper">
+        <flex-slider animation="slide" animation-loop="false" item-width="298" item-margin="33" slide="corp in vm.governanceTopRatedCorps  track by $index">
             <li>
                 <bb-corp-card></bb-corp-card>
             </li>
