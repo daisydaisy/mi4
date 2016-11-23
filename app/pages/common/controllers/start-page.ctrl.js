@@ -4,7 +4,7 @@
     angular.module('miApp')
         .controller('StartPageCtrl',  StartPageCtrl);
     function StartPageCtrl($rootScope, $scope, $mdDialog, $http,$localStorage, CompanyDataService,
-                           $injector) {
+                           PortfolioDataService) {
         var vm = this;
         vm.showTabDialog = showTabDialog;
         vm.corps = [];
@@ -13,9 +13,10 @@
         vm.employeesTopRatedCorps = [];
         vm.governanceTopRatedCorps = [];
 
-        $injector.get('PortfolioDataService').getPortfolio().then(function(response){
+        PortfolioDataService.getPortfolio().then(function(response){
 
             vm.porfolioCorps = response.data.results;
+
 
         }, function (err) {
             console.log(err);
