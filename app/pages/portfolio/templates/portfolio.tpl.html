@@ -6,10 +6,10 @@
                     <img class="card-image" ng-src="{{corp.img_url}}" alt="img" style="width: 180px; height: 180px;">
                     <div class="card-content"  ng-style="{'background-color': corp.bgdColor}" flex>
                         <div class="title">
-                            <span class="general">{{corp.name}}</span>
+                            <span class="general truncate" style="display: block;">{{corp.name}}</span>
                             <span class="nyse"> ({{corp.ticker}})</span>
                         </div>
-                        <div class="description">
+                        <div class="description truncate">
                             {{corp.description}}
                         </div>
                         <div class="rating" layout="row">
