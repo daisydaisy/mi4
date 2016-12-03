@@ -19,6 +19,7 @@
 
                     element.bind('setHeight', function () {
                         element[0].style.height = (cardContent.clientWidth * 180 / 440) + 'px';
+                        element[0].style.height = (cardContent.clientWidth * 180 / 440) + 'px';
                         scope.$apply();
                     });
                 }

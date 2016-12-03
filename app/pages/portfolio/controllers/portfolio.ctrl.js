@@ -31,19 +31,21 @@
 
 
         // if ($localStorage.corps === undefined) {
-            CompanyDataService.getAll().then(function (response) {
+        CompanyDataService.getAll().then(function (response) {
                 vm.corps_all = response.data.results;
 
                 for (var i = 0; i < vm.porfolioCorps.length; i++) {
                     var idx = getIndexIfObjWithOwnAttr(vm.corps_all,'company_id', vm.porfolioCorps[i].company);
-                    vm.corps.push(setValues(vm.corps_all[idx]));
+                    if (idx > -1) {
+                        vm.corps.push(setValues(vm.corps_all[idx]));
+                    }
                 }
                 console.log('json')
                 vm.corps[currentIndex].bgdColor = color;
                 vm.currentCorp = vm.corps[currentIndex];
             }, function (err) {
                 console.log(err);
-            });
+        });
         // }
         // else{
         //
@@ -63,6 +65,32 @@
         //     vm.currentCorp = vm.corps[currentIndex];
         //
         // }
+        vm.removeFromPorfolio = function removeFromPorfolio(company){
+            var portfolio_id = get_portfolio_id(company);
+            if (portfolio_id > 0) {
+                PortfolioDataService.removePortfolio(portfolio_id).then(function (response) {
+
+                }, function (err) {
+                    console.log(err);
+                });
+            }
+
+        }
+
+
+        function get_portfolio_id(company) {
+            for (var i = 0 ; i < vm.porfolioCorps.length; i++ )
+            {
+                if (vm.porfolioCorps[i].company == company.company_id ){
+                    var idx = getIndexIfObjWithOwnAttr(vm.corps,'company_id', vm.porfolioCorps[i].company);
+                    vm.corps.splice(idx, 1);
+                    vm.currentCorp = vm.corps[0];
+                    vm.currentCorp.bgdColor = color;
+                    return vm.porfolioCorps[i].id;
+                }
+            }
+            return -1;
+        }
         vm.toggleLeft = buildToggler('left');
         vm.getCurrentImage = getCurrentImage;
         vm.showVideo = showVideo;
@@ -137,11 +165,18 @@
             obj.bgdColor = 'white';
             obj['img_url'] = '/images/no_photo.png';
 
+            if (obj.logo){
+                obj['img_url'] =  obj.logo;
+            }
+
             return obj;
 
         }
         function getCurrentImage() {
             vm.currentCorp.imgUrl  = '/images/round-no-image.png';
+            if (vm.currentCorp.logo){
+                vm.currentCorp.imgUrl = vm.currentCorp.logo;
+            }
             return 'url(' + vm.currentCorp.imgUrl + ')';
             //return 'url(' + vm.currentCorp.imgUrl + ')';
         }
