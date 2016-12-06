@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('miApp').service('AuthenticationService', function ($rootScope, $http, $q) {
+    angular.module('miApp').service('AuthenticationService', function ($rootScope, $http, $q, $localStorage) {
         return {
             getToken: function () {
                 var deferred = $q.defer();
@@ -17,18 +17,18 @@
                 });
                 return deferred.promise;
             },
-
-            login: function () {
+            login: function (username, password) {
                 var deferred = $q.defer();
-                $http.post('http://68.171.153.8/api/my4app/create/', {'username':'my4', 'password':'flexipassword'}, {'method':'POST', 'headers':{'Content-Type':'application/json'}})
+                $http.post('http://68.171.153.8/api-token-auth//', {'username':username, 'password':password}, {'method':'POST', 'headers':{'Content-Type':'application/json'}})
                     .success(function (data) {
                         deferred.resolve({
                             data: data,
 
                         });
                     }).error(function (msg, code) {
-                    deferred.reject(msg);
-                    $log.error(msg, code);
+                    deferred.resolve({
+                            data: "invalid credentials",
+                    });
                 });
                 return deferred.promise;
             },

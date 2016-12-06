@@ -26,6 +26,10 @@
                 console.log(err);
             });
 
+        vm.logout = function(){
+            delete $localStorage.token;
+            $state.go("Login");
+        }
 
 
         function querySearch(query) {
