@@ -23,10 +23,10 @@
                                     <md-slider-container class="slider-range">
                                         <i class="fa fa-circle-o start" ng-click="vm.selectRange(question.id, $index, 0)"></i>
                                         <div class="point-name">Not important</div>
-                                        <md-slider  min="0" max="10" step="2" ng-model="slider.range" aria-label="{{slider.name}}" flex>
+                                        <md-slider  min="0" max="100" step="5" ng-model="slider.range" ng aria-label="{{slider.name}}" flex>
                                         </md-slider>
                                         <div class="point-name">Very important</div>
-                                        <i class="fa fa-circle-o end" ng-click="vm.selectRange(question.id, $index, 10)"></i>
+                                        <i class="fa fa-circle-o end" ng-click="vm.selectRange(question.id, $index, 100)"></i>
                                     </md-slider-container>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                             <span flex></span>
                             <md-button class="md-primary md-raised next" aria-label="Next" ng-click="vm.selectNextTab($index + 1)">
                                 <span ng-show="$index < vm.countOfTabs - 1">Next</span>
-                                <span ng-hide="$index < vm.countOfTabs - 1">Done</span>
+                                <span  ng-hide="$index < vm.countOfTabs - 1">Done</span>
                             </md-button>
                         </div>
                     </md-content>

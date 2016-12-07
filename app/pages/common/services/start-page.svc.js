@@ -81,6 +81,58 @@
                     $log.error(msg, code);
                 });
                 return deferred.promise;
+            },
+            search: function (searchString) {
+                var deferred = $q.defer();
+                $http.get('http://68.171.153.8/api/my4app/company/?company='+searchString)
+                    .success(function (data) {
+                        deferred.resolve({
+                            data: data,
+                        });
+                    }).error(function (msg, code) {
+                    deferred.reject(msg);
+                    $log.error(msg, code);
+                });
+                return deferred.promise;
+            },
+            getValues: function () {
+                var deferred = $q.defer();
+                $http.get('http://68.171.153.8/api/my4app/user/values/')
+                    .success(function (data) {
+                        deferred.resolve({
+                            data: data,
+                        });
+                    }).error(function (msg, code) {
+                    deferred.reject(msg);
+                    $log.error(msg, code);
+                });
+                return deferred.promise;
+            },
+            putValues: function (values) {
+                var deferred = $q.defer();
+                $http.put('http://68.171.153.8/api/my4app/user/values/'+values.id+'/', values )
+                    .success(function (data) {
+                        deferred.resolve({
+                            data: data,
+                        });
+                    }).error(function (msg, code) {
+                    deferred.reject(msg);
+                    $log.error(msg, code);
+                });
+                return deferred.promise;
+            },
+            createValues: function (values) {
+                var deferred = $q.defer();
+                $http.post('http://68.171.153.8/api/my4app/user/values/', values )
+                    .success(function (data) {
+                        deferred.resolve({
+                            data: data,
+                        });
+                    }).error(function (msg, code) {
+                    deferred.reject(msg);
+                    $log.error(msg, code);
+                });
+                return deferred.promise;
             }
         }
 
