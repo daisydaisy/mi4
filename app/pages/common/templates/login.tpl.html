@@ -27,9 +27,9 @@
             <form name="Form">
                 <md-input-container class="md-block">
                     <label>username </label>
-                    <input type="text" name="username" ng-model="username" required="" />
-                    <div ng-messages="Form.username.$error" role="alert" multiple="">
-                        <div ng-message="required" class="my-message">You must supply a username.</div>
+                    <input  name="username" ng-model="username" required />
+                    <div ng-messages="Form.username.$error">
+                        <div ng-message="required">You must supply a username.</div>
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block">
@@ -40,7 +40,7 @@
                         <div ng-message="md-maxlength" class="my-message">Too long.</div>
                     </div>
                 </md-input-container>
-
+                
                 <div layout="row" layout-sm="column" layout-align="space-around">
                     <md-button type="submit" ng-disabled="!Form.$valid" ng-click="lg.submit()" class="md-raised md-primary" >&nbsp Login &nbsp</md-button>
                     <md-progress-circular ng-show="loading" md-mode="indeterminate" md-diameter="30" style="top:6px;"></md-progress-circular>

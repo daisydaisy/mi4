@@ -4,6 +4,7 @@
         'ngMaterial',
         'ngAnimate',
         'ui.router',
+        'ngMessages',
         'ngStorage',
         'angular-flexslider',
         'portfolio'
