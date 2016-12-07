@@ -11,7 +11,7 @@
             $scope.loading = true;
             console.log($scope.loading);
             AuthenticationService.login($scope.username, $scope.password).then(function (data) {
-                if (data.hasOwnProperty('token')) {
+                if (data.data.hasOwnProperty("token")) {
                     $localStorage.username = $scope.username;
                     $localStorage.password = $scope.password;
                     $localStorage.token = data.data.token;
