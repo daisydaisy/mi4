@@ -9,7 +9,7 @@
     </div>
     <div class="btn-wrapper" layout="row"  layout-align="space-between center" layout-xs="column">
         <md-button class="md-raised md-primary add-btn" ng-if="!vm.currentCorp.disabled"   aria-label="Add" ng-click="addToPorfolio(vm.currentCorp)">Add to portfolio</md-button>
-        <md-button class="md-raised md-primary add-btn" ng-if="vm.currentCorp.disabled"   aria-label="Add" ng-click="vm.removeFromPorfolio(vm.currentCorp)">Remove from portfolio</md-button>
+        <md-button class="md-raised md-primary add-btn" ng-if="vm.currentCorp.disabled" style="background-color:#9A4B4B; "  aria-label="Add" ng-click="vm.removeFromPorfolio(vm.currentCorp)">Remove from portfolio</md-button>
 
         <md-button class="share-btn" aria-label="Share" ng-click="vm.toggleLeft()"><span>Share</span></md-button>
     </div>
