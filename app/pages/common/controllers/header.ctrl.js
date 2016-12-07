@@ -4,12 +4,14 @@
     angular.module('miApp')
         .controller('HeaderCtrl', HeaderCtrl);
 
-    function HeaderCtrl($scope, $state, $timeout, $q, $http, $rootScope, $localStorage, CompanyDataService) {
+    function HeaderCtrl($scope,$mdDialog, $state, $timeout, $q, $http, $rootScope, $localStorage, CompanyDataService) {
         var vm = this;
         vm.simulateQuery = false;
+        vm.showTabDialog = showTabDialog;
         vm.isDisabled = false;
         var selectedCompany = 0;
         vm.goHome = goHome;
+
         vm.companies = [];
         vm.querySearch = querySearch;
         vm.corps = [];
@@ -99,6 +101,20 @@
 
         function goHome() {
             $state.go('Main.Home');
+        }
+        function showTabDialog(ev) {
+            $mdDialog.show({
+                controller: 'CompaniesDialogCtrl',
+                controllerAs: 'vm',
+                disableParentScroll: true,
+                templateUrl: 'app/pages/common/templates/companies-dialog.html',
+                targetEvent: ev,
+                clickOutsideToClose: true
+            }).then(function (data) {
+                console.log(data)
+            }, function (canceled) {
+                console.log('canceled')
+            });
         }
     }
 })();
