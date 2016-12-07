@@ -37,25 +37,31 @@
 
     });
 
-    angular.module('miApp').factory('myInterceptor', ['$q', '$injector', function ($q, $injector, $localStorage) {
+    angular.module('miApp').factory('myInterceptor', ['$q', '$injector', function ($q, $injector) {
         // var service = this;
         console.log('aya ha g');
         return {
             request: function (config) {
-                if (config.url.indexOf('http://68.171.153.8/api-token-auth/') === -1) {
-                    return $injector.get('AuthenticationService').getToken().then(function (response) {
-                        // $injector.get('AuthenticationService').login().then(function(response){
-                        //     $localStorage.user = response;
-                        // });
-                        config.headers.authorization = 'Token ' + response.data.token;
-                        return config;
-                    }).then(function () {
+                if (! $injector.get('$localStorage').hasOwnProperty('token')) {
+                    if (config.url.indexOf('http://68.171.153.8/api-token-auth/') === -1) {
+                        return $injector.get('AuthenticationService').getToken().then(function (response) {
+                            // $injector.get('AuthenticationService').login().then(function(response){
+                            //     $localStorage.user = response;
+                            // });
+                            config.headers.authorization = 'Token ' + response.data.token;
+                            return config;
+                        }).then(function () {
 
-                        return config; // <-- token is refreshed, reissue original request
-                    });
+                            return config; // <-- token is refreshed, reissue original request
+                        });
+                    }
+                }
+                else {
+                    config.headers.authorization = 'Token ' + $injector.get('$localStorage').token;
                 }
                 return config;
-            },
+            }
+            ,
             responseError: function (response) {
                 console.log('aya ha g');
                 return response;
