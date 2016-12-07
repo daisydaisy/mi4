@@ -19,6 +19,15 @@
         vm.porfolioCorps = [];
         vm.corps_all = [];
         vm.corps = [];
+        CompanyDataService.getValues().then(function (response) {
+            var userValues = response.data.results[0];
+            $localStorage.personal_values = get_personal_values(userValues);
+            vm.personal_values = $localStorage.personal_values;
+        }, function (err) {
+
+        });
+
+
 
         PortfolioDataService.getPortfolio().then(function (response) {
 
@@ -49,8 +58,10 @@
                 vm.currentCorp = vm.corps_all[currentIndex];
                 vm.currentCorp['disabled'] = false;
             }
-            vm.corps[currentIndex].bgdColor = color;
-            vm.currentCorp = vm.corps[currentIndex];
+            else {
+                vm.corps[currentIndex].bgdColor = color;
+                vm.currentCorp = vm.corps[currentIndex];
+            }
 
         }, function (err) {
             console.log(err);
@@ -160,8 +171,9 @@
             obj.percentColor = getPercentColor(obj.transparency_reporting);
             // obj.overalColor = getMarkColor(obj.ratings);
             obj.overalColor = getMarkColor(getGradeFromPercent(obj.overall));
-            obj.personalColor = getMarkColor(getGradeFromPercent(obj.overall));
+            obj.personalColor = getMarkColor(getGradeFromPercent($localStorage.personal_values));
             obj['overall_rating'] = getGradeFromPercent(obj.overall);
+            obj['personal_values'] = getGradeFromPercent($localStorage.personal_values);
             obj.communityColor = getMarkColor(obj.community);
             obj.governanceColor = getMarkColor(obj.governance);
             obj.employmentColor = getMarkColor(obj.employees);
@@ -296,6 +308,37 @@
                 }
             }
             return -1;
+        }
+        function get_personal_values(userValues) {
+            var personal_values = 0;
+
+
+            personal_values += parseInt(userValues.community_dev);
+
+            personal_values += parseInt(userValues.community_philanthropy);
+
+            personal_values += parseInt(userValues.community_women_girls);
+
+            personal_values += parseInt(userValues.employment_diversity_labor_rights);
+
+            personal_values += parseInt(userValues.employment_lbgt_policy);
+
+            personal_values += parseInt(userValues.employment_equal_pay);
+
+            personal_values += parseInt(userValues.enviornment_climate_change);
+
+            personal_values += parseInt(userValues.enviornment_renewable_energy);
+
+            personal_values += parseInt(userValues.enviornment_water_resource_usage);
+
+            personal_values += parseInt(userValues.governance_compensation_benefits);
+
+            personal_values += parseInt(userValues.governance_leadership_ethics);
+
+            personal_values += parseInt(userValues.governance_management_diversity);
+
+            return personal_values/12.0;
+
         }
     }
 })();

@@ -3,7 +3,7 @@
 
     angular.module('miApp')
         .controller('StartPageCtrl',  StartPageCtrl);
-    function StartPageCtrl($rootScope, $scope, $mdDialog, $http,$localStorage, CompanyDataService,
+    function StartPageCtrl($rootScope, $scope, $state, $mdDialog, $http,$localStorage, CompanyDataService,
                            PortfolioDataService) {
         var vm = this;
         vm.showTabDialog = showTabDialog;
@@ -179,11 +179,19 @@
             }
             return false;
         }
+        vm.openCompanyPage = function openCompanyPage(company) {
+            if (company) {
+                console.log(company);
+                $rootScope.selectedCompany = company.company_id;
+                // $rootScope.$emit("changedSearch", company.index);
+                $state.go('Main.Portfolio');
+            }
 
+        }
         $scope.addToPorfolio = function addToPorfolio(company){
 
             PortfolioDataService.addCompany(company.company_id, 7).then(function (response) {
-
+                    company['disabled'] = true;
 
             }, function (err) {
                 console.log(err);

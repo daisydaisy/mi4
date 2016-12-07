@@ -4,7 +4,7 @@
     angular.module('miApp')
         .controller('CompaniesDialogCtrl', CompaniesDialogCtrl);
 
-    function CompaniesDialogCtrl($scope, $mdDialog, $http, $timeout, CompanyDataService) {
+    function CompaniesDialogCtrl($scope, $mdDialog, $http, $timeout,$localStorage,  CompanyDataService) {
         var vm = this;
         vm.selectedTab = 0;
         vm.questions = [];
@@ -33,8 +33,8 @@
 
             if (vm.userValues){
                 vm.userValues = makeObjectFromSlider(questions, vm.userValues);
+                $localStorage.personal_values = get_personal_values(vm.userValues);
                 CompanyDataService.putValues(vm.userValues).then(function(response) {
-
 
                 }, function(err) {
                     console.log(err);
@@ -42,7 +42,7 @@
             }
             else {
                 vm.userValues = makeNewObjectFromSlider(questions, vm.userValues);
-
+                $localStorage.personal_values = get_personal_values(vm.userValues);
                 vm.userValues['user'] = 2;
                 CompanyDataService.createValues(vm.userValues).then(function(response) {
 
@@ -135,6 +135,8 @@
                         }
                     }
                 }
+
+                $localStorage.personal_values = get_personal_values(userValues);
 
             });
 
@@ -273,5 +275,39 @@
         function selectRange(qId, rIndex, range) {
             vm.questions[qId].sliders[rIndex].range = range;
         }
+
+        function get_personal_values(userValues) {
+            var personal_values = 0;
+
+
+            personal_values += parseInt(userValues.community_dev);
+
+            personal_values += parseInt(userValues.community_philanthropy);
+
+            personal_values += parseInt(userValues.community_women_girls);
+
+            personal_values += parseInt(userValues.employment_diversity_labor_rights);
+
+            personal_values += parseInt(userValues.employment_lbgt_policy);
+
+            personal_values += parseInt(userValues.employment_equal_pay);
+
+            personal_values += parseInt(userValues.enviornment_climate_change);
+
+            personal_values += parseInt(userValues.enviornment_renewable_energy);
+
+            personal_values += parseInt(userValues.enviornment_water_resource_usage);
+
+            personal_values += parseInt(userValues.governance_compensation_benefits);
+
+            personal_values += parseInt(userValues.governance_leadership_ethics);
+
+            personal_values += parseInt(userValues.governance_management_diversity);
+
+            return personal_values/12.0;
+
+        }
     }
+
+
 })();
