@@ -37,34 +37,40 @@
             for (var i = 0; i < vm.porfolioCorps.length; i++) {
                 var idx = getIndexIfObjWithOwnAttr(vm.corps_all, 'company_id', vm.porfolioCorps[i].company);
                 if (idx > -1) {
+
                     vm.corps.push(setValues(vm.corps_all[idx]));
+
                 }
             }
-            console.log('json')
+            if(currentIndex !== 0) {
+                currentIndex = getIndexIfObjWithOwnAttr(vm.corps_all, 'company_id', currentIndex);
+                console.log('curent', currentIndex);
+                vm.corps_all[currentIndex].bgdColor = color;
+                vm.currentCorp = vm.corps_all[currentIndex];
+                vm.currentCorp['disabled'] = false;
+            }
             vm.corps[currentIndex].bgdColor = color;
             vm.currentCorp = vm.corps[currentIndex];
+
         }, function (err) {
             console.log(err);
         });
         // }
-        // else{
-        //
-        //     vm.corps = $localStorage.corps;
-        //
-        //     for (var i = 0; i < vm.corps.length; i++) {
-        //
-        //         vm.corps[i] = setValues(vm.corps[i]);
-        //     }
-        //     console.log('json')
-        //     if ('bgdColor' in vm.corps[currentIndex]) {
-        //         vm.corps[currentIndex].bgdColor = color;
-        //     }
-        //     else{
-        //         vm.corps[currentIndex]['bgdColor'] = color;
-        //     }
-        //     vm.currentCorp = vm.corps[currentIndex];
-        //
-        // }
+        $scope.addToPorfolio = function addToPorfolio(company){
+
+            PortfolioDataService.addCompany(company.company_id, 2).then(function (response) {
+                currentIndex = getIndexIfObjWithOwnAttr(vm.corps_all, 'company_id', company.company_id);
+                console.log('curent', currentIndex);
+                vm.corps_all[currentIndex].bgdColor = color;
+                vm.currentCorp = vm.corps_all[currentIndex];
+                vm.corps.push(setValues(vm.currentCorp));
+                vm.currentCorp['disabled'] = true;
+
+            }, function (err) {
+                console.log(err);
+            });
+
+        }
         vm.removeFromPorfolio = function removeFromPorfolio(company) {
             var portfolio_id = get_portfolio_id(company);
             if (portfolio_id > 0) {
@@ -160,6 +166,7 @@
             obj.governanceColor = getMarkColor(obj.governance);
             obj.employmentColor = getMarkColor(obj.employees);
             obj.environmentColor = getMarkColor(obj.environment);
+            obj['disabled'] = true;
 
             obj.bgdColor = 'white';
             obj['img_url'] = '/images/no_photo.png';

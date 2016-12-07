@@ -77,6 +77,7 @@
                 return {
                     value: company.name.toLowerCase(),
                     display: company.name,
+                    company_id : company.company_id,
                     index: index
                 };
             });
@@ -92,7 +93,8 @@
         }
         function openCompanyPage(company) {
             if (company) {
-                $rootScope.selectedCompany = company.index;
+                console.log(company);
+                $rootScope.selectedCompany = company.company_id;
                 $rootScope.$emit("changedSearch", company.index);
                 $state.go('Main.Portfolio');
             }
