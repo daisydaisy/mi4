@@ -16,6 +16,8 @@
          
     </div>
     <div class="btn-wrapper">
-        <md-button class="md-raised md-primary add-btn" ng-disabled="corp.disabled"  ng-class="{inactive:corp.disabled}" aria-label="Add" ng-click="addToPorfolio(corp)">Add to portfolio</md-button>
+        <md-button class="md-raised md-primary add-btn" ng-if="!corp.disabled"   aria-label="Add" ng-click="addToPorfolio(corp)">Add to portfolio</md-button>
+        <md-button class="md-raised md-primary add-btn" ng-if="corp.disabled"   aria-label="Add" ng-click="vm.removeFromPorfolio(corp)">Remove from portfolio</md-button>
+        
     </div>
 </div>

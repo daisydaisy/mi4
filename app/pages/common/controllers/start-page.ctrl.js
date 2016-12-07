@@ -57,11 +57,40 @@
         });
 
 
+        vm.removeFromPorfolio = function removeFromPorfolio(company) {
+            var portfolio_id = get_portfolio_id(company);
+            if (portfolio_id > 0) {
+                PortfolioDataService.removePortfolio(portfolio_id).then(function (response) {
 
+                }, function (err) {
+                    console.log(err);
+                });
+            }
+
+        }
+
+
+        function get_portfolio_id(company) {
+            for (var i = 0; i < vm.porfolioCorps.length; i++) {
+                if (vm.porfolioCorps[i].company == company.company_id) {
+                    var idx = getIndexIfObjWithOwnAttr(vm.corps, 'company_id', vm.porfolioCorps[i].company);
+                    vm.corps[idx].disabled = false;
+                    return vm.porfolioCorps[i].id;
+                }
+            }
+            return -1;
+        }
 
        // vm.community.sortBy('community');
 
-
+        function getIndexIfObjWithOwnAttr(array, attr, value) {
+            for (var i = 0; i < array.length; i++) {
+                if (array[i].hasOwnProperty(attr) && array[i][attr] === value) {
+                    return i;
+                }
+            }
+            return -1;
+        }
         function showTabDialog(ev) {
             $mdDialog.show({
                 controller: 'CompaniesDialogCtrl',

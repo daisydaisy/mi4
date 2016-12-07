@@ -4,8 +4,8 @@
     angular.module('portfolio')
         .controller('PortfolioCtrl', PortfolioCtrl);
 
-    function PortfolioCtrl($scope, $http, $mdSidenav, $mdDialog, $timeout, $rootScope, $mdMedia,$localStorage,  ChartJs,
-                           CompanyDataService, PortfolioDataService) {
+    function PortfolioCtrl($scope, $http, $mdSidenav, $mdDialog, $timeout, $rootScope, $mdMedia, $localStorage, ChartJs,
+        CompanyDataService, PortfolioDataService) {
         var vm = this;
         vm.currentCorp = {};
         var color = '#faf8f5';
@@ -20,7 +20,7 @@
         vm.corps_all = [];
         vm.corps = [];
 
-        PortfolioDataService.getPortfolio().then(function(response){
+        PortfolioDataService.getPortfolio().then(function (response) {
 
             vm.porfolioCorps = response.data.results;
 
@@ -32,19 +32,19 @@
 
         // if ($localStorage.corps === undefined) {
         CompanyDataService.getAll().then(function (response) {
-                vm.corps_all = response.data.results;
+            vm.corps_all = response.data.results;
 
-                for (var i = 0; i < vm.porfolioCorps.length; i++) {
-                    var idx = getIndexIfObjWithOwnAttr(vm.corps_all,'company_id', vm.porfolioCorps[i].company);
-                    if (idx > -1) {
-                        vm.corps.push(setValues(vm.corps_all[idx]));
-                    }
+            for (var i = 0; i < vm.porfolioCorps.length; i++) {
+                var idx = getIndexIfObjWithOwnAttr(vm.corps_all, 'company_id', vm.porfolioCorps[i].company);
+                if (idx > -1) {
+                    vm.corps.push(setValues(vm.corps_all[idx]));
                 }
-                console.log('json')
-                vm.corps[currentIndex].bgdColor = color;
-                vm.currentCorp = vm.corps[currentIndex];
-            }, function (err) {
-                console.log(err);
+            }
+            console.log('json')
+            vm.corps[currentIndex].bgdColor = color;
+            vm.currentCorp = vm.corps[currentIndex];
+        }, function (err) {
+            console.log(err);
         });
         // }
         // else{
@@ -65,7 +65,7 @@
         //     vm.currentCorp = vm.corps[currentIndex];
         //
         // }
-        vm.removeFromPorfolio = function removeFromPorfolio(company){
+        vm.removeFromPorfolio = function removeFromPorfolio(company) {
             var portfolio_id = get_portfolio_id(company);
             if (portfolio_id > 0) {
                 PortfolioDataService.removePortfolio(portfolio_id).then(function (response) {
@@ -79,10 +79,9 @@
 
 
         function get_portfolio_id(company) {
-            for (var i = 0 ; i < vm.porfolioCorps.length; i++ )
-            {
-                if (vm.porfolioCorps[i].company == company.company_id ){
-                    var idx = getIndexIfObjWithOwnAttr(vm.corps,'company_id', vm.porfolioCorps[i].company);
+            for (var i = 0; i < vm.porfolioCorps.length; i++) {
+                if (vm.porfolioCorps[i].company == company.company_id) {
+                    var idx = getIndexIfObjWithOwnAttr(vm.corps, 'company_id', vm.porfolioCorps[i].company);
                     vm.corps.splice(idx, 1);
                     vm.currentCorp = vm.corps[0];
                     vm.currentCorp.bgdColor = color;
@@ -151,7 +150,7 @@
                 showInfo(newValue, true);
             }
         });
-        function setValues(obj){
+        function setValues(obj) {
             obj.percentColor = getPercentColor(obj.transparency_reporting);
             // obj.overalColor = getMarkColor(obj.ratings);
             obj.overalColor = getMarkColor(getGradeFromPercent(obj.overall));
@@ -165,16 +164,16 @@
             obj.bgdColor = 'white';
             obj['img_url'] = '/images/no_photo.png';
 
-            if (obj.logo){
-                obj['img_url'] =  obj.logo;
+            if (obj.logo) {
+                obj['img_url'] = obj.logo;
             }
 
             return obj;
 
         }
         function getCurrentImage() {
-            vm.currentCorp.imgUrl  = '/images/round-no-image.png';
-            if (vm.currentCorp.logo){
+            vm.currentCorp.imgUrl = '/images/round-no-image.png';
+            if (vm.currentCorp.logo) {
                 vm.currentCorp.imgUrl = vm.currentCorp.logo;
             }
             return 'url(' + vm.currentCorp.imgUrl + ')';
@@ -183,13 +182,19 @@
 
         function buildToggler(componentId) {
             return function () {
+
+                if (vm.isSideNavOpen) {
+                    $mdSidenav(componentId).close();
+                }
+                else {
+                    $mdSidenav(componentId).open();
+                }
                 vm.isSideNavOpen = !vm.isSideNavOpen;
-                $mdSidenav(componentId).toggle();
             }
         }
         function showInfo(index, notToggle) {
 
-            if (vm.corps[currentIndex] && 'bgdColor' in  vm.corps[currentIndex]) {
+            if (vm.corps[currentIndex] && 'bgdColor' in vm.corps[currentIndex]) {
                 vm.corps[currentIndex].bgdColor = 'white';
                 vm.corps[index].bgdColor = color;
 
@@ -224,49 +229,49 @@
             if (percent !== null) {
                 var symbol = percent.charAt(0);
 
-            return symbol === '+';
+                return symbol === '+';
             }
         }
         function getGradeFromPercent(percent) {
             var grade = "";
-            switch(true) {
+            switch (true) {
                 case percent >= 80:
                     grade = 'A+';
                     break;
-                case percent < 80 && percent >=70:
+                case percent < 80 && percent >= 70:
                     grade = "A";
                     break;
-                case percent < 70 && percent >=60:
+                case percent < 70 && percent >= 60:
                     grade = "A-";
                     break;
-                case percent < 60 && percent >=56:
+                case percent < 60 && percent >= 56:
                     grade = "B+";
                     break;
-                case percent < 56 && percent >=53:
+                case percent < 56 && percent >= 53:
                     grade = "B";
                     break;
-                case percent < 53 && percent >=50:
+                case percent < 53 && percent >= 50:
                     grade = "B-";
                     break;
-                case percent < 50 && percent >=46:
+                case percent < 50 && percent >= 46:
                     grade = "C+";
                     break;
-                case percent < 46 && percent >=43:
+                case percent < 46 && percent >= 43:
                     grade = "C";
                     break;
-                case percent < 43 && percent >=40:
+                case percent < 43 && percent >= 40:
                     grade = "C-";
                     break;
-                case percent < 40 && percent >=36:
+                case percent < 40 && percent >= 36:
                     grade = "D";
                     break;
-                case percent < 36 && percent >=33:
+                case percent < 36 && percent >= 33:
                     grade = "D+";
                     break;
-                case percent < 33 && percent >=30:
+                case percent < 33 && percent >= 30:
                     grade = "D-";
                     break;
-                case percent < 30 :
+                case percent < 30:
                     grade = "F";
                     break;
                 default:
@@ -278,8 +283,8 @@
 
         }
         function getIndexIfObjWithOwnAttr(array, attr, value) {
-            for(var i = 0; i < array.length; i++) {
-                if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
+            for (var i = 0; i < array.length; i++) {
+                if (array[i].hasOwnProperty(attr) && array[i][attr] === value) {
                     return i;
                 }
             }
