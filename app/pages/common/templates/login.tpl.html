@@ -11,23 +11,23 @@
     </md-button>
 
 </hgroup>
-<div layout="column" layout-align="center center" class="zero">
-    <md-button class="md-icon-button" aria-label="Icon" style="color:#f4f1ea">
+<div layout="column" layout-align="center center" class="zero" id="card-content">
+    <md-button class="md-icon-button" aria-label="Icon" style="color:#f4f1ea;" >
         <!--<img src="/images/my4.png" class="logo" alt="my4">-->
         <span>My</span><sup>4</sup>
     </md-button>
-
+    
     <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
         <md-toolbar style="background-color: #2877be;">
             <div class="md-toolbar-tools">
                 <h2><span>Login</span></h2>
             </div>
         </md-toolbar>
-        <md-card-content>
+        <md-card-content >
             <form name="Form">
                 <md-input-container class="md-block">
                     <label>username </label>
-                    <input  name="username" ng-model="username" required />
+                    <input name="username" ng-model="username" required />
                     <div ng-messages="Form.username.$error">
                         <div ng-message="required">You must supply a username.</div>
                     </div>
