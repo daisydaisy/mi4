@@ -40,7 +40,24 @@
             <img src="/images/reload.png" alt="reload" class="info-icon reload">
             <img src="/images/bell.png" alt="bell" class="info-icon bell-icon">
             <div class="img-responsive profile-img">
-                <img src="/images/master-ball.png" alt="profile">
+
+                <md-menu md-position-mode="target-right target">
+                    <md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Eat cake" ng-click="$mdOpenMenu($event)">
+
+                    </md-button>
+
+                    <md-menu-content width="4">
+                        <md-menu-item>
+                            <md-button ng-click="vm.logout()">
+                                <div layout="row" flex>
+                                    <p flex>Logout</p>
+                                </div>
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+
+
             </div>
             <md-menu>
                 <a class="mobile-nav info-icon" ng-click="$mdOpenMenu($event)" hide show-xs show-sm><i class="fa fa-bars"></i></a>

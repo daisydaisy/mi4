@@ -22,6 +22,9 @@
                     footer: {
                         templateUrl: 'app/pages/common/templates/main-footer.tpl.html'
                     }
+                },
+                data: {
+                    requireLogin: true
                 }
             })
             .state('Main.Home', {
@@ -29,8 +32,43 @@
                 templateUrl: 'app/pages/common/templates/start-page.tpl.html',
                 controller: 'StartPageCtrl',
                 controllerAs: 'vm'
+            })
+            .state('Login', {
+                url: '/login',
+                templateUrl: 'app/pages/common/templates/login.tpl.html',
+                controller: 'LoginCtrl',
+                controllerAs: 'lg',
+                data: {
+                    requireLogin: false
+                }
             });
 
 
     }
+    angular.module('miApp')
+        .run(function ($rootScope, $state, $location, $localStorage, AuthenticationService) {
+            $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+                console.log(toState);
+                var requireLogin = toState.data.requireLogin;
+                console.log($localStorage.token);
+                if (requireLogin && ($localStorage.token === undefined)) {
+                    event.preventDefault();
+                    $state.go("Login");
+                }
+                if (!requireLogin && ($localStorage.token !== undefined)){
+                    event.preventDefault();
+                    $state.go("Main.Home");
+                }
+                // AuthenticationService.login($localStorage.username, $localStorage.password).then(function (data) {
+                //     if (data.data.token !== $localStorage.token) {
+                //         console.log("token has expired");
+                //     }
+                // });
+
+                // $localStorage.$reset(); //logout with this
+
+
+                console.log("im running");
+            });
+        });
 })();
