@@ -19,6 +19,10 @@
         vm.porfolioCorps = [];
         vm.corps_all = [];
         vm.corps = [];
+        $localStorage.personal_community =  -1;
+        $localStorage.personal_employment =  -1;
+        $localStorage.personal_environment =  -1;
+        $localStorage.personal_governance =  -1;
         CompanyDataService.getValues().then(function (response) {
             var userValues = response.data.results[0];
             $localStorage.personal_values = get_personal_values(userValues);
@@ -171,9 +175,10 @@
             obj.percentColor = getPercentColor(obj.transparency_reporting);
             // obj.overalColor = getMarkColor(obj.ratings);
             obj.overalColor = getMarkColor(getGradeFromPercent(obj.overall));
-            obj.personalColor = getMarkColor(getGradeFromPercent($localStorage.personal_values));
+            var personal_values_match = calculate_weighted_average(obj);
+            obj.personalColor = getMarkColor(getGradeFromPercent(personal_values_match));
             obj['overall_rating'] = getGradeFromPercent(obj.overall);
-            obj['personal_values'] = getGradeFromPercent($localStorage.personal_values);
+            obj['personal_values'] = getGradeFromPercent(personal_values_match);
             obj.communityColor = getMarkColor(obj.community);
             obj.governanceColor = getMarkColor(obj.governance);
             obj.employmentColor = getMarkColor(obj.employees);
@@ -282,10 +287,10 @@
                     grade = "C-";
                     break;
                 case percent < 40 && percent >= 36:
-                    grade = "D";
+                    grade = "D+";
                     break;
                 case percent < 36 && percent >= 33:
-                    grade = "D+";
+                    grade = "D";
                     break;
                 case percent < 33 && percent >= 30:
                     grade = "D-";
@@ -301,6 +306,57 @@
             return grade;
 
         }
+
+        function getPercentFromGrade(grade) {
+            var percent = 0;
+            switch (true) {
+                case grade == 'A+':
+                    percent = 85 ;
+                    break;
+                case grade == "A":
+                    percent = 79 ;
+                    break;
+                case grade == "A-":
+                    percent = 69;
+                    break;
+                case grade == "B+":
+                    percent = 59;
+                    break;
+                case grade == "B":
+                    percent = 55;
+                    break;
+                case grade =="B-":
+                    percent = 52;
+                    break;
+                case grade == "C+":
+                    percent = 49;
+                    break;
+                case grade == "C":
+                    percent = 45;
+                    break;
+                case grade == "C-":
+                    percent = 42;
+                    break;
+                case grade == "D+":
+                    percent= 39;
+                    break;
+                case grade == "D":
+                    percent=35;
+                    break;
+                case grade == "D-":
+                    percent = 32;
+                    break;
+                case grade = "F":
+                    percent=29 ;
+                    break;
+                default:
+                    percent = -1;
+                    break;
+
+            }
+            return percent;
+
+        }
         function getIndexIfObjWithOwnAttr(array, attr, value) {
             for (var i = 0; i < array.length; i++) {
                 if (array[i].hasOwnProperty(attr) && array[i][attr] === value) {
@@ -309,33 +365,117 @@
             }
             return -1;
         }
+        function calculate_weighted_average(obj) {
+
+            var all_vals = [$localStorage.personal_community, $localStorage.personal_employment,$localStorage.personal_environment, $localStorage.personal_governance];
+            all_vals = all_vals.sort(function(a, b)
+            {
+                return b - a;
+            });
+            var personal_community = $localStorage.personal_community;
+            var personal_employment = $localStorage.personal_employment;
+            var personal_environment = $localStorage.personal_environment;
+            var personal_governance = $localStorage.personal_governance;
+            var total= 100;
+            var total_left =  0;
+            if (personal_community == all_vals[0]){
+                total_left = total - personal_community;
+                personal_community = (personal_community) /100;
+                personal_environment = total_left * (personal_environment/100);
+
+                personal_employment = total_left * (personal_employment/100);
+                personal_governance = total_left * (personal_governance/100);
+                var personal_values = (getPercentFromGrade(obj.community) * (personal_community) ) +
+                    (getPercentFromGrade(obj.employees) * ( personal_employment)/100) +
+                    (getPercentFromGrade(obj.environment) * ( personal_environment)/100) +
+                    (getPercentFromGrade(obj.governance) * (personal_governance)/100);
+            }
+            else if (personal_employment == all_vals[0]){
+                total_left = total - personal_employment;
+                personal_employment = (personal_employment/100);
+                personal_environment = total_left * (personal_environment)/100;
+                personal_community = total_left * (personal_community)/100;
+                personal_governance = total_left * (personal_governance)/100;
+
+                var personal_values = (getPercentFromGrade(obj.community) * (personal_community)/100) +
+                    (getPercentFromGrade(obj.employees) * ( personal_employment)) +
+                    (getPercentFromGrade(obj.environment) * ( personal_environment)/100) +
+                    (getPercentFromGrade(obj.governance) * (personal_governance)/100);
+
+            }
+            else if (personal_environment == all_vals[0]){
+                total_left = total - personal_environment;
+                personal_environment = (personal_environment) /100;
+                personal_employment = total_left * (personal_employment/100);
+                personal_community = total_left * (personal_community/100);
+                personal_governance = total_left * (personal_governance/100);
+                var personal_values = (getPercentFromGrade(obj.community) * (personal_community) /100) +
+                    (getPercentFromGrade(obj.employees) * ( personal_employment)/100) +
+                    (getPercentFromGrade(obj.environment) * ( personal_environment)) +
+                    (getPercentFromGrade(obj.governance) * (personal_governance)/100);
+            }
+            else if (personal_governance == all_vals[0]){
+                total_left = total - personal_governance;
+                personal_governance = (personal_governance) /100;
+                personal_employment = total_left * (personal_environment/100);
+                personal_community = total_left * (personal_community/100);
+                personal_environment = total_left * (personal_environment/100);
+                var personal_values = (getPercentFromGrade(obj.community) * (personal_community) /100) +
+                    (getPercentFromGrade(obj.employees) * ( personal_employment)/100) +
+                    (getPercentFromGrade(obj.environment) * ( personal_environment)/100) +
+                    (getPercentFromGrade(obj.governance) * (personal_governance));
+
+            }
+
+
+
+            console.log((getPercentFromGrade(obj.community)+'*' + (personal_community)/100));
+           console.log( (getPercentFromGrade(obj.employees) +'*'+ ( personal_employment)));
+            console.log( (getPercentFromGrade(obj.environment)+ '*' +( personal_environment)/100) );
+            console.log(getPercentFromGrade(obj.governance)+ '*' +(personal_governance)/100);
+
+            console.log(personal_values);
+
+
+
+            return personal_values;
+
+        }
         function get_personal_values(userValues) {
             var personal_values = 0;
+            var community_personal_values = 0
+            var employees_personal_values = 0
+            var environment_personal_values = 0
+            var governance_personal_values = 0
 
+            community_personal_values += parseInt(userValues.community_dev);
 
-            personal_values += parseInt(userValues.community_dev);
+            community_personal_values += parseInt(userValues.community_philanthropy);
 
-            personal_values += parseInt(userValues.community_philanthropy);
+            community_personal_values += parseInt(userValues.community_women_girls);
 
-            personal_values += parseInt(userValues.community_women_girls);
+            employees_personal_values += parseInt(userValues.employment_diversity_labor_rights);
 
-            personal_values += parseInt(userValues.employment_diversity_labor_rights);
+            employees_personal_values += parseInt(userValues.employment_lbgt_policy);
 
-            personal_values += parseInt(userValues.employment_lbgt_policy);
+            employees_personal_values += parseInt(userValues.employment_equal_pay);
 
-            personal_values += parseInt(userValues.employment_equal_pay);
+            environment_personal_values += parseInt(userValues.enviornment_climate_change);
 
-            personal_values += parseInt(userValues.enviornment_climate_change);
+            environment_personal_values += parseInt(userValues.enviornment_renewable_energy);
 
-            personal_values += parseInt(userValues.enviornment_renewable_energy);
+            environment_personal_values += parseInt(userValues.enviornment_water_resource_usage);
 
-            personal_values += parseInt(userValues.enviornment_water_resource_usage);
+            governance_personal_values += parseInt(userValues.governance_compensation_benefits);
 
-            personal_values += parseInt(userValues.governance_compensation_benefits);
+            governance_personal_values += parseInt(userValues.governance_leadership_ethics);
 
-            personal_values += parseInt(userValues.governance_leadership_ethics);
+            governance_personal_values += parseInt(userValues.governance_management_diversity);
 
-            personal_values += parseInt(userValues.governance_management_diversity);
+            $localStorage.personal_community =  community_personal_values/3;
+            $localStorage.personal_employment =  employees_personal_values/3;
+            $localStorage.personal_environment =  environment_personal_values/3;
+            $localStorage.personal_governance =  governance_personal_values/3;
 
             return personal_values/12.0;
 
