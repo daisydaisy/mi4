@@ -18,3 +18,11 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.md-dialog-container {
+  z-index: 222;
+}
+
+.md-icon-button.md-button.md-ink-ripple {
+  font-family: 'Comfortaa', cursive;
+}
