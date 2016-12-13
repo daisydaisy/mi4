@@ -39,7 +39,7 @@
 
     angular.module('miApp').factory('myInterceptor', ['$q', '$injector', function ($q, $injector) {
         // var service = this;
-        console.log('aya ha g');
+        // console.log('aya ha g');
         return {
             request: function (config) {
                 if (! $injector.get('$localStorage').hasOwnProperty('token')) {
@@ -63,7 +63,7 @@
             }
             ,
             responseError: function (response) {
-                console.log('aya ha g');
+                // console.log('aya ha g');
                 return response;
             }
         };
