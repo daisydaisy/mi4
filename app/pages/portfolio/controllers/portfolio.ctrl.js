@@ -55,15 +55,21 @@
 
                 }
             }
+            if (currentIndex == undefined){
+                currentIndex = 0;
+            }
+
             if(currentIndex !== 0) {
-                currentIndex = getIndexIfObjWithOwnAttr(vm.corps_all, 'company_id', currentIndex);
-                console.log('curent', currentIndex);
-                vm.corps_all[currentIndex].bgdColor = color;
-                vm.currentCorp = vm.corps_all[currentIndex];
+                console.log('selected', currentIndex);
+                // $rootScope.selectedCompany['bgdColor'] = color;
+                vm.currentCorp = currentIndex.company;
+                
                 vm.currentCorp['disabled'] = false;
             }
             else {
-                vm.corps[currentIndex].bgdColor = color;
+                
+                console.log(vm.corps);
+                vm.corps[currentIndex]['bgdColor'] = color;
                 vm.currentCorp = vm.corps[currentIndex];
             }
 
@@ -161,8 +167,8 @@
             }
         };
 
-        $rootScope.$on('changedSearch', function (event, value) {
-            showInfo(value, true);
+        $rootScope.$on('changedSearch', function (event, value, company) {
+            showInfo(value,company, true);
             console.log(value)
         });
 
@@ -196,11 +202,14 @@
 
         }
         function getCurrentImage() {
+            if (vm.currentCorp !== undefined){
+
             vm.currentCorp.imgUrl = '/images/round-no-image.png';
             if (vm.currentCorp.logo) {
                 vm.currentCorp.imgUrl = vm.currentCorp.logo+'?size=80';
             }
             return 'url(' + vm.currentCorp.imgUrl + ')';
+            }
             //return 'url(' + vm.currentCorp.imgUrl + ')';
         }
 
@@ -216,14 +225,16 @@
                 vm.isSideNavOpen = !vm.isSideNavOpen;
             }
         }
-        function showInfo(index, notToggle) {
-
+        function showInfo(index,company,  notToggle) {
             if (vm.corps[currentIndex] && 'bgdColor' in vm.corps[currentIndex]) {
                 vm.corps[currentIndex].bgdColor = 'white';
                 vm.corps[index].bgdColor = color;
 
                 currentIndex = index;
                 vm.currentCorp = vm.corps[index];
+            }
+            if (company !== undefined){
+                vm.currentCorp = company.company;
             }
             if (!notToggle && !$mdMedia('gt-sm')) {
                 vm.toggleLeft();
@@ -429,12 +440,12 @@
 
 
 
-            console.log((getPercentFromGrade(obj.community)+'*' + (personal_community)/100));
-           console.log( (getPercentFromGrade(obj.employees) +'*'+ ( personal_employment)));
-            console.log( (getPercentFromGrade(obj.environment)+ '*' +( personal_environment)/100) );
-            console.log(getPercentFromGrade(obj.governance)+ '*' +(personal_governance)/100);
+        //     console.log((getPercentFromGrade(obj.community)+'*' + (personal_community)/100));
+        //    console.log( (getPercentFromGrade(obj.employees) +'*'+ ( personal_employment)));
+        //     console.log( (getPercentFromGrade(obj.environment)+ '*' +( personal_environment)/100) );
+        //     console.log(getPercentFromGrade(obj.governance)+ '*' +(personal_governance)/100);
 
-            console.log(personal_values);
+        //     console.log(personal_values);
 
 
 
