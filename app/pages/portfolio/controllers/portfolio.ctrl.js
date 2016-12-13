@@ -189,7 +189,7 @@
             obj['img_url'] = '/images/no_photo.png';
 
             if (obj.logo) {
-                obj['img_url'] = obj.logo;
+                obj['img_url'] = obj.logo+'?size=180';
             }
 
             return obj;
@@ -198,7 +198,7 @@
         function getCurrentImage() {
             vm.currentCorp.imgUrl = '/images/round-no-image.png';
             if (vm.currentCorp.logo) {
-                vm.currentCorp.imgUrl = vm.currentCorp.logo;
+                vm.currentCorp.imgUrl = vm.currentCorp.logo+'?size=80';
             }
             return 'url(' + vm.currentCorp.imgUrl + ')';
             //return 'url(' + vm.currentCorp.imgUrl + ')';

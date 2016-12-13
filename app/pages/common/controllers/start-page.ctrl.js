@@ -34,7 +34,7 @@
                 vm.corps[i]['overall_rating'] = getGradeFromPercent(vm.corps[i].overall);
                 vm.corps[i]['imgUrl'] = '/images/round-no-image.png';
                 if (vm.corps[i].logo){
-                    vm.corps[i]['imgUrl'] =  vm.corps[i].logo;
+                    vm.corps[i]['imgUrl'] =  vm.corps[i].logo+'?size=80';
                 }
                 vm.corps[i]['disabled'] = checkIfAddedToCorp(vm.corps[i], vm.porfolioCorps);
                 }
