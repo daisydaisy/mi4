@@ -212,3 +212,5 @@ typings
 public/libs
 app/styles/main.css
 index.html
+.idea/*
+.vscode/*
