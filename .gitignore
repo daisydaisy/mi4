@@ -7,6 +7,9 @@
 *.userosscache
 *.sln.docstates
 
+# ignore .vscode folder, first created for tasks runner
+.vscode
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
