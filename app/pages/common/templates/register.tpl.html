@@ -1,0 +1,60 @@
+<md-card flex="flex" layout="column" flex-gt-sm="50" flex-gt-md="33">
+    <md-toolbar style="background-color: #2877be;">
+        <div class="md-toolbar-tools">
+            <h2><span>Register</span></h2>
+        </div>
+    </md-toolbar>
+    <md-card-content>
+        <form name="Form" ng-submit="re.submit(Form)">
+            <div layout="row">
+                <md-input-container flex="50">
+                    <label>first name</label>
+                    <input name="fname" ng-model="fname" required />
+                    <div ng-messages="Form.fname.$error">
+                        <div ng-message="required">Please specify your first name.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex="50">
+                    <label>last name</label>
+                    <input name="lname" ng-model="lname" required />
+                    <div ng-messages="Form.lname.$error">
+                        <div ng-message="required">Please specify your last name.</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <md-input-container class="md-block">
+                <label>email </label>
+                <input type="email" name="email" ng-model="email" required ng-change="re.resetError(Form)"/>
+                <div ng-messages="Form.email.$error">
+                    <div ng-message="required">You must supply an email.</div>
+                    <div ng-message="email">Please enter a valid email.</div>
+                    <div ng-message="exist">A user with this email already exists!</div>
+                </div>
+            </md-input-container>
+            <div layout="row">
+                <md-input-container flex="50">
+                    <label>password </label>
+                    <input type="password" name="password" ng-model="password" required="" md-maxlength="16" ng-pattern="/^[a-zA-Z0-9]*$/" />
+                    <div ng-messages="Form.password.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">You must supply a password.</div>
+                        <div ng-message="md-maxlength" class="my-message">Too long.</div>
+                        <div ng-message="pattern">Special characters not allowed.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex="50">
+                    <label>confirm password </label>
+                    <input type="password" name="cpassword" ng-model="cpassword" required="" md-maxlength="16" ng-pattern="{{password}}" />
+                    <div ng-messages="Form.cpassword.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">Please confirm password.</div>
+                        <div ng-message="md-maxlength" class="my-message">Too long.</div>
+                        <div ng-message="pattern">Not equal!!!</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout="row" layout-sm="column" layout-align="space-around">
+                <md-button type="submit" ng-disabled="!Form.$valid" class="md-raised cusBtn md-primary">&nbsp Register &nbsp</md-button>
+                <md-progress-circular ng-show="loading" md-mode="indeterminate" md-diameter="30" style="top:6px;"></md-progress-circular>
+            </div>
+        </form>
+    </md-card-content>
+</md-card>

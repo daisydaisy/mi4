@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('miApp')
@@ -7,14 +7,19 @@
         var lg = this;
         $scope.loading = false;
 
-        lg.submit = function() {
+        lg.submit = function () {
             $scope.loading = true;
             console.log($scope.loading);
-            AuthenticationService.login($scope.username, $scope.password).then(function(data) {
+            AuthenticationService.login($scope.email, $scope.password).then(function (data) {
                 if (data.data.hasOwnProperty("token")) {
-                    $localStorage.username = $scope.username;
-                    $localStorage.password = $scope.password;
                     $localStorage.token = data.data.token;
+                    AuthenticationService.getCurrentUser().then(function (data) {
+                        console.log("inside login ctrl:", data);
+                        $localStorage.id = data.data.results[0].id;
+                        $localStorage.email = data.data.results[0].email;
+                        $localStorage.firstName = data.data.results[0].first_name;
+                        $localStorage.lastName = data.data.results[0].last_name;
+                    });
                     $state.go("Main.Home");
                 } else {
                     console.log("Invalid baby!", data);

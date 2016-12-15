@@ -30,7 +30,11 @@
 
         vm.logout = function(){
             delete $localStorage.token;
-            $state.go("Login");
+            delete $localStorage.id;
+            delete $localStorage.email;
+            delete $localStorage.firstName;
+            delete $localStorage.lastName;
+            $state.go("Basic.Login");
         }
 
         vm.search = function search(queryString) {

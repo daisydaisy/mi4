@@ -1,0 +1,17 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Icon" ng-click=vm.goHome()>
+            <!--<img src="/images/my4.png" class="logo" alt="my4">-->
+            <span>My</span><sup>4</sup>
+        </md-button>
+        <span flex class="flex"></span>
+        <md-button md-no-ink class="cusBtn md-primary md-cornered md-ink-ripple" ui-sref-active="md-raised" ui-sref="Basic.Login" aria-label="Learn More">
+          Log In
+        </md-button>
+        <md-button md-no-ink class="cusBtn md-primary md-cornered md-ink-ripple" ui-sref-active="md-raised" ui-sref="Basic.Register" aria-label="Learn More">
+          Register
+        </md-button>
+    </div>
+    
+</md-toolbar>
+<md-progress-linear ng-show="stateIsLoading" md-mode="indeterminate"></md-progress-linear>

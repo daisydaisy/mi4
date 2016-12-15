@@ -190,7 +190,7 @@
         }
         $scope.addToPorfolio = function addToPorfolio(company){
 
-            PortfolioDataService.addCompany(company.company_id, 7).then(function (response) {
+            PortfolioDataService.addCompany(company.company_id, $localStorage.id).then(function (response) {
                     company['disabled'] = true;
 
             }, function (err) {
