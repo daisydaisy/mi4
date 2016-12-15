@@ -62,7 +62,7 @@
             if(currentIndex !== 0) {
                 console.log('selected', currentIndex);
                 // $rootScope.selectedCompany['bgdColor'] = color;
-                vm.currentCorp = currentIndex.company;
+                vm.currentCorp = currentIndex;
                 
                 vm.currentCorp['disabled'] = false;
             }

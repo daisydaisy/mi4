@@ -181,8 +181,8 @@
         vm.openCompanyPage = function openCompanyPage(company) {
             if (company) {
                 console.log(company);
-                $rootScope.selectedCompany = company.company_id;
-                // $rootScope.$emit("changedSearch", company.index);
+                $rootScope.selectedCompany = company;
+                $rootScope.$emit("changedSearch", company.index, company);
                 $state.go('Main.Portfolio');
             }
 
