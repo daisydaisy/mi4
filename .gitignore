@@ -215,3 +215,8 @@ typings
 public/libs
 app/styles/main.css
 index.html
+<<<<<<< HEAD
+=======
+.idea/*
+.vscode/*
+>>>>>>> 606aeaad5731d36ad804bf8d5cf8dd2845f73f77

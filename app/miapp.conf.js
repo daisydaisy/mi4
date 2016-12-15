@@ -103,10 +103,8 @@
             $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
                 
                 $rootScope.stateIsLoading = true;
-                console.log(toState);
-                
                 var requireLogin = toState.data.requireLogin;
-                console.log($localStorage.token);
+                // console.log($localStorage.token);
                 if (requireLogin && ($localStorage.token === undefined)) {
                     event.preventDefault();
                     $state.go("Basic.Login");
@@ -124,7 +122,7 @@
                 // $localStorage.$reset(); //logout with this
 
 
-                console.log("im running");
+                // console.log("im running");
             });
 
 

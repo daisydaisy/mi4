@@ -20,7 +20,7 @@
         vm.openCompanyPage = openCompanyPage;
 
         CompanyDataService.getAll().then(function (response) {
-                console.log(response);
+
                 vm.corps = response.data.results;
                 $localStorage.corps = vm.corps;
                 vm.companies = loadAll();
@@ -39,7 +39,7 @@
 
         vm.search = function search(queryString) {
             CompanyDataService.search(queryString).then(function (response) {
-                console.log(response);
+                vm.corps = [];
                 vm.corps.push.apply(vm.corps, response.data.results);
                 // $localStorage.corps = vm.corps;
                 vm.companies = loadAll();
@@ -79,6 +79,7 @@
 
             return vm.corps.map(function (company, index) {
                 return {
+                    company: company,
                     value: company.name.toLowerCase(),
                     display: company.name,
                     company_id : company.company_id,
@@ -97,9 +98,9 @@
         }
         function openCompanyPage(company) {
             if (company) {
-                console.log(company);
-                $rootScope.selectedCompany = company.company_id;
-                $rootScope.$emit("changedSearch", company.index);
+                console.log('header', company);
+                $rootScope.selectedCompany = company;
+                $rootScope.$emit("changedSearch", company.index, company);
                 $state.go('Main.Portfolio');
             }
             
