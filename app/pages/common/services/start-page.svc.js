@@ -64,7 +64,6 @@
                 
                 var userInfo = {'first_name': fName, 'last_name': lName, 'email': email};
                 if(password != "defaultPass"){
-                    
                     userInfo.password = password;
                     console.log("userinfo", userInfo);
                 }
