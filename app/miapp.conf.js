@@ -17,10 +17,10 @@
                         controllerAs: 'vm'
                     },
                     '': {
-                        template: '<ui-view layout="column"/>'
+                        template: '<ui-view layout="column" flex layout-fill/>'
                     },
                     footer: {
-                        templateUrl: 'app/pages/common/templates/main-footer.tpl.html'
+                        // templateUrl: 'app/pages/common/templates/main-footer.tpl.html'
                     }
                 },
                 data: {
@@ -33,11 +33,64 @@
                 controller: 'StartPageCtrl',
                 controllerAs: 'vm'
             })
-            .state('Login', {
+            .state('Main.Account', {
+                url: '/account',
+                templateUrl: 'app/pages/common/templates/account.tpl.html',
+                controller: 'AccountCtrl',
+                controllerAs: 'ac',
+                data: {
+                    requireLogin: true
+                }
+            })
+            .state('Basic', {
+                abstract: true,
+                views: {
+                    header: {
+                        templateUrl: 'app/pages/common/templates/basic-header.tpl.html',
+                    },
+                    '': {
+                        template: '<ui-view layout="row" layout-align="center" flex id="card-content"/>'
+                    },
+                    footer: {
+                        // templateUrl: 'app/pages/common/templates/basic-footer.tpl.html'
+                    }
+                },
+                data: {
+                    requireLogin: false
+                }
+            })
+            .state('Basic.ForgotPassword', {
+                url: '/forgotpassword',
+                templateUrl: 'app/pages/common/templates/forgot-password.tpl.html',
+                controller: 'ForgotPasswordCtrl',
+                controllerAs: 'fp',
+                data: {
+                    requireLogin: false
+                }
+            })
+            .state('Basic.ResetPassword', {
+                url: '/resetpassword?token',
+                templateUrl: 'app/pages/common/templates/reset-password.tpl.html',
+                controller: 'ResetPasswordCtrl',
+                controllerAs: 'rp',
+                data: {
+                    requireLogin: false
+                }
+            })
+            .state('Basic.Login', {
                 url: '/login',
                 templateUrl: 'app/pages/common/templates/login.tpl.html',
                 controller: 'LoginCtrl',
                 controllerAs: 'lg',
+                data: {
+                    requireLogin: false
+                }
+            })
+            .state('Basic.Register', {
+                url: '/register',
+                templateUrl: 'app/pages/common/templates/register.tpl.html',
+                controller: 'RegisterCtrl',
+                controllerAs: 're',
                 data: {
                     requireLogin: false
                 }
@@ -48,14 +101,15 @@
     angular.module('miApp')
         .run(function ($rootScope, $state, $location, $localStorage, AuthenticationService) {
             $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-                // console.log(toState);
+                
+                $rootScope.stateIsLoading = true;
                 var requireLogin = toState.data.requireLogin;
                 // console.log($localStorage.token);
                 if (requireLogin && ($localStorage.token === undefined)) {
                     event.preventDefault();
-                    $state.go("Login");
+                    $state.go("Basic.Login");
                 }
-                if (!requireLogin && ($localStorage.token !== undefined)){
+                if (!requireLogin && ($localStorage.token !== undefined)) {
                     event.preventDefault();
                     $state.go("Main.Home");
                 }
@@ -69,6 +123,11 @@
 
 
                 // console.log("im running");
+            });
+
+
+            $rootScope.$on('$stateChangeSuccess', function () {
+                $rootScope.stateIsLoading = false;
             });
         });
 })();

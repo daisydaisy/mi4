@@ -2,7 +2,7 @@
     'use strict';
 
 
-    angular.module('miApp').service('PortfolioDataService', function ($http, $q) {
+    angular.module('miApp').service('PortfolioDataService', function ($http, $q, $localStorage) {
         return {
             addCompany: function (company, username) {
                 var deferred = $q.defer();

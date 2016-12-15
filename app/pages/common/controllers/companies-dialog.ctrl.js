@@ -43,7 +43,7 @@
             else {
                 vm.userValues = makeNewObjectFromSlider(questions, vm.userValues);
                 $localStorage.personal_values = get_personal_values(vm.userValues);
-                vm.userValues['user'] = 2;
+                vm.userValues['user'] = $localStorage.id;
                 CompanyDataService.createValues(vm.userValues).then(function(response) {
 
 

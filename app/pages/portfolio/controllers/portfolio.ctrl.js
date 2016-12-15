@@ -79,7 +79,7 @@
         // }
         $scope.addToPorfolio = function addToPorfolio(company){
 
-            PortfolioDataService.addCompany(company.company_id, 2).then(function (response) {
+            PortfolioDataService.addCompany(company.company_id, $localStorage.id).then(function (response) {
                 currentIndex = getIndexIfObjWithOwnAttr(vm.corps_all, 'company_id', company.company_id);
                 console.log('curent', currentIndex);
                 vm.corps_all[currentIndex].bgdColor = color;
