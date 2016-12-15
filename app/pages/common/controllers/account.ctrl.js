@@ -19,7 +19,7 @@
             console.log($scope.loading);
             AuthenticationService.updateUser($scope.fname, $scope.lname, $scope.email, $scope.password).then(function (data) {
                 console.log("controller function", data);
-                if (typeof data.data.email[0] != "undefined" && data.data.email[0] == "This field must be unique.") {
+                if (typeof data.data.email != "undefined" && data.data.email[0] == "This field must be unique.") {
                     console.log("existing email!", form);
                     form.email.$setValidity('exist', false);
                 } else if (data.data.email === $scope.email) {
