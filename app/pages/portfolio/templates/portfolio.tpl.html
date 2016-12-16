@@ -2,7 +2,7 @@
     <md-sidenav layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="vm.isSideNavOpen && $mdMedia('gt-sm')" md-whiteframe="4">
         <md-content class="side-content">
             <div class="sidenav-corp-list">
-                <div class="sidenav-corp-card" ng-repeat="corp in vm.corps track by $index" layout="row" ng-if="vm.corp.length > 0" ng-click="vm.showInfo($index)">
+                <div class="sidenav-corp-card" ng-repeat="corp in vm.corps track by $index" layout="row" ng-if="!vm.empty" ng-click="vm.showInfo($index)">
                     <img class="card-image" ng-src="{{corp.img_url}}" alt="img" style="width: 180px; height: 180px;">
                     <div class="card-content"  ng-style="{'background-color': corp.bgdColor}" flex>
                         <div class="title">
@@ -24,13 +24,13 @@
                         </div>
                     </div>
                 </div>
-                <p   style="text-align: center;
+                <div   style="text-align: center;
     background-color: #f4f1ea;
     padding-top: 5%;
-    margin: 0;" ng-if="vm.corps.length == 0">
+    margin: 0;" ng-if="vm.empty">
                     Portfolio is empty.
 
-                </p>
+                </div>
 
             </div>
 

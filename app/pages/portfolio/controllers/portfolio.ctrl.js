@@ -8,6 +8,7 @@
         CompanyDataService, PortfolioDataService) {
         var vm = this;
         vm.currentCorp = {};
+        vm.empty = false;
         var color = '#faf8f5';
         var currentIndex = $rootScope.selectedCompany || 0;
         vm.isSideNavOpen = true;
@@ -36,7 +37,12 @@
         PortfolioDataService.getPortfolio().then(function (response) {
 
             vm.porfolioCorps = response.data.results;
-
+            if (vm.porfolioCorps.length==0){
+                vm.empty = true;
+            }
+            else{
+                vm.empty = false;
+            }
 
         }, function (err) {
             console.log(err);
