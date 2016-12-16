@@ -1,5 +1,5 @@
 <div class="corp-card">
-    <div class="corp-card-image" ng-style="{'background-image': 'url({{corp.imgUrl}})'}"></div>
+    <div class="corp-card-image" ng-click="vm.openCompanyPage(corp)" style="cursor: pointer;" ng-style="{'background-image': 'url({{corp.imgUrl}})'}"></div>
     <div class="corp-title truncate" title="{{corp.name}}" ng-click="vm.openCompanyPage(corp)" style="cursor: pointer;">
         {{corp.name}}
     </div>

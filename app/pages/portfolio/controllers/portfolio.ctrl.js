@@ -62,8 +62,8 @@
             if(currentIndex !== 0) {
                 console.log('selected', currentIndex);
                 // $rootScope.selectedCompany['bgdColor'] = color;
-                vm.currentCorp = currentIndex;
-                
+                vm.currentCorp = currentIndex.company;
+                setValues(vm.currentCorp);
                 vm.currentCorp['disabled'] = false;
             }
             else {
@@ -377,12 +377,17 @@
             return -1;
         }
         function calculate_weighted_average(obj) {
+            if (vm.personal_values == -1){
+                return 'N/A'
+            }
 
             var all_vals = [$localStorage.personal_community, $localStorage.personal_employment,$localStorage.personal_environment, $localStorage.personal_governance];
             all_vals = all_vals.sort(function(a, b)
             {
                 return b - a;
             });
+
+            console.log('peronsal Values not set', all_vals);
             var personal_community = $localStorage.personal_community;
             var personal_employment = $localStorage.personal_employment;
             var personal_environment = $localStorage.personal_environment;
@@ -459,36 +464,42 @@
             var environment_personal_values = 0
             var governance_personal_values = 0
 
-            community_personal_values += parseInt(userValues.community_dev);
+            if (userValues !== undefined) {
 
-            community_personal_values += parseInt(userValues.community_philanthropy);
+                community_personal_values += parseInt(userValues.community_dev);
 
-            community_personal_values += parseInt(userValues.community_women_girls);
+                community_personal_values += parseInt(userValues.community_philanthropy);
 
-            employees_personal_values += parseInt(userValues.employment_diversity_labor_rights);
+                community_personal_values += parseInt(userValues.community_women_girls);
 
-            employees_personal_values += parseInt(userValues.employment_lbgt_policy);
+                employees_personal_values += parseInt(userValues.employment_diversity_labor_rights);
 
-            employees_personal_values += parseInt(userValues.employment_equal_pay);
+                employees_personal_values += parseInt(userValues.employment_lbgt_policy);
 
-            environment_personal_values += parseInt(userValues.enviornment_climate_change);
+                employees_personal_values += parseInt(userValues.employment_equal_pay);
 
-            environment_personal_values += parseInt(userValues.enviornment_renewable_energy);
+                environment_personal_values += parseInt(userValues.enviornment_climate_change);
 
-            environment_personal_values += parseInt(userValues.enviornment_water_resource_usage);
+                environment_personal_values += parseInt(userValues.enviornment_renewable_energy);
 
-            governance_personal_values += parseInt(userValues.governance_compensation_benefits);
+                environment_personal_values += parseInt(userValues.enviornment_water_resource_usage);
 
-            governance_personal_values += parseInt(userValues.governance_leadership_ethics);
+                governance_personal_values += parseInt(userValues.governance_compensation_benefits);
 
-            governance_personal_values += parseInt(userValues.governance_management_diversity);
+                governance_personal_values += parseInt(userValues.governance_leadership_ethics);
 
-            $localStorage.personal_community =  community_personal_values/3;
-            $localStorage.personal_employment =  employees_personal_values/3;
-            $localStorage.personal_environment =  environment_personal_values/3;
-            $localStorage.personal_governance =  governance_personal_values/3;
+                governance_personal_values += parseInt(userValues.governance_management_diversity);
 
-            return personal_values/12.0;
+                $localStorage.personal_community = community_personal_values / 3;
+                $localStorage.personal_employment = employees_personal_values / 3;
+                $localStorage.personal_environment = environment_personal_values / 3;
+                $localStorage.personal_governance = governance_personal_values / 3;
+
+                return personal_values / 12.0;
+            }
+
+            return -1
+
 
         }
     }
