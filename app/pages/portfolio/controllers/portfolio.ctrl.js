@@ -36,6 +36,7 @@
 
         PortfolioDataService.getPortfolio().then(function (response) {
 
+
             vm.porfolioCorps = response.data.results;
             if (vm.porfolioCorps.length==0){
                 vm.empty = true;
@@ -44,22 +45,15 @@
                 vm.empty = false;
             }
 
-        }, function (err) {
-            console.log(err);
-        });
-
-
-        // if ($localStorage.corps === undefined) {
-        CompanyDataService.getAll().then(function (response) {
             vm.corps_all = response.data.results;
 
-            for (var i = 0; i < vm.porfolioCorps.length; i++) {
-                var idx = getIndexIfObjWithOwnAttr(vm.corps_all, 'company_id', vm.porfolioCorps[i].company);
-                if (idx > -1) {
+            for (var i = 0; i < vm.corps_all.length; i++) {
+                // var idx = getIndexIfObjWithOwnAttr(vm.corps_all, 'company_id', vm.porfolioCorps[i].company);
+                // if (idx > -1) {
+                    console.log(vm.corps_all[i]);
+                    vm.corps.push(setValues(vm.corps_all[i].company));
 
-                    vm.corps.push(setValues(vm.corps_all[idx]));
-
-                }
+                // }
             }
             if (currentIndex == undefined){
                 currentIndex = 0;
@@ -73,7 +67,7 @@
                 vm.currentCorp['disabled'] = false;
             }
             else {
-                
+
                 console.log(vm.corps);
                 vm.corps[currentIndex]['bgdColor'] = color;
                 vm.currentCorp = vm.corps[currentIndex];
@@ -82,16 +76,35 @@
         }, function (err) {
             console.log(err);
         });
+
+
+        // if ($localStorage.corps === undefined) {
+        // CompanyDataService.getAll().then(function (response) {
+        //
+        //
+        // }, function (err) {
+        //     console.log(err);
+        // });
         // }
         $scope.addToPorfolio = function addToPorfolio(company){
 
-            PortfolioDataService.addCompany(company.company_id, $localStorage.id).then(function (response) {
+            PortfolioDataService.addCompany(company, company.company_id, $localStorage.id).then(function (response) {
+
                 currentIndex = getIndexIfObjWithOwnAttr(vm.corps_all, 'company_id', company.company_id);
-                console.log('curent', currentIndex);
-                vm.corps_all[currentIndex].bgdColor = color;
-                vm.currentCorp = vm.corps_all[currentIndex];
-                vm.corps.push(setValues(vm.currentCorp));
-                vm.currentCorp['disabled'] = true;
+                if(currentIndex !== -1) {
+                    console.log('curent', currentIndex);
+                    vm.corps_all[currentIndex].bgdColor = color;
+                    vm.currentCorp = company;
+                    vm.corps.push(setValues(vm.currentCorp));
+                    vm.currentCorp['disabled'] = true;
+                }
+                else{
+                    company.bgdColor = color;
+                    vm.currentCorp = company;
+                    vm.corps.push(setValues(vm.currentCorp));
+                    vm.currentCorp['disabled'] = true;
+                }
+
 
             }, function (err) {
                 console.log(err);
@@ -113,11 +126,11 @@
 
         function get_portfolio_id(company) {
             for (var i = 0; i < vm.porfolioCorps.length; i++) {
-                if (vm.porfolioCorps[i].company == company.company_id) {
+                if (vm.porfolioCorps[i].company.company_id == company.company_id) {
                     var idx = getIndexIfObjWithOwnAttr(vm.corps, 'company_id', vm.porfolioCorps[i].company);
                     vm.corps.splice(idx, 1);
                     vm.currentCorp = vm.corps[0];
-                    vm.currentCorp.bgdColor = color;
+                    // vm.currentCorp.bgdColor = color;
                     return vm.porfolioCorps[i].id;
                 }
             }
@@ -458,7 +471,7 @@
 
         //     console.log(personal_values);
 
-
+            vm.personal_values = personal_values;
 
             return personal_values;
 

@@ -70,8 +70,9 @@
 
 
         function get_portfolio_id(company) {
+
             for (var i = 0; i < vm.porfolioCorps.length; i++) {
-                if (vm.porfolioCorps[i].company == company.company_id) {
+                if (vm.porfolioCorps[i].company.company_id == company.company_id) {
                     var idx = getIndexIfObjWithOwnAttr(vm.corps, 'company_id', vm.porfolioCorps[i].company);
                     vm.corps[idx].disabled = false;
                     return vm.porfolioCorps[i].id;
@@ -172,7 +173,7 @@
 
         function checkIfAddedToCorp(corp, portfolioCorps) {
             for(var i=0; i < portfolioCorps.length; i++){
-                if (portfolioCorps[i].company == corp.company_id){
+                if (portfolioCorps[i].company.company_id == corp.company_id){
                     return true;
                 }
             }
@@ -190,7 +191,7 @@
         }
         $scope.addToPorfolio = function addToPorfolio(company){
 
-            PortfolioDataService.addCompany(company.company_id, $localStorage.id).then(function (response) {
+            PortfolioDataService.addCompany(company,company.company_id,  $localStorage.id).then(function (response) {
                     company['disabled'] = true;
 
             }, function (err) {

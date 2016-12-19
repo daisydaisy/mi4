@@ -4,9 +4,9 @@
 
     angular.module('miApp').service('PortfolioDataService', function ($http, $q, $localStorage) {
         return {
-            addCompany: function (company, username) {
+            addCompany: function (company,company_id, username) {
                 var deferred = $q.defer();
-                $http.post('http://68.171.153.8/api/my4app/portfolio/', {'company':company, 'username':username})
+                $http.post('http://68.171.153.8/api/my4app/portfolio/', {'company':company,'company_id':company_id, 'username':username})
                     .success(function (data) {
                         deferred.resolve({
                             data: data,
