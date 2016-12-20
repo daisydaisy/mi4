@@ -22,9 +22,10 @@
             <div class="name">Region</div>
             <div class="value">{{vm.currentCorp.region}}</div>
         </div>
-        <div class="property truncate" >
+        <div class="property truncate">
             <div class="name">Website</div>
-            <a  href="{{vm.currentCorp.website}}" target="_blank" class="value">{{vm.currentCorp.website}}</a>
+
+            <a   ng-href="http://{{vm.currentCorp.website}}" target="_blank" class="value">{{vm.currentCorp.website}}</a>
         </div>
         <!--<div class="property">-->
             <!--<div class="name">Glassdoor</div>-->

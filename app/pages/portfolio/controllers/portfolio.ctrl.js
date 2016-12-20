@@ -112,6 +112,7 @@
 
         }
         vm.removeFromPorfolio = function removeFromPorfolio(company) {
+            console.log('Remove This comapny', company);
             var portfolio_id = get_portfolio_id(company);
             if (portfolio_id > 0) {
                 PortfolioDataService.removePortfolio(portfolio_id).then(function (response) {
@@ -127,7 +128,7 @@
         function get_portfolio_id(company) {
             for (var i = 0; i < vm.porfolioCorps.length; i++) {
                 if (vm.porfolioCorps[i].company.company_id == company.company_id) {
-                    var idx = getIndexIfObjWithOwnAttr(vm.corps, 'company_id', vm.porfolioCorps[i].company);
+                    var idx = getIndexIfObjWithOwnAttr(vm.corps, 'company_id', vm.porfolioCorps[i].company.company_id);
                     vm.corps.splice(idx, 1);
                     vm.currentCorp = vm.corps[0];
                     // vm.currentCorp.bgdColor = color;
@@ -208,6 +209,7 @@
             obj.governanceColor = getMarkColor(obj.governance);
             obj.employmentColor = getMarkColor(obj.employees);
             obj.environmentColor = getMarkColor(obj.environment);
+            obj.website = obj.website.replace('http://','');
             obj['disabled'] = true;
 
             obj.bgdColor = 'white';
@@ -396,7 +398,7 @@
             return -1;
         }
         function calculate_weighted_average(obj) {
-            if (vm.personal_values == -1){
+            if (vm.personal_values == -1 || vm.personal_values==0){
                 return 'N/A'
             }
 
