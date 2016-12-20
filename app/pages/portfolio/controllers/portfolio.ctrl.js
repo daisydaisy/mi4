@@ -398,7 +398,7 @@
             return -1;
         }
         function calculate_weighted_average(obj) {
-            if (vm.personal_values == -1 || vm.personal_values==0){
+            if (vm.personal_values <=0){
                 return 'N/A'
             }
 
