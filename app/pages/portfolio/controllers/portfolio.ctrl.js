@@ -67,7 +67,7 @@
                 vm.currentCorp['disabled'] = false;
                 vm.empty = false;
             }
-            else {
+            else if(vm.corps[currentIndex] !== undefined) {
 
                 console.log(vm.corps);
                 vm.corps[currentIndex]['bgdColor'] = color;
