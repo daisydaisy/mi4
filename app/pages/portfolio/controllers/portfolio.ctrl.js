@@ -65,6 +65,7 @@
                 vm.currentCorp = currentIndex.company;
                 setValues(vm.currentCorp);
                 vm.currentCorp['disabled'] = false;
+                vm.empty = false;
             }
             else {
 
