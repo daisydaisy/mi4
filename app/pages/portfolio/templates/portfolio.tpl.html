@@ -1,53 +1,63 @@
 <section class="portfilio" layout="row" flex>
-    <md-sidenav layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="vm.isSideNavOpen && $mdMedia('gt-sm')" md-whiteframe="4">
-        <md-content class="side-content">
-            <div class="sidenav-corp-list">
-                <div class="sidenav-corp-card" ng-repeat="corp in vm.corps track by $index" layout="row" ng-if="!vm.empty" ng-click="vm.showInfo($index)">
-                    <img class="card-image" ng-src="{{corp.img_url}}" alt="img" style="width: 180px; height: 180px;">
-                    <div class="card-content"  ng-style="{'background-color': corp.bgdColor}" flex>
-                        <div class="title">
-                            <span class="general truncate" style="display: block;">{{corp.name}}</span>
-                            <span class="nyse"> ({{corp.ticker}})</span>
-                        </div>
-                        <div class="description truncate">
-                            {{corp.description}}
-                        </div>
-                        <div class="rating" layout="row">
-                            <div class="overal">
-                                <span class="text">Overal Rating: </span>
-                                <span class="symbol" ng-class="corp.overalColor" ng-style="{'border-color': corp.overalColor}">{{corp.overall_rating}}</span>
-                            </div>
-                            <div class="personal">
-                                <span class="text">Personal Values Match:</span>
-                                <span class="symbol" ng-class="corp.personalColor">{{corp.personal_values}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div   style="text-align: center;
+    <md-sidenav layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="vm.isSideNavOpen && $mdMedia('gt-sm')"
+        md-whiteframe="4" style="top:80px;">
+<md-content class="side-content">
+    <div class="sidenav-corp-list">
+        <div class="sidenav-corp-card" ng-repeat="corp in vm.corps track by $index" layout="row" ng-if="!vm.empty" ng-click="vm.showInfo($index)">
+            <img class="card-image" ng-src="{{corp.img_url}}" alt="img" style="width: 180px; height: 180px;">
+<div class="card-content" ng-style="{'background-color': corp.bgdColor}" flex>
+    <div class="title">
+        <span class="general truncate" style="display: block;">{{corp.name}}</span>
+<span class="nyse"> ({{corp.ticker}})</span>
+</div>
+<div class="description truncate">
+    {{corp.description}}
+</div>
+<div class="rating" layout="row">
+    <div class="overal">
+        <span class="text">Overal Rating: </span>
+        <span class="symbol" ng-class="corp.overalColor" ng-style="{'border-color': corp.overalColor}">{{corp.overall_rating}}</span>
+    </div>
+    <div class="personal">
+        <span class="text">Personal Values Match:</span>
+        <span class="symbol" ng-class="corp.personalColor">{{corp.personal_values}}</span>
+    </div>
+</div>
+</div>
+</div>
+<div style="text-align: center;
     background-color: #f4f1ea;
     padding-top: 5%;
-    margin: 0;" ng-if="vm.empty">
-                    Portfolio is empty.
+    margin: 0;" ng-if="vm.empty"> Portfolio is empty.
 
-                </div>
+</div>
 
-            </div>
+</div>
 
-        </md-content>
-    </md-sidenav>
-    <md-content class="portfolio-content" layout="column" flex>
-        <div class="sidenav-arrow" layout="row" layout-align="center center" ng-click="vm.toggleLeft()">
-            <i class="fa fa-arrow-left" ng-if="vm.isSideNavOpen"></i>
-            <i class="fa fa-arrow-right" ng-if="!vm.isSideNavOpen"></i>
+</md-content>
+</md-sidenav>
+<md-content class="portfolio-content" layout="column" flex>
+    <div class="sidenav-arrow" layout="row" layout-align="center center" ng-click="vm.toggleLeft()">
+        <i class="fa fa-arrow-left" ng-if="vm.isSideNavOpen"></i>
+        <i class="fa fa-arrow-right" ng-if="!vm.isSideNavOpen"></i>
+    </div>
+    <div layout-align="start center" ng-if="!vm.empty">
+        <div class="blue-bgd"></div>
+        <bb-portfolio-corp-card></bb-portfolio-corp-card>
+        <bb-portfolio-corp-overview></bb-portfolio-corp-overview>
+        <bb-portfolio-corp-rating></bb-portfolio-corp-rating>
+        <bb-portfolio-corp-finance></bb-portfolio-corp-finance>
+        <bb-portfolio-corp-details></bb-portfolio-corp-details>
+    </div>
+    <div layout-align="start center" ng-if="vm.empty">
+        <div class="blue-bgd"></div>
+            <md-card flex>
+                <md-card-title style="padding-bottom:24px !important; text-align: center;">
+                    <md-card-title-text>
+                        <span>Browse or search companies to add them to your portfolio.</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
         </div>
-        <div layout-align="start center">
-            <div class="blue-bgd"></div>
-            <bb-portfolio-corp-card></bb-portfolio-corp-card>
-            <bb-portfolio-corp-overview></bb-portfolio-corp-overview>
-            <bb-portfolio-corp-rating></bb-portfolio-corp-rating>
-            <bb-portfolio-corp-finance></bb-portfolio-corp-finance>
-            <bb-portfolio-corp-details></bb-portfolio-corp-details>
-        </div>
-    </md-content>
+</md-content>
 </section>
