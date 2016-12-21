@@ -398,9 +398,7 @@
             return -1;
         }
         function calculate_weighted_average(obj) {
-            if (vm.personal_values == -1 || vm.personal_values==0){
-                return 'N/A'
-            }
+
 
             var all_vals = [$localStorage.personal_community, $localStorage.personal_employment,$localStorage.personal_environment, $localStorage.personal_governance];
             all_vals = all_vals.sort(function(a, b)
@@ -474,6 +472,9 @@
         //     console.log(personal_values);
 
             vm.personal_values = personal_values;
+            if (vm.personal_values <=0){
+                return 'N/A'
+            }
 
             return personal_values;
 

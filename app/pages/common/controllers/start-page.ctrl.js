@@ -25,7 +25,7 @@
         // pulling company data
         CompanyDataService.getAll().then(function (response) {
             vm.corps = response.data.results;
-            vm.corps = vm.corps.slice(0, 20);
+            vm.corps = vm.corps;
             for (var i = 0; i < vm.corps.length; i++) {
                 vm.corps[i].percentColor = getPercentColor(vm.corps[i].transparency_reporting);
                 vm.corps[i].overalColor = getMarkColor(getGradeFromPercent(vm.corps[i].overall));
@@ -73,7 +73,7 @@
 
             for (var i = 0; i < vm.porfolioCorps.length; i++) {
                 if (vm.porfolioCorps[i].company.company_id == company.company_id) {
-                    var idx = getIndexIfObjWithOwnAttr(vm.corps, 'company_id', vm.porfolioCorps[i].company);
+                    var idx = getIndexIfObjWithOwnAttr(vm.corps, 'company_id', vm.porfolioCorps[i].company.company_id);
                     vm.corps[idx].disabled = false;
                     return vm.porfolioCorps[i].id;
                 }
