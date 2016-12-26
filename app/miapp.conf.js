@@ -100,30 +100,30 @@
     }
     angular.module('miApp')
         .run(function ($rootScope, $state, $location, $localStorage, AuthenticationService) {
-            $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-                
-                $rootScope.stateIsLoading = true;
-                var requireLogin = toState.data.requireLogin;
-                // console.log($localStorage.token);
-                if (requireLogin && ($localStorage.token === undefined)) {
-                    event.preventDefault();
-                    $state.go("Basic.Login");
-                }
-                if (!requireLogin && ($localStorage.token !== undefined)) {
-                    event.preventDefault();
-                    $state.go("Main.Home");
-                }
-                // AuthenticationService.login($localStorage.username, $localStorage.password).then(function (data) {
-                //     if (data.data.token !== $localStorage.token) {
-                //         console.log("token has expired");
-                //     }
-                // });
-
-                // $localStorage.$reset(); //logout with this
-
-
-                // console.log("im running");
-            });
+            // $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+            //
+            //     $rootScope.stateIsLoading = true;
+            //     var requireLogin = toState.data.requireLogin;
+            //     // console.log($localStorage.token);
+            //     if (requireLogin && ($localStorage.token === undefined)) {
+            //         event.preventDefault();
+            //         $state.go("Basic.Login");
+            //     }
+            //     if (!requireLogin && ($localStorage.token !== undefined)) {
+            //         event.preventDefault();
+            //         $state.go("Main.Home");
+            //     }
+            //     // AuthenticationService.login($localStorage.username, $localStorage.password).then(function (data) {
+            //     //     if (data.data.token !== $localStorage.token) {
+            //     //         console.log("token has expired");
+            //     //     }
+            //     // });
+            //
+            //     // $localStorage.$reset(); //logout with this
+            //
+            //
+            //     // console.log("im running");
+            // });
 
 
             $rootScope.$on('$stateChangeSuccess', function () {
